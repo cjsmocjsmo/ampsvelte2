@@ -17,18 +17,33 @@
 
 <h1>Songs</h1>
 {#each songs as song}
-    <div class="songflexbox">
-        <h3>{song.title}</h3>
-        <span>+</span>
+    <div class="songboxflex">
+        <h5>{song.title}</h5>
+        <div class="songbtnflex">
+            <button>Play</button>
+            <button>Add</button>
+        </div>
     </div>
     <hr />
 {/each}
 
-
-
-
 <style>
-    .songflexbox {
+    .songboxflex{
+		display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: right;
+
+	}
+	.songbtnflex {
+		display: flex;
+		flex: 1;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+	}
+    /* .songflexbox {
         display: flex;
         flex: 1;
         flex-direction: row;
@@ -36,8 +51,8 @@
         align-items: center;
     }
     span {
-        font-size: 2em;
-    }
+        font-size: 2.5em;
+    } */
     hr {
         border: 0;
         border-top: 2px solid brown;

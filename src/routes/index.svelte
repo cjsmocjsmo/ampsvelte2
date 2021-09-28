@@ -1,6 +1,5 @@
 <script >
 	import { onMount } from 'svelte';
-// import Album from './album.svelte';
 
 	let artists = [];
 
@@ -11,19 +10,8 @@
 		console.log(artists);
 	});
 
-	// let show = false;
-
-	// const handleClick = () => {
-	// 	if (show === true) {
-	// 		show = false
-	// 	} else {
-	// 		show = true
-	// 	}
-	// }
-
 	function myFunction(id) {
 		var x = document.getElementById(id);
-		console.log(x.className.indexOf("w3-show"))
 		if (x.className.indexOf("w3-show") == -1) {
 			x.className += " w3-show";
 		} else { 
@@ -41,17 +29,22 @@
 	<div class="artistflexbox w3-container" >
 		<div class="artistflex">
 			<h3>{art.Artist}</h3>
-			<h5>{art.Albums.length} albums</h5>
+			<!-- <h5>{art.Albums.length} albums</h5> -->
+			<h5>{art.Albums.length} {art.Albums.length < 2 ? "album" : "albums"}</h5>
 		</div>
 		<span on:click={myFunction(art.ArtistID)} >+</span>
 	</div>
-	
-		<div id={art.ArtistID} class="w3-container w3-hide">
-			{#each art.Albums as alb}
-				<h3>{alb.album}</h3>
-			{/each}
-		</div>
-	
+	<div id={art.ArtistID} class="w3-container w3-hide foo">
+		{#each art.Albums as alb}
+			<div class="artboxflex">
+				<h5>{alb.album}</h5>
+				<div class="artbtnflex">
+					<button>Open</button>
+				</div>
+			</div>
+			<hr />
+		{/each}
+	</div>
 	<hr />
 {/each}
 
@@ -61,9 +54,16 @@
 		border-top: 2px solid brown;
 		width: 100%;
     }
+
+	.foo {
+		background-color: lightskyblue;
+		margin-top: 12px;
+	}
+
 	span {
-        font-size: 2em;
+        font-size: 2.5em;
     }
+
 	.artistflexbox {
         display: flex;
         flex: 1;
@@ -71,11 +71,27 @@
         justify-content: space-between;
         align-items: center;
     }
+
 	.artistflex {
 		display: flex;
 		flex: 1;
 		flex-direction: column;
 		align-items: left;
+	}
+	.artboxflex{
+		display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: right;
+
+	}
+	.artbtnflex {
+		display: flex;
+		flex: 1;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
 	}
 
 </style>

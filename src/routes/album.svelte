@@ -3,25 +3,23 @@
 
 	import { onMount } from 'svelte';
 
-	let photos = [];
-
-	onMount(async () => {
-		const ress = await fetch(`http://192.168.0.91:9090/RandomPics`);
-		photos = await ress.json();
-		
-		// console.log(photos);
-	});
-
 	let albums = [];
 
 	onMount(async () => {
-		const ress = await fetch(`http://192.168.0.91:9090/InitAlbumInfo`);
+		const ress = await fetch(`http://192.168.0.91:9090/InitAlbum2Info`);
 		albums = await ress.json();
 		
 		console.log(albums);
 	});
 
-
+	function myFunction(id) {
+		var x = document.getElementById(id);
+		if (x.className.indexOf("w3-show") == -1) {
+			x.className += " w3-show";
+		} else { 
+			x.className = x.className.replace(" w3-show", "");
+		}
+	}
 
 </script>
 
@@ -32,29 +30,36 @@
 <h1>Albums</h1>
 
 {#each albums as alb}
-	<div class="albumflexbox">
+	<div class="albumflexbox w3-container">
 		
-			<img src={alb.picHttpAddr} />
+		<img src={alb.PicHttpAddr} alt="Fuck Me"/>
 		
 		<div class="albuminfo">
-			<h3>{alb.album}</h3>
-			<h4>{alb.numsongs} songs</h4>
+			<h3>{alb.Album}</h3>
+			<h4>{alb.NumSongs} {alb.NumSongs < 2 ? "song" : "songs"}</h4>
 		</div>
+		<span class="albumS" on:click={myFunction(alb.AlbumID)}>+</span>
+	</div>
+	<div id={alb.AlbumID} class="w3-container w3-hide foo">
+		{#each alb.Songs as Song}
+		<div class="artboxflex">
+			<h5>{Song.title}</h5>
+			<div class="artbtnflex">
+				<button>Play</button>
+				<button>Add</button>
+			</div>
+		</div>
+		<hr />
+		{/each}
 	</div>
 	<hr />
 {/each}
 
-
-
-
-
-<!-- <div id="foo">
-	{#each photos as p}
-		<img src={p} alt="Welcome" />
-	{/each}	
-</div> -->
-
 <style>
+	.foo {
+		background-color: lightskyblue;
+		margin-top: 12px;
+	}
 
 	h1 {
 		margin: 1em;
@@ -73,27 +78,36 @@
 		align-items: center
 	}
 
-
-
-	#foo {
-		display: flex;
-		flex: 1;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		
-	}
+	.albumS {
+        font-size: 3.5em;
+    }
 	
 	img {
 		max-width: 200px;
+		min-width: 135px;
 		width: 30%;
 		height: 30%;
 		display: block;
 	}
 
 	hr {
-    border: 0;
-    border-top: 2px solid brown;
-    width: 100%;
+		border: 0;
+		border-top: 2px solid brown;
+		width: 100%;
     }
+	.artboxflex{
+		display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: right;
+
+	}
+	.artbtnflex {
+		display: flex;
+		flex: 1;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+	}
 </style>

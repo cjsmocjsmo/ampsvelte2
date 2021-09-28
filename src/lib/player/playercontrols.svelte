@@ -12,7 +12,7 @@
 <div class="playermain">
 	<div id="playerDiv">
 		<div class="tooltip">
-			<svg id="previous" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+			<svg id="previous" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
 				<path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
 			</svg>
 			<span class="tooltiptext">Previous Song</span>
