@@ -1,4 +1,74 @@
 <script>
+	import { onMount } from 'svelte';
+	import Songs from '../lib/playlist/SongComp.svelte';
+
+	let playlists = [];
+	$: playlists
+
+	let plname1 = "";
+	let plname2 = "";
+	let numsongs = "";
+	let show1 = false;
+	let show2 = false;
+
+	onMount(async () => {
+		const ress = await fetch(`http://192.168.0.91:9090/AllPlaylists`);
+		playlists = await ress.json();
+		
+		console.log(playlists);
+	});
+
+	function addRandomPlaylist(songcount, name) {
+		fetch(`http://192.168.0.91:9090/AddRandomPlaylist?songcount=${songcount}&&name=${name}`)
+            .then(response => 
+            console.log(response)
+        );
+	}
+
+	function addPlaylist(name) {
+		playlists = fetch(`http://192.168.0.91:9090/AddPlaylist?name=${name}`)
+            .then(response => 
+			// playlists = response.json(),
+			console.log(response.json()),
+			// console.log(response.statusText),
+			// console.log(playlists),
+            
+        );
+	}
+
+	// function allPlaylist() {
+	// 	fetch(`http://192.168.0.91:9090/AllPlaylist`)
+    //         .then(response => 
+	// 		console.log("this is allplaylist response"),
+    //         console.log(response)
+    //     );
+	// }
+
+	const handleClick1 = () => {
+		if (show1 === true) {
+			show1 = false;
+		} else {
+			show1 = true;
+		}
+	}
+	
+	const handleClick2 = () => {
+		if (show2 === true) {
+			show2 = false;
+		} else {
+			show2 = true;
+		}
+	}
+
+	const handleSubmit1 = () => {
+		addPlaylist(plname1)
+		show1 = false;
+	}
+
+	const handleSubmit2 = () => {
+		addRandomPlaylist(numsongs, plname2)
+		show2 = false;
+	}
 
 </script>
 
@@ -7,41 +77,167 @@
 </svelte:head>
 
 <h1>PlayLists</h1>
-
-<div class="playlistBtnMain">
-    <div class="playlistBtnGroup">
-		<div class="tooltip">
-			<svg id="settings" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-				<path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
-			</svg>
-			<span class="tooltiptext">Select Playlist</span>
-		</div>
-		<div class="tooltip">
-			<svg id="load" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-				<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-				<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-			</svg>
-			<span class="tooltiptext">Load Playlist</span>
-		</div>
-		<div class="tooltip">
-			<svg id="edit" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-				<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-			</svg>
-			<span class="tooltiptext">Edit Playlist</span>
-		</div>
-		<div class="tooltip">
-			<svg id="delete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-				<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-				<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-			</svg>
-			<span class="tooltiptext">Delete Playlist</span>
-		</div>
-    </div>
+<div class="playlistBtnGroup">
+	<button on:click={handleClick1}>ADD EMPTY</button>
+	<button on:click={handleClick2}>ADD RANDOM</button>
 </div>
 
 
+{#if show1 === true}
+	<div class="addPL">
+		<input bind:value={plname1} placeholder="Playlist Name" >
+		<button on:click={handleSubmit1}>Submit</button>
+	</div>
+{:else}
+	<div></div>
+{/if}
+
+
+{#if show2 === true}
+	<div>
+		<div class="addRandPL">
+			<input bind:value={plname2} placeholder="Playlist Name" >
+		</div>
+		<div class="addRandPL">
+			<input bind:value={numsongs} placeholder="Number of songs" >
+		</div>
+		<div class="addRandPL">
+			<button on:click={handleSubmit2}>Submit</button>
+		</div>
+	</div>
+{:else}
+	<div></div>
+{/if}
+
+<!-- <div class="buttonGroup">
+	<button>SELECT</button>
+	<button>LOAD</button>
+	<button>EDIT</button>
+	<button>DELETE</button>
+</div> -->
+
+
+
+<!-- <div class="playlistBtnGroup">
+	<div class="tooltip">
+		<svg id="settings" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+			<path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+		</svg>
+		<span class="tooltiptext">Select Playlist</span>
+	</div>
+	<div class="tooltip">
+		<svg id="load" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+			<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+			<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+		</svg>
+		<span class="tooltiptext">Load Playlist</span>
+	</div>
+	<div class="tooltip">
+		<svg id="edit" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+			<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+		</svg>
+		<span class="tooltiptext">Edit Playlist</span>
+	</div>
+	<div class="tooltip">
+		<svg id="delete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+			<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+			<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+		</svg>
+		<span class="tooltiptext">Delete Playlist</span>
+	</div>
+</div> -->
+{#each playlists as pl}
+<div class="playlistListMain">
+	<div class="playlistDiv">
+		<p style="font-size: 25px" >{pl.PlayListName}</p>
+		<p>{pl.PlayListCount} {pl.PlayListCount === 1 ? 'song' : 'songs'} </p>
+		<div class="playlistBtnGrp">
+			<button>Load</button>
+			<button>Delete</button>
+			<button>Open</button>
+		</div>
+	</div>
+		
+	
+	
+	<!-- <span>+</span> -->
+</div>
+
+<Songs songs={pl.PlayList} />
+
+<hr />
+
+	
+{/each}
+
+
 <style>
-	.tooltip {
+
+	.playlistBtnGrp {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		
+	}
+
+	/* .buttonGroup {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		
+	} */
+	/* span {
+		font-size: 2.5em;
+	} */
+
+	hr {
+		border: 0;
+		border-top: 2px solid brown;
+		width: 100%;
+	}
+
+	.playlistListMain {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+	}
+
+	.playlistDiv {
+		display: flex;
+		flex-direction: column;
+		/* justify-content: space-between; */
+
+	}
+
+
+	p {
+		font-size: 18px;
+	}
+
+	.addRandPL {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin: 1em;
+	}
+
+	.addPL {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin: 1em;
+	}
+
+	/* .tooltip {
 		position: relative;
 		display: inline-block;
 	}
@@ -55,7 +251,7 @@
 		border-radius: 6px;
 		padding: 5px 0;
 		
-		/* Position the tooltip */
+		
 		position: absolute;
 		z-index: 1;
 		bottom: 100%;
@@ -65,15 +261,15 @@
 
 	.tooltip:hover .tooltiptext {
 		visibility: visible;
-	}
-	.playlistBtnMain {
-		margin: 1em 1em 0 1em
-	}
+	}*/
+
 	.playlistBtnGroup {
 		display: flex;
-		flex: 1;
-		flex-direction: row;
-		justify-content: space-between;
+		flex-direction: row; 
+		justify-content: space-around;
 		width: 100%;
-	}
+		
+
+	} 
+
 </style>

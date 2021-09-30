@@ -36,19 +36,25 @@
 	</div>
 	<div id={art.ArtistID} class="w3-container w3-hide foo">
 		{#each art.Albums as alb}
-			<div class="artboxflex">
+			<img src={alb.picHttpAddr} alt="fuck" />
+			<!-- <div class="artboxflex">
 				<h5>{alb.album}</h5>
 				<div class="artbtnflex">
 					<button>Open</button>
 				</div>
-			</div>
-			<hr />
+			</div> -->
+			<!-- <hr /> -->
 		{/each}
 	</div>
 	<hr />
 {/each}
 
 <style>
+	img {
+		min-width: 25px;
+		max-width: 80px;
+
+	}
 	hr {
 		border: 0;
 		border-top: 2px solid brown;
@@ -78,10 +84,15 @@
 		flex-direction: column;
 		align-items: left;
 	}
-	.artboxflex{
+	/* .artboxflex{
 		display: flex;
         flex: 1;
         flex-direction: row;
+		align-items: center;
+		justify-content: center;
+        
+
+
         justify-content: flex-end;
         align-items: right;
 
@@ -92,6 +103,6 @@
 		flex-direction: row;
 		justify-content: flex-end;
 		align-items: center;
-	}
+	} */
 
 </style>
