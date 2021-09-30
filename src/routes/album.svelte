@@ -21,6 +21,14 @@
 		}
 	}
 
+	function playsong(addr) {
+        console.log(addr)
+        const aud1 = document.getElementsByClassName("Audio1")[0]
+        // const aud1 = document.getElementById("Audio1")
+        aud1.setAttribute('src', addr);
+        aud1.play()
+    }
+
 </script>
 
 <svelte:head>
@@ -45,7 +53,7 @@
 		<div class="artboxflex">
 			<h5>{Song.title}</h5>
 			<div class="artbtnflex">
-				<button>Play</button>
+				<button on:click={playsong(Song.httpaddr)} >Play</button>
 				<button>Add</button>
 			</div>
 		</div>

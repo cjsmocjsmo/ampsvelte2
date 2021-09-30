@@ -2,20 +2,25 @@
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
 	import Playercontrols from'../lib/player/playercontrols.svelte'
-	let show = true;
-	const handleClick = () => {
-		if (show === true) {
-			show = false;
-		} else {
-			show = true;
-		}
-	}
+	// let show = true;
+	// const handleClick = () => {
+	// 	if (show === true) {
+	// 		show = false;
+	// 	} else {
+	// 		show = true;
+	// 	}
+	// }
 
 </script>
 
 <Header />
 
-<audio class="Audio1" controls=true style="width: 100%; margin-top: 10px"></audio>
+<audio 
+	class="Audio1" 
+	controls=true 
+	style="width: 100%; margin-top: 10px" 
+	src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+></audio>
 
 
 <Playercontrols />

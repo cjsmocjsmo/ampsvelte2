@@ -1,7 +1,9 @@
 <script >
 	import { onMount } from 'svelte';
+	import Songs from '../lib/playlist/SongComp.svelte';
 
 	let artists = [];
+	let songs = [];
 
 	onMount(async () => {
 		const ress = await fetch(`http://192.168.0.91:9090/InitArtistInfo2`);
@@ -18,6 +20,17 @@
 			x.className = x.className.replace(" w3-show", "");
 		}
 	}
+
+	function songsforalbum(albid) {
+		songs = fetch(`http://192.168.0.91:9090/SongsForAlbum?albumid=${albid}`)
+            .then(response => 
+			// playlists = response.json(),
+			console.log(response.json()),
+			// console.log(response.statusText),
+			// console.log(playlists),
+            
+        );
+	}
 </script>
 
 <svelte:head>
@@ -28,28 +41,35 @@
 {#each artists as art }
 	<div class="artistflexbox w3-container" >
 		<div class="artistflex">
-			<h3>{art.Artist}</h3>
-			<!-- <h5>{art.Albums.length} albums</h5> -->
-			<h5>{art.Albums.length} {art.Albums.length < 2 ? "album" : "albums"}</h5>
+			<p class="p1">{art.Artist}</p>
+			<p class="p2">{art.Albums.length} {art.Albums.length < 2 ? "album" : "albums"}</p>
 		</div>
 		<span on:click={myFunction(art.ArtistID)} >+</span>
 	</div>
 	<div id={art.ArtistID} class="w3-container w3-hide foo">
 		{#each art.Albums as alb}
-			<img src={alb.picHttpAddr} alt="fuck" />
-			<!-- <div class="artboxflex">
-				<h5>{alb.album}</h5>
-				<div class="artbtnflex">
-					<button>Open</button>
-				</div>
-			</div> -->
-			<!-- <hr /> -->
+			<img 
+				id={alb.albumID} 
+				src={alb.picHttpAddr} 
+				alt="fuck" 
+				on:click={songsforalbum(alb.albumID)}
+			/>
 		{/each}
 	</div>
 	<hr />
 {/each}
 
+<Songs songs={songs} />
+
 <style>
+	.p1 {
+		font-size: 28px;
+	}
+
+	.p2 {
+		font-size: 18px;
+	}
+
 	img {
 		min-width: 25px;
 		max-width: 80px;
@@ -84,25 +104,5 @@
 		flex-direction: column;
 		align-items: left;
 	}
-	/* .artboxflex{
-		display: flex;
-        flex: 1;
-        flex-direction: row;
-		align-items: center;
-		justify-content: center;
-        
-
-
-        justify-content: flex-end;
-        align-items: right;
-
-	}
-	.artbtnflex {
-		display: flex;
-		flex: 1;
-		flex-direction: row;
-		justify-content: flex-end;
-		align-items: center;
-	} */
 
 </style>

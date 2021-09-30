@@ -9,6 +9,15 @@
 		
 		console.log(songs);
 	});
+
+    function playsong(addr) {
+        console.log(addr)
+        const aud1 = document.getElementsByClassName("Audio1")[0]
+        aud1.setAttribute('src', addr);
+        aud1.play();
+        console.log(aud1.duration)
+    }
+
 </script>
 
 <svelte:head>
@@ -20,7 +29,7 @@
     <div class="songboxflex">
         <h5>{song.title}</h5>
         <div class="songbtnflex">
-            <button>Play</button>
+            <button on:click={playsong(song.httpaddr)}>Play</button>
             <button>Add</button>
         </div>
     </div>
@@ -28,6 +37,7 @@
 {/each}
 
 <style>
+
     .songboxflex{
 		display: flex;
         flex: 1;
@@ -36,6 +46,7 @@
         align-items: right;
 
 	}
+
 	.songbtnflex {
 		display: flex;
 		flex: 1;
@@ -43,19 +54,11 @@
 		justify-content: flex-end;
 		align-items: center;
 	}
-    /* .songflexbox {
-        display: flex;
-        flex: 1;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    span {
-        font-size: 2.5em;
-    } */
+
     hr {
         border: 0;
         border-top: 2px solid brown;
         width: 100%;
     }
+    
 </style>
