@@ -1,7 +1,7 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
-	import Playercontrols from'../lib/player/playercontrols.svelte'
+	// import Playercontrols from'../lib/player/playercontrols.svelte'
 	// let show = true;
 	// const handleClick = () => {
 	// 	if (show === true) {
@@ -17,13 +17,13 @@
 
 <audio 
 	class="Audio1" 
-	controls=true 
+	controls="" 
 	style="width: 100%; margin-top: 10px" 
 	src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 ></audio>
 
 
-<Playercontrols />
+<!-- <Playercontrols /> -->
 
 <main>
 	<slot />
@@ -45,6 +45,7 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		box-sizing: border-box;
+		background-image: linear-gradient(to right, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));
 	}
 
 	footer {

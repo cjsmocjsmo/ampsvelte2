@@ -1,9 +1,10 @@
 <script >
 	import { onMount } from 'svelte';
-	import Songs from '../lib/playlist/SongComp.svelte';
+	import {albumid} from '../lib/store/stores.js';
 
 	let artists = [];
-	let songs = [];
+	// let songs = [];
+	let albumid_value;
 
 	onMount(async () => {
 		const ress = await fetch(`http://192.168.0.91:9090/InitArtistInfo2`);
@@ -21,16 +22,18 @@
 		}
 	}
 
-	function songsforalbum(albid) {
-		songs = fetch(`http://192.168.0.91:9090/SongsForAlbum?albumid=${albid}`)
-            .then(response => 
-			// playlists = response.json(),
-			console.log(response.json()),
-			// console.log(response.statusText),
-			// console.log(playlists),
-            
-        );
-	}
+	// const unsubscribe = albumid.subscribe(value => {
+	// 	albumid_value = value;
+	// });
+
+	// function songsforalbum(albid) {
+	// 	fetch(`http://192.168.0.91:9090/SongsForAlbum?selected=${albid}`)
+	// 		.then((response) => response.json())
+	// 		.then((songz) => {
+	// 			songs = songz;
+	// 		})
+	// }
+	// console.log(songs)
 </script>
 
 <svelte:head>
@@ -48,18 +51,22 @@
 	</div>
 	<div id={art.ArtistID} class="w3-container w3-hide foo">
 		{#each art.Albums as alb}
-			<img 
-				id={alb.albumID} 
-				src={alb.picHttpAddr} 
-				alt="fuck" 
-				on:click={songsforalbum(alb.albumID)}
-			/>
+			<a href="/SongsForAlbum">
+				<img 
+					id={alb.albumID} 
+					src={alb.picHttpAddr} 
+					alt="fuck" 
+					on:click={() => albumid.set(alb.albumID)}
+					
+				/>
+			</a>
 		{/each}
 	</div>
+		<!-- <Songs songs={songs} albumid={art.AlbumID}/> -->
 	<hr />
 {/each}
 
-<Songs songs={songs} />
+<!-- <a href="/Test" ><button>Test Link</button></a> -->
 
 <style>
 	.p1 {

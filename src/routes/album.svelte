@@ -8,8 +8,6 @@
 	onMount(async () => {
 		const ress = await fetch(`http://192.168.0.91:9090/InitAlbum2Info`);
 		albums = await ress.json();
-		
-		console.log(albums);
 	});
 
 	function myFunction(id) {
@@ -21,12 +19,13 @@
 		}
 	}
 
-	function playsong(addr) {
-        console.log(addr)
+	function playsong(addr, id) {
         const aud1 = document.getElementsByClassName("Audio1")[0]
         // const aud1 = document.getElementById("Audio1")
         aud1.setAttribute('src', addr);
+		aud1.setAttribute("controls", true)
         aud1.play()
+		myFunction(id)
     }
 
 </script>
@@ -53,7 +52,7 @@
 		<div class="artboxflex">
 			<h5>{Song.title}</h5>
 			<div class="artbtnflex">
-				<button on:click={playsong(Song.httpaddr)} >Play</button>
+				<button on:click={playsong(Song.httpaddr, alb.AlbumID)} >Play</button>
 				<button>Add</button>
 			</div>
 		</div>
@@ -65,7 +64,8 @@
 
 <style>
 	.foo {
-		background-color: lightskyblue;
+		background-image: linear-gradient(to right, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));
+		/* background-color: lightskyblue; */
 		margin-top: 12px;
 	}
 

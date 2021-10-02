@@ -126,7 +126,7 @@
 		<div class="playlistBtnGrp">
 			<button>Load</button>
 			<button on:click={deleteplaylist(pl.PlayListID)} >Delete</button>
-			<button>Open</button>
+			<button>View Songs</button>
 		</div>
 	</div>
 </div>

@@ -1,12 +1,32 @@
 <script>
-	let show = true;
+	// import {showit} from '../store/stores.js';
+
+	// let show = true;
+	let show;
+
+	// const unsubscribe = showit.subscribe(value => {
+	// 	console.log("this is value")
+	// 	console.log(value)
+	// 	show = value;
+	// });
+
+
 	const handleClick = () => {
-		if (show === true) {
-			show = false;
+		
+		if (show === 0) {
+			
+			const aud1 = document.getElementsByClassName("Audio1")[0]
+			aud1.play();
+			showit.update(n => 1)
 		} else {
-			show = true;
+			
+			const aud1 = document.getElementsByClassName("Audio1")[0]
+			aud1.pause();
+			showit.update(n => 0)
 		}
 	}
+
+	
 </script>
 
 <div class="playermain">

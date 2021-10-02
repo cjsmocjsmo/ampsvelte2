@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+    // import {showit} from '../lib/store/stores.js';
 
 	let songs = [];
 
@@ -14,8 +15,9 @@
         console.log(addr)
         const aud1 = document.getElementsByClassName("Audio1")[0]
         aud1.setAttribute('src', addr);
+        aud1.setAttribute("controls", true)
         aud1.play();
-        console.log(aud1.duration)
+        console.log(aud1.currentTime)
     }
 
 </script>
@@ -25,6 +27,21 @@
 </svelte:head>
 
 <h1>Songs</h1>
+
+<!-- <div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/EK_6OzZAh5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div>
+    <iframe width="280" height="164" src="https://www.youtube.com/embed/EK_6OzZAh5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div>
+    <iframe width="280" height="164" src="https://www.youtube.com/embed/EK_6OzZAh5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ <iframe width="280" height="164" src="https://www.youtube.com/embed/EK_6OzZAh5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div> -->
+
+
+
 {#each songs as song}
     <div class="songboxflex">
         <h5>{song.title}</h5>

@@ -1,13 +1,13 @@
 <script>
     export let songs;
-    export let playlistid;
+    export let albumid;
     // export let songcount;
 
 </script>
 
 
 {#if songs != null}
-    <div id={playlistid} class="playlistList">
+    <div id={albumid} class="playlistList">
         {#each songs as song}
             <div class="playlistListBtn">
                 <p>{song.title}</p>
