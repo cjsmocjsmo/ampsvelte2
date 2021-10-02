@@ -45,7 +45,7 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		box-sizing: border-box;
-		background-image: linear-gradient(to right, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));
+		background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));
 	}
 
 	footer {
