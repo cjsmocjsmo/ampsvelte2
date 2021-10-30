@@ -7,7 +7,7 @@
 
 
 {#if songs != null}
-    <div id={playlistid} class="playlistList">
+    <div id={playlistid} class="playlistList w3-container w3-hide">
         {#each songs as song}
             <div class="playlistListBtn">
                 <p>{song.title}</p>

@@ -36,6 +36,14 @@
         );
 	}
 
+	function myFunction(id) {
+		var x = document.getElementById(id);
+		if (x.className.indexOf("w3-show") == -1) {
+			x.className += " w3-show";
+		} else { 
+			x.className = x.className.replace(" w3-show", "");
+		}
+	}
 	// function allPlaylist() {
 	// 	fetch(`http://192.168.0.91:9090/AllPlaylist`)
     //         .then(response => 
@@ -119,21 +127,21 @@
 {/if}
 
 {#each playlists as pl}
-<div id={pl.PlayListID} class="playlistListMain">
-	<div class="playlistDiv">
-		<p style="font-size: 25px" >{pl.PlayListName}</p>
-		<p>{pl.PlayListCount} {pl.PlayListCount === 1 ? 'song' : 'songs'} </p>
-		<div class="playlistBtnGrp">
-			<button>Load</button>
-			<button on:click={deleteplaylist(pl.PlayListID)} >Delete</button>
-			<button>View Songs</button>
+	<div class="playlistListMain">
+		<div class="playlistDiv">
+			<p style="font-size: 25px" >{pl.PlayListName}</p>
+			<p>{pl.PlayListCount} {pl.PlayListCount === 1 ? 'song' : 'songs'} </p>
+			<div class="playlistBtnGrp">
+				<button>Load</button>
+				<button on:click={deleteplaylist(pl.PlayListID)} >Delete</button>
+				<button on:click={myFunction(pl.PlayListID)}>View Songs</button>
+			</div>
 		</div>
 	</div>
-</div>
-
-<Songs songs={pl.PlayList} playlistid={pl.PlayListID}/>
-
-<hr />
+	
+	<Songs songs={pl.PlayList} playlistid={pl.PlayListID}/>
+	
+	<hr />
 	
 {/each}
 
