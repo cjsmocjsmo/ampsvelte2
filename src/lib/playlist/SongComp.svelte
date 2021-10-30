@@ -17,7 +17,7 @@
         {/each}
     </div>
 {:else}
-    <div>None Available</div>
+    <div id={playlistid} >None Available</div>
 {/if}
 
 

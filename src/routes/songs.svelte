@@ -27,8 +27,29 @@
 </svelte:head>
 
 <h1>Songs</h1>
+<!--
+<iframe 
+    width="355" 
+    height="200" 
 
-<!-- <div>
+    src="https://www.youtube.com/embed/Wy2818Jq2Nw" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+<iframe 
+    width="355" 
+    height="200" 
+
+    src="https://www.youtube.com/embed/Wy2818Jq2Nw" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+
+ <div>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/EK_6OzZAh5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -44,7 +65,7 @@
 
 {#each songs as song}
     <div class="songboxflex">
-        <h5>{song.title}</h5>
+        <h3>{song.title}</h3>
         <div class="songbtnflex">
             <button on:click={playsong(song.httpaddr)}>Play</button>
             <button>Add</button>
@@ -54,6 +75,9 @@
 {/each}
 
 <style>
+    h3 {
+        color: white;
+    }
 
     .songboxflex{
 		display: flex;

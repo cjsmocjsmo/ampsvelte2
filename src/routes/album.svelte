@@ -72,6 +72,10 @@
 	h1 {
 		margin: 1em;
 	}
+	
+	h3, h4 {
+		color: white;
+	}
 
 	.albuminfo {
 		display: flex;
@@ -87,7 +91,8 @@
 	}
 
 	.albumS {
-        font-size: 3.5em;
+        font-size: 5em;
+		color: white;
     }
 	
 	img {

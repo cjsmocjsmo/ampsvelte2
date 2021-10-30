@@ -47,7 +47,7 @@
 			<p class="p1">{art.Artist}</p>
 			<p class="p2">{art.Albums.length} {art.Albums.length < 2 ? "album" : "albums"}</p>
 		</div>
-		<span on:click={myFunction(art.ArtistID)} >+</span>
+		<span class="sp1" on:click={myFunction(art.ArtistID)} >+</span>
 	</div>
 	<div id={art.ArtistID} class="w3-container w3-hide foo">
 		{#each art.Albums as alb}
@@ -75,6 +75,11 @@
 
 	.p2 {
 		font-size: 18px;
+	}
+
+	.sp1{
+		font-size: 5em;
+		color: white;
 	}
 
 	img {
