@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import {albumid} from '../lib/store/stores.js';
+    import AddButton from '$lib/playlist/AddButton.svelte';
 
     let albumid_value;
     const unsubscribe = albumid.subscribe(value => {
@@ -31,7 +32,7 @@
         </div>
         <div>
             <button on:click={playsong(song.httpaddr)}>Play</button>
-            <button>Add</button>
+            <AddButton />
             <a href="/"><button>Back</button></a>
         </div>
     </div>

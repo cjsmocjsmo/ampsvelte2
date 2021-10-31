@@ -80,11 +80,12 @@
 
 	function deleteplaylist(plid) {
 		document.getElementById(plid).remove();
-		fetch(`http://192.168.0.91:9090/DeletePlayList`)
-            .then(response => 
-			console.log("this is DeletePlayList response"),
-            console.log(response)
-        );
+		fetch(`http://192.168.0.91:9090/DeletePlayList?playlistid=${plid}`)
+		.then(response => response.text())
+		.then(data => console.log(data));
+		console.log("this is DeletePlayList response"),
+        console.log(response)
+       
 	}
 
 </script>
