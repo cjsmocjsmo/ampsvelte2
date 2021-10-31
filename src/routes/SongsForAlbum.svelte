@@ -1,7 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import {albumid} from '../lib/store/stores.js';
-    import AddButton from '$lib/playlist/AddButton.svelte';
+    // import AddButton from '$lib/playlist/AddButton.svelte';
+    import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 
     let albumid_value;
     const unsubscribe = albumid.subscribe(value => {
@@ -24,6 +25,7 @@
 </script>
 
 <h1>Songs For Album</h1>
+<PlayListSelectButton />
 {#each songs as song}
     <div class="pmaster">
         <div class="pdivs">
@@ -32,14 +34,21 @@
         </div>
         <div>
             <button on:click={playsong(song.httpaddr)}>Play</button>
-            <AddButton />
+            <!-- <AddButton /> -->
+            <button>Add</button>
             <a href="/"><button>Back</button></a>
+            
         </div>
+        
     </div>
+   
     <hr />
 {/each}
 
+
+
 <style>
+
     .pmaster {
         display: flex;
         flex-direction: row;

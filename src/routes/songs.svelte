@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
     // import {showit} from '../lib/store/stores.js';
-    import AddButton from '$lib/playlist/AddButton.svelte';
+    // import AddButton from '$lib/playlist/AddButton.svelte';
     
 
 	let songs = [];
@@ -35,8 +35,8 @@
         <h3>{song.title}</h3>
         <div class="songbtnflex">
             <button on:click={playsong(song.httpaddr)}>Play</button>
-            <AddButton />
-            <!-- <button>Add</button> -->
+            <!-- <AddButton /> -->
+            <button>Add</button>
         </div>
     </div>
     <hr />

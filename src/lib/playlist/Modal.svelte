@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher, onDestroy } from 'svelte';
+    export let plist;
 
 	const dispatch = createEventDispatcher();
 	const close = () => dispatch('close');
@@ -35,8 +36,10 @@
 			previously_focused.focus();
 		});
 	}
+
     let selectedPlaylist = '';
-    console.log(selectedPlaylist)
+    console.log(plist[0])
+
 </script>
 
 <svelte:window on:keydown={handle_keydown}/>
@@ -50,43 +53,48 @@
         <p>Please select your preferred contact method</p>
         <div>
             <ol>
+                {#each plist as pl}
                 <li>
-                    <input type="radio" id="contactChoice1" bind:group={selectedPlaylist}
-                        name="contact" value="email">
-                    <label for="Choice1">Email</label>
+                    <input type="radio" id={pl.PlayListID} bind:group={selectedPlaylist}
+                        name="contact" value={pl.PlayListID}>
+                    <label for="Choice1">{pl.PlayListName}</label>
                 </li>
 
-                <li>
-                    <input type="radio" id="contactChoice2" bind:group={selectedPlaylist}
-                        name="contact" value="phone">
-                    <label for="Choice2">Phone</label>
-                </li>
-                <li>
-                    <input type="radio" id="contactChoice3" bind:group={selectedPlaylist}
-                        name="contact" value="mail">
-                    <label for="Choice3">Mail</label>
-                </li>
+
+                {/each}
             </ol>  
         </div>
         <div>
-            <span>{selectedPlaylist}</span>
           <button type="submit" on:click={close}>Submit</button>
         </div>
       </form>
 	<hr>
-
-	<!-- svelte-ignore a11y-autofocus -->
-	<!-- <button autofocus on:click={close}>close modal</button> -->
 </div>
 
 <style>
+    hr {
+        
+        border-top: 1.5px solid rgb(231, 6, 25);
+       
+    }
+
+    ol li{
+        list-style-type: none;
+        
+    }
+
+    label, p {
+        font-size: large;
+        color: black;
+    }
+
 	.modal-background {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(0,0,0,0.3);
+		background: rgba(0, 0, 0, 0.473);
 	}
 
 	.modal {
@@ -100,7 +108,8 @@
 		transform: translate(-50%,-50%);
 		padding: 1em;
 		border-radius: 0.2em;
-		background: white;
+		/* background: rgb(112, 8, 138); */
+        background: rgba(142, 224, 48, 0.863);
 	}
 
 	button {
