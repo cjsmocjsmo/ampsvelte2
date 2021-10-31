@@ -1,45 +1,44 @@
 <script>
+	import { onMount } from 'svelte';
+	import { currentPlayList } from '$lib/store/playliststore.js';
 
-// need onMount for initial values
-// need to setup store for selected value
+	let playListLists = '';
 
-
-
-
-	let questions = [
-		{ id: 1, text: `Playlist` },
-		{ id: 2, text: `mycool Playlist` },
-		{ id: 3, text: `Another playlist` }
-	];
+	onMount(async () => {
+		const res = await fetch(`http://192.168.0.91:9090/AllPlaylists`);
+		playListLists = await res.json();
+	});
 
 	let selected;
 
 	let answer = '';
 
 	function handleSubmit() {
-		alert(`answered question ${selected.id} (${selected.text}) with "${answer}"`);
+		currentPlayList.set(selected.PlayListName)
+		alert(`answered question ${selected.PlayListID} (${selected.PlayListName}) with "${answer}"`);
 	}
+
+	let currentCPName;
+
+	const unsubscribe = currentPlayList.subscribe(value => {
+		currentCPName = value;
+	});
+
 </script>
 
-<!-- <h2>Insecurity questions</h2> -->
-
 <form on:submit|preventDefault={handleSubmit}>
+	<p>{selected ? '' : 'Select A Playlist To Add Music To'}</p>
 	<select bind:value={selected} on:change="{() => answer = ''}">
-		{#each questions as question}
-			<option value={question}>
-				{question.text}
+		{#each playListLists as playListList}
+			<option value={playListList}>
+				{playListList.PlayListName}
 			</option>
 		{/each}
 	</select>
-
-	<!-- <input bind:value={answer}> -->
-
-	<!-- <button disabled={!answer} type=submit>
-		Submit
-	</button> -->
 </form>
 
-<p>selected playlist: {selected ? selected.text : '[waiting...]'}</p>
+<!-- <p>selected playlist: {selected ? selected.PlayListName : '[waiting...]'}</p> -->
+<!-- <p>{selected ? '' : 'Select A Playlist To Add Music To'}</p> -->
 
 <style>
     form {
@@ -50,5 +49,4 @@
         width: 225px;
         
     }
-	/* select { display: block; width: 500px; max-width: 100%; } */
 </style>

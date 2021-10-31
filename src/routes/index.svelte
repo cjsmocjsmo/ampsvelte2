@@ -10,7 +10,7 @@
 		const ress = await fetch(`http://192.168.0.91:9090/InitArtistInfo2`);
 		artists = await ress.json();
 		
-		console.log(artists);
+		// console.log(artists);
 	});
 
 	function myFunction(id) {

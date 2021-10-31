@@ -73,7 +73,7 @@
 		margin: 1em;
 	}
 	
-	h3, h4 {
+	h3, h4, h5 {
 		color: white;
 	}
 

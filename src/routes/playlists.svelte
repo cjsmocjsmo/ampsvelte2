@@ -14,8 +14,6 @@
 	onMount(async () => {
 		const ress = await fetch(`http://192.168.0.91:9090/AllPlaylists`);
 		playlists = await ress.json();
-		
-		console.log(playlists);
 	});
 
 	function addRandomPlaylist(songcount, name) {
