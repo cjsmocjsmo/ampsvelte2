@@ -32,7 +32,7 @@
             <p class="p1">{song.title}</p>
             <p class="p2">{song.album}</p>
         </div>
-        <div>
+        <div class="psongs">
             <button on:click={playsong(song.httpaddr)}>Play</button>
             <!-- <AddButton /> -->
             <button>Add</button>
@@ -48,6 +48,17 @@
 
 
 <style>
+    button {
+        margin: 2px;
+        width: 4em;
+    }
+
+    .psongs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
 
     .pmaster {
         display: flex;

@@ -43,6 +43,7 @@
 <style>
     form {
         text-align: right;
+		margin: 8px;
     }
 
     select {

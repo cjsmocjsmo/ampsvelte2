@@ -1,6 +1,6 @@
 <script >
 	export const prerender = true;
-
+	import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 	import { onMount } from 'svelte';
 
 	let albums = [];
@@ -35,17 +35,16 @@
 </svelte:head>
 
 <h1>Albums</h1>
-
+<SelectButton />
 {#each albums as alb}
 	<div class="albumflexbox w3-container">
 		
-		<img src={alb.PicHttpAddr} alt="Fuck Me"/>
+		<img src={alb.PicHttpAddr} on:click={myFunction(alb.AlbumID)} alt="Fuck Me" />
 		
 		<div class="albuminfo">
 			<h3>{alb.Album}</h3>
 			<h4>{alb.NumSongs} {alb.NumSongs < 2 ? "song" : "songs"}</h4>
 		</div>
-		<span class="albumS" on:click={myFunction(alb.AlbumID)}>+</span>
 	</div>
 	<div id={alb.AlbumID} class="w3-container w3-hide foo">
 		{#each alb.Songs as Song}
@@ -79,7 +78,7 @@
 
 	.albuminfo {
 		display: flex;
-		flex: 1;
+		/* flex: 1; */
 		flex-direction: column;
 		padding: 10px;
 	}
@@ -90,10 +89,10 @@
 		align-items: center
 	}
 
-	.albumS {
+	/* .albumS {
         font-size: 5em;
 		color: white;
-    }
+    } */
 	
 	img {
 		max-width: 200px;
@@ -110,17 +109,17 @@
     }
 	.artboxflex{
 		display: flex;
-        flex: 1;
+        /* flex: 1; */
         flex-direction: row;
-        justify-content: flex-end;
-        align-items: right;
+        justify-content: space-between;
+        align-items: center;
 
 	}
 	.artbtnflex {
 		display: flex;
-		flex: 1;
-		flex-direction: row;
-		justify-content: flex-end;
+		/* flex: 1; */
+		flex-direction: column;
+		/* justify-content: flex-end; */
 		align-items: center;
 	}
 </style>

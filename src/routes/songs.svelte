@@ -48,17 +48,17 @@
 
     .songboxflex{
 		display: flex;
-        flex: 1;
+        /* flex: 1; */
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: right;
 
 	}
 
 	.songbtnflex {
 		display: flex;
-		flex: 1;
-		flex-direction: row;
+		/* flex: 1; */
+		flex-direction: column;
 		justify-content: flex-end;
 		align-items: center;
 	}
