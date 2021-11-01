@@ -1,4 +1,4 @@
-FROM node:14.5.0-buster-slim
+FROM node:bullseye-slim
 
 RUN \
   sudo apt-get update && \
