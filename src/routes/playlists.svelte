@@ -26,11 +26,7 @@
 	function addPlaylist(name) {
 		playlists = fetch(`http://192.168.0.91:9090/AddPlaylist?name=${name}`)
             .then(response => 
-			// playlists = response.json(),
 			console.log(response.json()),
-			// console.log(response.statusText),
-			// console.log(playlists),
-            
         );
 	}
 
@@ -42,13 +38,6 @@
 			x.className = x.className.replace(" w3-show", "");
 		}
 	}
-	// function allPlaylist() {
-	// 	fetch(`http://192.168.0.91:9090/AllPlaylist`)
-    //         .then(response => 
-	// 		console.log("this is allplaylist response"),
-    //         console.log(response)
-    //     );
-	// }
 
 	const handleClick1 = () => {
 		if (show1 === true) {
@@ -81,8 +70,8 @@
 		fetch(`http://192.168.0.91:9090/DeletePlayList?playlistid=${plid}`)
 		.then(response => response.text())
 		.then(data => console.log(data));
-		console.log("this is DeletePlayList response"),
-        console.log(response)
+		console.log("this is DeletePlayList response")
+        
        
 	}
 

@@ -62,9 +62,9 @@
 {/each}
 
 <style>
+
 	.foo {
 		background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));
-		/* background-color: lightskyblue; */
 		margin-top: 12px;
 	}
 
@@ -78,7 +78,6 @@
 
 	.albuminfo {
 		display: flex;
-		/* flex: 1; */
 		flex-direction: column;
 		padding: 10px;
 	}
@@ -88,11 +87,6 @@
 		flex-direction: row;
 		align-items: center
 	}
-
-	/* .albumS {
-        font-size: 5em;
-		color: white;
-    } */
 	
 	img {
 		max-width: 200px;
@@ -107,19 +101,24 @@
 		border-top: 2px solid brown;
 		width: 100%;
     }
+
 	.artboxflex{
 		display: flex;
-        /* flex: 1; */
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
 	}
+
 	.artbtnflex {
 		display: flex;
-		/* flex: 1; */
 		flex-direction: column;
-		/* justify-content: flex-end; */
 		align-items: center;
 	}
+
+	button {
+		margin: 2px;
+		width: 4em;
+	}
+	
 </style>

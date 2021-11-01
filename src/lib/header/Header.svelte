@@ -1,13 +1,13 @@
 <script>
 	import { page } from '$app/stores';
-	// import logo from './svelte-logo.svg';
+	import logo from './svelte-logo.svg';
 </script>
 
 <header>
 	<div class="corner">
-		<!-- <a href="https://kit.svelte.dev">
+		<a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
-		</a> -->
+		</a>
 	</div>
 
 	<nav>

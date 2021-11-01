@@ -3,14 +3,10 @@
 	import {albumid} from '../lib/store/stores.js';
 
 	let artists = [];
-	// let songs = [];
-	let albumid_value;
 
 	onMount(async () => {
 		const ress = await fetch(`http://192.168.0.91:9090/InitArtistInfo2`);
 		artists = await ress.json();
-		
-		// console.log(artists);
 	});
 
 	function myFunction(id) {
@@ -22,18 +18,6 @@
 		}
 	}
 
-	// const unsubscribe = albumid.subscribe(value => {
-	// 	albumid_value = value;
-	// });
-
-	// function songsforalbum(albid) {
-	// 	fetch(`http://192.168.0.91:9090/SongsForAlbum?selected=${albid}`)
-	// 		.then((response) => response.json())
-	// 		.then((songz) => {
-	// 			songs = songz;
-	// 		})
-	// }
-	// console.log(songs)
 </script>
 
 <svelte:head>

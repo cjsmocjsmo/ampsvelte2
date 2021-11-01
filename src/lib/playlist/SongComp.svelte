@@ -1,9 +1,7 @@
 <script>
     export let songs;
     export let playlistid;
-
 </script>
-
 
 {#if songs != null}
     <div id={playlistid} class="playlistList w3-container w3-hide">
@@ -18,7 +16,6 @@
 {:else}
     <div id={playlistid} >None Available</div>
 {/if}
-
 
 <style>
     p {

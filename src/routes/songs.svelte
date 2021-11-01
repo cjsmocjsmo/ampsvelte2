@@ -1,9 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-    // import {showit} from '../lib/store/stores.js';
-    // import AddButton from '$lib/playlist/AddButton.svelte';
     import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
-    
+    import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
 
 	let songs = [];
 
@@ -34,21 +32,20 @@
         <h3>{song.title}</h3>
         <div class="songbtnflex">
             <button on:click={playsong(song.httpaddr)}>Play</button>
-            <!-- <AddButton /> -->
-            <button>Add</button>
+            <AddButton song={song}/>
         </div>
     </div>
     <hr />
 {/each}
 
 <style>
+
     h3 {
         color: white;
     }
 
     .songboxflex{
 		display: flex;
-        /* flex: 1; */
         flex-direction: row;
         justify-content: space-between;
         align-items: right;
@@ -57,11 +54,15 @@
 
 	.songbtnflex {
 		display: flex;
-		/* flex: 1; */
 		flex-direction: column;
 		justify-content: flex-end;
 		align-items: center;
 	}
+
+    button {
+        margin: 2px;
+        width: 4em;
+    }
 
     hr {
         border: 0;

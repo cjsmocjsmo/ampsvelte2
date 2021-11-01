@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import {albumid} from '../lib/store/stores.js';
-    // import AddButton from '$lib/playlist/AddButton.svelte';
+    import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 
     let albumid_value;
@@ -34,20 +34,17 @@
         </div>
         <div class="psongs">
             <button on:click={playsong(song.httpaddr)}>Play</button>
-            <!-- <AddButton /> -->
-            <button>Add</button>
+            <AddButton />
             <a href="/"><button>Back</button></a>
-            
         </div>
-        
     </div>
-   
     <hr />
 {/each}
 
 
 
 <style>
+
     button {
         margin: 2px;
         width: 4em;
@@ -80,4 +77,5 @@
         border-top: 2px solid brown;
         width: 100%;
     }
+    
 </style>

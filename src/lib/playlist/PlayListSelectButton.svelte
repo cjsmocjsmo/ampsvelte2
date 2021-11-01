@@ -14,20 +14,20 @@
 	let answer = '';
 
 	function handleSubmit() {
-		currentPlayList.set(selected.PlayListName)
-		alert(`answered question ${selected.PlayListID} (${selected.PlayListName}) with "${answer}"`);
+		console.log("handlesubmit")
+		currentPlayList.set(selected)
 	}
 
-	let currentCPName;
+	// let currentCPName;
 
-	const unsubscribe = currentPlayList.subscribe(value => {
-		currentCPName = value;
-	});
-
+	// const unsubscribe = currentPlayList.subscribe(value => {
+	// 	currentCPName = value;
+	// });
+	// console.log("this is currentCPName")
+	// console.log(currentCPName)
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
-	<p>{selected ? '' : 'Select A Playlist To Add Music To'}</p>
 	<select bind:value={selected} on:change="{() => answer = ''}">
 		{#each playListLists as playListList}
 			<option value={playListList}>
@@ -35,12 +35,13 @@
 			</option>
 		{/each}
 	</select>
+	<button type=submit>
+		Submit
+	</button>
 </form>
 
-<!-- <p>selected playlist: {selected ? selected.PlayListName : '[waiting...]'}</p> -->
-<!-- <p>{selected ? '' : 'Select A Playlist To Add Music To'}</p> -->
-
 <style>
+
     form {
         text-align: right;
 		margin: 8px;
@@ -50,4 +51,5 @@
         width: 225px;
         
     }
+	
 </style>
