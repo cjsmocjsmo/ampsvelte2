@@ -8,7 +8,7 @@ RUN \
 
 
 COPY . .
-WORKDIR /ampsvelte
+WORKDIR /ampsvelte2
 
 CMD ["/usr/local/bin/npm", "run build"]
 # RUN \
