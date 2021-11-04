@@ -17,8 +17,8 @@
         const res = await fetch(URL);
         resData = await res.json();
     }
-    console.log("thisi is res data")
-    console.log(resData)
+    // console.log("thisi is res data")
+    // console.log(resData)
     
 </script>
 
