@@ -1,17 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
-    import InfiniteScroll from "$lib/playlist/infinitescroll.svelte";
-    // import InfiniteScroll from "svelte-infinite-scroll";
+    import InfiniteScroll from "svelte-infinite-scroll";
     import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
 
-    
-	// let allSongs = [];
     let page = 1;
     let nextUrl = "";
     let data = [];
     let newBatch = [];
-
 
 	async function fetchData() {
 		const res = await fetch(`http://192.168.0.91:9090/SongInfoByPage?page=${page}`);
@@ -28,20 +24,6 @@
 		...data,
         ...newBatch
     ];
-
-    // let page = 0;
-    // let size = 20;
-    // let songs = [];
-
-    // $: songs = [
-    //     ...songs,
-    //     ...allSongs.splice(size * page, size * (page + 1) - 1)
-    // ];
-
-
-
-
-
 
     function playsong(addr) {
         console.log(addr)
@@ -75,9 +57,9 @@
             </li>
         {/each}
         <InfiniteScroll
-        hasMore={newBatch.length}
-        threshold={100}
-        on:loadMore={() => {page++; fetchData()}} />
+            hasMore={newBatch.length}
+            threshold={100}
+            on:loadMore={() => {page++; fetchData()}} />
     </ul>
 </main>
 

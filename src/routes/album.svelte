@@ -1,14 +1,28 @@
 <script >
 	export const prerender = true;
-	import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 	import { onMount } from 'svelte';
+	import InfiniteScroll from "svelte-infinite-scroll";
+	import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
+	
 
-	let albums = [];
+	// let albums = [];
 
-	onMount(async () => {
-		const ress = await fetch(`http://192.168.0.91:9090/InitAlbum2Info`);
-		albums = await ress.json();
-	});
+	let page = 1;
+    let nextUrl = "";
+    let data = [];
+    let newBatch = [];
+
+	async function fetchData() {
+		const res = await fetch(`http://192.168.0.91:9090/AlbumInfoByPage?page=${page}`);
+		newBatch = await res.json();
+	};
+
+	onMount(() => fetchData())
+
+	$: data = [
+		...data,
+        ...newBatch
+    ];
 
 	function myFunction(id) {
 		var x = document.getElementById(id);
@@ -21,7 +35,6 @@
 
 	function playsong(addr, id) {
         const aud1 = document.getElementsByClassName("Audio1")[0]
-        // const aud1 = document.getElementById("Audio1")
         aud1.setAttribute('src', addr);
 		aud1.setAttribute("controls", true)
         aud1.play()
@@ -36,32 +49,53 @@
 
 <h1>Albums</h1>
 <SelectButton />
-{#each albums as alb}
-	<div class="albumflexbox w3-container">
-		
-		<img src={alb.PicHttpAddr} on:click={myFunction(alb.AlbumID)} alt="Fuck Me" />
-		
-		<div class="albuminfo">
-			<h3>{alb.Album}</h3>
-			<h4>{alb.NumSongs} {alb.NumSongs < 2 ? "song" : "songs"}</h4>
-		</div>
-	</div>
-	<div id={alb.AlbumID} class="w3-container w3-hide foo">
-		{#each alb.Songs as Song}
-		<div class="artboxflex">
-			<h5>{Song.title}</h5>
-			<div class="artbtnflex">
-				<button on:click={playsong(Song.httpaddr, alb.AlbumID)} >Play</button>
-				<button>Add</button>
+<ul>
+	{#each data as item}
+		<li>
+			<div class="albumflexbox w3-container">
+				<img src={item.PicHttpAddr} on:click={myFunction(item.AlbumID)} alt="Fuck Me" />
+				<div class="albuminfo">
+					<h3>{item.Album}</h3>
+					<h4>{item.NumSongs} {item.NumSongs < 2 ? "song" : "songs"}</h4>
+				</div>
 			</div>
-		</div>
-		<hr />
-		{/each}
-	</div>
-	<hr />
-{/each}
-
+			<div id={item.AlbumID} class="w3-container w3-hide foo">
+				{#each item.Songs as Song}
+				<div class="artboxflex">
+					<h5>{Song.title}</h5>
+					<div class="artbtnflex">
+						<button on:click={playsong(Song.httpaddr, item.AlbumID)} >Play</button>
+						<button>Add</button>
+					</div>
+				</div>
+				<hr />
+				{/each}
+			</div>
+			<hr />
+		</li>
+	{/each}
+	<InfiniteScroll
+        hasMore={newBatch.length}
+        threshold={100}
+        on:loadMore={() => {page++; fetchData()}} />
+</ul>
 <style>
+
+	ul {
+        /* list-style-type: none; */
+        /* box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); */
+        display: flex;
+        flex-direction: column;
+        border-radius: 2px;
+        width: 100%;
+        max-width: 100%;
+        max-height: 700px;
+            /* background-color: white; */
+        overflow-x: scroll;
+        list-style: none;
+        padding: 0;
+    }
 
 	.foo {
 		background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));

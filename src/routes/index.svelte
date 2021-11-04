@@ -40,17 +40,12 @@
 					id={alb.albumID} 
 					src={alb.picHttpAddr} 
 					alt="fuck" 
-					on:click={() => albumid.set(alb.albumID)}
-					
-				/>
+					on:click={() => albumid.set(alb.albumID)} />
 			</a>
 		{/each}
 	</div>
-		<!-- <Songs songs={songs} albumid={art.AlbumID}/> -->
 	<hr />
 {/each}
-
-<!-- <a href="/Test" ><button>Test Link</button></a> -->
 
 <style>
 	.p1 {
