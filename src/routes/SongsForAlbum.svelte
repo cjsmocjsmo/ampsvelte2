@@ -33,7 +33,10 @@
             <p class="p2">{song.album}</p>
         </div>
         <div class="psongs">
-            <button on:click={playsong(song.httpaddr)}>Play</button>
+            <a href="/" >
+                <button on:click={playsong(song.httpaddr)}>Play</button>
+            </a>
+            
             <AddButton />
             <a href="/"><button>Back</button></a>
         </div>

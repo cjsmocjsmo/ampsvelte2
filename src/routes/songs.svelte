@@ -12,13 +12,9 @@
 	async function fetchData() {
 		const res = await fetch(`http://192.168.0.91:9090/SongInfoByPage?page=${page}`);
 		newBatch = await res.json();
-        console.log(data)
-        console.log(newBatch)
 	};
 
-    onMount(() => {
-		fetchData();
-	})
+    onMount(() => fetchData())
 
     $: data = [
 		...data,
@@ -34,6 +30,15 @@
         console.log(aud1.currentTime)
     }
 
+    let isVisible = false
+	var setVisible = () => {
+		if (isVisible) {
+			isVisible = false
+		} else {
+			isVisible = true
+		}
+	}
+
 </script>
 
 <svelte:head>
@@ -41,7 +46,52 @@
 </svelte:head>
 
 <h1>Songs</h1>
+
 <SelectButton />
+
+<button class="alphaBtn" on:click={setVisible} >Select</button>
+{#if isVisible}
+	<div class="maindiv">
+		<div class="wrapit">
+			<p class="alpha">A</p>
+			<p class="alpha">B</p>
+			<p class="alpha">C</p>
+			<p class="alpha">D</p>
+			<p class="alpha">E</p>
+			<p class="alpha">F</p>
+			<p class="alpha">F</p>
+		</div>
+		<div class="wrapit">
+			<p class="alpha">G</p>
+			<p class="alpha">G</p>
+			<p class="alpha">H</p>
+			<p class="alpha">I</p>
+			<p class="alpha">J</p>
+			<p class="alpha">K</p>
+            <p class="alpha">L</p>
+		</div>
+		<div class="wrapit">
+			<p class="alpha">M</p>
+			<p class="alpha">N</p>
+			<p class="alpha">O</p>
+			<p class="alpha">P</p>
+			<p class="alpha">Q</p>
+            <p class="alpha">R</p>
+            <p class="alpha">S</p>
+		</div>
+		<div class="wrapit">
+			<p class="alpha">T</p>
+			<p class="alpha">U</p>
+			<p class="alpha">V</p>
+            <p class="alpha">W</p>
+			<p class="alpha">X</p>
+            <p class="alpha">Y</p>
+			<p class="alpha">Z</p>
+		</div>
+
+	</div>
+{/if}
+
 <main>
     <ul>
         {#each data as item}
@@ -66,6 +116,32 @@
 
 
 <style>
+
+    .alphaBtn {
+		width: 100%;
+        font-size: 1.25em;
+        border-radius: 10px;
+	}
+
+	.alpha {
+		/* border: 2px solid ; */
+		display: block;
+		border-radius: 50%;
+		padding: 12px;
+		/* margin: 1px; */
+		background-color: rgb(45, 202, 24);
+		width: 45px;
+		height: 45px;
+		text-align: center;
+
+	}
+	.wrapit {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		/* flex-wrap: wrap; */
+
+	}
 /* ul {
     width: 400px;
     max-height: 400px;

@@ -18,7 +18,7 @@
 <audio 
 	class="Audio1" 
 	controls="" 
-	style="width: 100%; margin-top: 10px" 
+	style="width: 50%; margin-top: 10px; margin-right: auto; margin-left: auto;" 
 	src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 ></audio>
 
