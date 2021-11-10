@@ -253,6 +253,7 @@
         width: 50%;
         font-size: 1.25em;
         background-color: pink;
+        border-radius: 7px;
     }
 
 	.alpha {

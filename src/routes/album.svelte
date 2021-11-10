@@ -1,45 +1,43 @@
 <script >
-	export const prerender = true;
-	import { onMount } from 'svelte';
-	import InfiniteScroll from "svelte-infinite-scroll";
+	// export const prerender = true;
+	// import { onMount } from 'svelte';
+	// import InfiniteScroll from "svelte-infinite-scroll";
 	import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
-	
+    import AlbumAcomp from '$lib/album/albumAcomp.svelte';
+    import AlbumBcomp from '$lib/album/albumBcomp.svelte';
+    import AlbumCcomp from '$lib/album/albumCcomp.svelte';
+    import AlbumDcomp from '$lib/album/albumDcomp.svelte';
+    import AlbumEcomp from '$lib/album/albumEcomp.svelte';
+    import AlbumFcomp from '$lib/album/albumFcomp.svelte';
+    import AlbumGcomp from '$lib/album/albumGcomp.svelte';
+    import AlbumHcomp from '$lib/album/albumHcomp.svelte';
+    import AlbumIcomp from '$lib/album/albumIcomp.svelte';
+    import AlbumJcomp from '$lib/album/albumJcomp.svelte';
+    import AlbumKcomp from '$lib/album/albumKcomp.svelte';
+    import AlbumLcomp from '$lib/album/albumLcomp.svelte';
+    import AlbumMcomp from '$lib/album/albumMcomp.svelte';
+    import AlbumNcomp from '$lib/album/albumNcomp.svelte';
+    import AlbumOcomp from '$lib/album/albumOcomp.svelte';
+    import AlbumPcomp from '$lib/album/albumPcomp.svelte';
+    import AlbumQcomp from '$lib/album/albumQcomp.svelte';
+    import AlbumRcomp from '$lib/album/albumRcomp.svelte';
+    import AlbumScomp from '$lib/album/albumScomp.svelte';
+    import AlbumTcomp from '$lib/album/albumTcomp.svelte';
+    import AlbumUcomp from '$lib/album/albumUcomp.svelte';
+    import AlbumVcomp from '$lib/album/albumVcomp.svelte';
+    import AlbumWcomp from '$lib/album/albumWcomp.svelte';
+    import AlbumXcomp from '$lib/album/albumXcomp.svelte';
+    import AlbumYcomp from '$lib/album/albumYcomp.svelte';
+    import AlbumZcomp from '$lib/album/albumZcomp.svelte';
 
-	// let albums = [];
-
-	let page = 1;
-    let nextUrl = "";
-    let data = [];
-    let newBatch = [];
-
-	async function fetchData() {
-		const res = await fetch(`http://192.168.0.91:9090/AlbumInfoByPage?page=${page}`);
-		newBatch = await res.json();
-	};
-
-	onMount(() => fetchData())
-
-	$: data = [
-		...data,
-        ...newBatch
-    ];
-
-	function myFunction(id) {
-		var x = document.getElementById(id);
-		if (x.className.indexOf("w3-show") == -1) {
-			x.className += " w3-show";
-		} else { 
-			x.className = x.className.replace(" w3-show", "");
-		}
-	}
-
-	function playsong(addr, id) {
-        const aud1 = document.getElementsByClassName("Audio1")[0]
-        aud1.setAttribute('src', addr);
-		aud1.setAttribute("controls", true)
-        aud1.play()
-		myFunction(id)
-    }
+	// function myFunction(id) {
+	// 	var x = document.getElementById(id);
+	// 	if (x.className.indexOf("w3-show") == -1) {
+	// 		x.className += " w3-show";
+	// 	} else { 
+	// 		x.className = x.className.replace(" w3-show", "");
+	// 	}
+	// }
 
 	let isVisible = false
 	var setVisible = () => {
@@ -49,6 +47,112 @@
 			isVisible = true
 		}
 	}
+
+	let arse = "";
+    let setArseA = () => {
+        arse = "A"
+        isVisible = false
+    }
+    let setArseB = () => {
+        arse = "B"
+        isVisible = false
+    }
+    let setArseC = () => {
+        arse = "C"
+        isVisible = false
+    }
+    let setArseD = () => {
+        arse = "D"
+        isVisible = false
+    }
+    let setArseE = () => {
+        arse = "E"
+        isVisible = false
+    }
+    let setArseF = () => {
+        arse = "F"
+        isVisible = false
+    }
+    let setArseG = () => {
+        arse = "G"
+        isVisible = false
+    }
+    let setArseH = () => {
+        arse = "H"
+        isVisible = false
+    } 
+    let setArseI = () => {
+        arse = "I"
+        isVisible = false
+    }     
+    let setArseJ = () => {
+        arse = "J"
+        isVisible = false
+    }     
+    let setArseK = () => {
+        arse = "K"
+        isVisible = false
+    } 
+    let setArseL = () => {
+        arse = "L"
+        isVisible = false
+    } 
+    let setArseM = () => {
+        arse = "M"
+        isVisible = false
+    } 
+    let setArseN = () => {
+        arse = "N"
+        isVisible = false
+    } 
+    let setArseO = () => {
+        arse = "O"
+        isVisible = false
+    } 
+    let setArseP = () => {
+        arse = "P"
+        isVisible = false
+    } 
+    let setArseQ = () => {
+        arse = "Q"
+        isVisible = false
+    } 
+    let setArseR = () => {
+        arse = "R"
+        isVisible = false
+    } 
+    let setArseS = () => {
+        arse = "S"
+        isVisible = false
+    } 
+    let setArseT = () => {
+        arse = "T"
+        isVisible = false
+    } 
+    let setArseU = () => {
+        arse = "U"
+        isVisible = false
+    } 
+    let setArseV = () => {
+        arse = "V"
+        isVisible = false
+    } 
+    let setArseW = () => {
+        arse = "W"
+        isVisible = false
+    } 
+    let setArseX = () => {
+        arse = "X"
+        isVisible = false
+    } 
+    let setArseY = () => {
+        arse = "Y"
+        isVisible = false
+    } 
+    let setArseZ = () => {
+        arse = "Z"
+        isVisible = false
+    }
 
 </script>
 
@@ -62,87 +166,109 @@
 {#if isVisible}
 	<div class="maindiv">
 		<div class="wrapit">
-			<p class="alpha">A</p>
-			<p class="alpha">B</p>
-			<p class="alpha">C</p>
-			<p class="alpha">D</p>
-			<p class="alpha">E</p>
-			<p class="alpha">F</p>
-			<p class="alpha">F</p>
+			<p class="alpha" on:click={setArseA}>A</p>
+			<p class="alpha" on:click={setArseB}>B</p>
+			<p class="alpha" on:click={setArseC}>C</p>
+			<p class="alpha" on:click={setArseD}>D</p>
+			<p class="alpha" on:click={setArseE}>E</p>
+			<p class="alpha" on:click={setArseF}>F</p>
+			<p class="alpha" on:click={setArseG}>G</p>
 		</div>
 		<div class="wrapit">
-			<p class="alpha">G</p>
-			<p class="alpha">G</p>
-			<p class="alpha">H</p>
-			<p class="alpha">I</p>
-			<p class="alpha">J</p>
-			<p class="alpha">K</p>
-			<p class="alpha">L</p>
+			<p class="alpha" on:click={setArseH}>H</p>
+			<p class="alpha" on:click={setArseI}>I</p>
+			<p class="alpha" on:click={setArseJ}>J</p>
+			<p class="alpha" on:click={setArseK}>K</p>
+			<p class="alpha" on:click={setArseL}>L</p>
+			<p class="alpha" on:click={setArseM}>M</p>
+			<p class="alpha" on:click={setArseN}>N</p>
 		</div>
 		<div class="wrapit">
-			<p class="alpha">M</p>
-			<p class="alpha">N</p>
-			<p class="alpha">O</p>
-			<p class="alpha">P</p>
-			<p class="alpha">Q</p>
-			<p class="alpha">R</p>
-			<p class="alpha">S</p>
+			<p class="alpha" on:click={setArseO}>O</p>
+			<p class="alpha" on:click={setArseP}>P</p>
+			<p class="alpha" on:click={setArseQ}>Q</p>
+			<p class="alpha" on:click={setArseR}>R</p>
+			<p class="alpha" on:click={setArseS}>S</p>
+			<p class="alpha" on:click={setArseT}>T</p>
+			<p class="alpha" on:click={setArseU}>U</p>
 		</div>
 		<div class="wrapit">
-			<p class="alpha">T</p>
-			<p class="alpha">U</p>
-			<p class="alpha">V</p>
-			<p class="alpha">W</p>
-			<p class="alpha">X</p>
-			<p class="alpha">Y</p>
-			<p class="alpha">Z</p>
+			<p class="alpha" on:click={setArseV}>V</p>
+			<p class="alpha" on:click={setArseW}>W</p>
+			<p class="alpha" on:click={setArseX}>X</p>
+			<p class="alpha" on:click={setArseY}>Y</p>
+			<p class="alpha" on:click={setArseZ}>Z</p>
 		</div>
 	</div>
 {/if}
-<ul>
-	{#each data as item}
-		<li>
-			<div class="albumflexbox w3-container">
-				<img src={item.PicHttpAddr} on:click={myFunction(item.AlbumID)} alt="Fuck Me" />
-				<div class="albuminfo">
-					<h3>{item.Album}</h3>
-					<h4>{item.NumSongs} {item.NumSongs < 2 ? "song" : "songs"}</h4>
-				</div>
-			</div>
-			<div id={item.AlbumID} class="w3-container w3-hide foo">
-				{#each item.Songs as Song}
-				<div class="artboxflex">
-					<h5>{Song.title}</h5>
-					<div class="artbtnflex">
-						<button on:click={playsong(Song.httpaddr, item.AlbumID)} >Play</button>
-						<button>Add</button>
-					</div>
-				</div>
-				<hr />
-				{/each}
-			</div>
-			<hr />
-		</li>
-	{/each}
-	<InfiniteScroll
-        hasMore={newBatch.length}
-        threshold={100}
-        on:loadMore={() => {page++; fetchData()}} />
-</ul>
+
+{#if arse === "B"}
+    <AlbumBcomp />
+{:else if arse === "C"}
+    <AlbumCcomp />
+{:else if arse === "D"}
+    <AlbumDcomp />
+{:else if arse === "E"}
+    <AlbumEcomp />
+{:else if arse === "F"}
+    <AlbumFcomp />
+{:else if arse === "G"}
+    <AlbumGcomp />
+{:else if arse === "H"}
+    <AlbumHcomp />
+{:else if arse === "I"}
+    <AlbumIcomp />
+{:else if arse === "J"}
+    <AlbumJcomp />
+{:else if arse === "K"}
+    <AlbumKcomp />
+{:else if arse === "L"}
+    <AlbumLcomp />
+{:else if arse === "M"}
+    <AlbumMcomp />
+{:else if arse === "N"}
+    <AlbumNcomp />
+{:else if arse === "O"}
+    <AlbumOcomp />
+{:else if arse === "P"}
+    <AlbumPcomp />
+{:else if arse === "Q"}
+    <AlbumQcomp />
+{:else if arse === "R"}
+    <AlbumRcomp />
+{:else if arse === "S"}
+    <AlbumScomp />
+{:else if arse === "T"}
+    <AlbumTcomp />
+{:else if arse === "U"}
+    <AlbumUcomp />
+{:else if arse === "V"}
+    <AlbumVcomp />
+{:else if arse === "W"}
+    <AlbumWcomp />
+{:else if arse === "X"}
+    <AlbumXcomp />
+{:else if arse === "Y"}
+    <AlbumYcomp />
+{:else if arse === "Z"}
+    <AlbumZcomp />
+{:else}
+    <AlbumAcomp />
+{/if}
+
 <style>
 
     .alphaBtn {
-		width: 100%;
+        width: 50%;
         font-size: 1.25em;
-        border-radius: 10px;
-	}
+        background-color: pink;
+        border-radius: 7px;
+    }
 	
 	.alpha {
-		/* border: 2px solid ; */
 		display: block;
 		border-radius: 50%;
 		padding: 12px;
-		/* margin: 1px; */
 		background-color: rgb(45, 202, 24);
 		width: 45px;
 		height: 45px;
@@ -153,73 +279,6 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
-		/* flex-wrap: wrap; */
-
-	}
-
-	ul {
-        /* list-style-type: none; */
-        /* box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); */
-        display: flex;
-        flex-direction: column;
-        border-radius: 2px;
-        width: 100%;
-        max-width: 100%;
-        max-height: 700px;
-            /* background-color: white; */
-        overflow-x: scroll;
-        list-style: none;
-        padding: 0;
-    }
-
-	.foo {
-		background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));
-		margin-top: 12px;
-	}
-	
-	h3, h4, h5 {
-		color: white;
-	}
-
-	.albuminfo {
-		display: flex;
-		flex-direction: column;
-		padding: 10px;
-	}
-
-	.albumflexbox {
-		display: flex;
-		flex-direction: row;
-		align-items: center
-	}
-	
-	img {
-		max-width: 200px;
-		min-width: 135px;
-		width: 30%;
-		height: 30%;
-		display: block;
-	}
-
-	hr {
-		border: 0;
-		border-top: 2px solid brown;
-		width: 100%;
-    }
-
-	.artboxflex{
-		display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-	}
-
-	.artbtnflex {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 
 	button {
