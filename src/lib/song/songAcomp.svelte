@@ -1,23 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
-    // import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-
-    // let page = 1;
-    // let nextUrl = "";
-    // let data = [];
-    // export let newBatch;
 
     let page = 0;
     let size = 20;
     let adata = [];
-    export let newBatch;
-
-	// async function fetchData() {
-	// 	const res = await fetch(`http://192.168.0.91:9090/SongInfoByPage?page=${page}`);
-	// 	newBatch = await res.json();
-	// };
+    let newBatch = [];
 
     onMount(() => fetchAlphaData())
 
@@ -32,17 +21,6 @@
         console.log(newBatch)
 	};
 
-    
-
-    // function getAlphaInfo(id) {
-    //     // 
-    //     console.log("cliced")
-    //     // data = []
-    //     // const alphaInfo = fetchAlphaData(id)
-    // }
-
-    
-
     function playsong(addr) {
         console.log(addr)
         const aud1 = document.getElementsByClassName("Audio1")[0]
@@ -55,17 +33,6 @@
 
 
 </script>
-
-<!-- <svelte:head>
-	<title>Artists</title>
-</svelte:head>
-
-<h1>Songs</h1>
-
-<SelectButton /> -->
-
-
-
 
 <ul>
     {#each adata as item}
@@ -86,23 +53,16 @@
         on:loadMore={() => {page++; fetchAlphaData()}} />
 </ul>
 
-
-
-
 <style>
 
 
     ul {
-        /* list-style-type: none; */
-        /* box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); */
         display: flex;
         flex-direction: column;
         border-radius: 2px;
         width: 100%;
         max-width: 100%;
         max-height: 700px;
-            /* background-color: white; */
         overflow-x: scroll;
         list-style: none;
         padding: 0;

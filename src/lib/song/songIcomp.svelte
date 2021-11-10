@@ -5,18 +5,18 @@
 
     let page = 0;
     let size = 20;
-    let cdata = [];
+    let Idata = [];
     let newBatch = [];
 
     onMount(() => fetchAlphaData())
 
-    $: cdata = [
-		...cdata,
+    $: Idata = [
+		...Idata,
         ...newBatch.splice(size * page, size * (page + 1) - 1)
     ];
 
     async function fetchAlphaData(id) {
-		const res = await fetch(`http://192.168.0.91:9090/SongAlpha?alpha=D`);
+		const res = await fetch(`http://192.168.0.91:9090/SongAlpha?alpha=I`);
 		newBatch = await res.json();
         console.log(newBatch)
 	};
@@ -33,7 +33,7 @@
 </script>
 
 <ul>
-    {#each cdata as item}
+    {#each Idata as item}
         <li>
             <div class="songboxflex">
                 <h3>{item.title}</h3>

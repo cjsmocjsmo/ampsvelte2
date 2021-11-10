@@ -6,7 +6,7 @@
     let page = 0;
     let size = 20;
     let cdata = [];
-    export let newBatch;
+    let newBatch = [];
 
     onMount(() => fetchAlphaData())
 
