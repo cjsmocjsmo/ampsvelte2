@@ -3,9 +3,9 @@ version: "3.3"
 services:
   ampsvelte:
     image: ampsvelte:0.1.0
-    build: ./ampsvelte
+    build: .
     environment: 
-      - HOST=192.168.0.93
+      - HOST=192.168.0.90
       - PORT=4588
     networks:
       - ampsvelte
