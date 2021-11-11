@@ -74,40 +74,13 @@
 
 <style>
 
-    /* .alphaBtn {
-		width: 100%;
-        font-size: 1.25em;
-        border-radius: 10px;
-	}
-	
-	.alpha {
-		display: block;
-		border-radius: 50%;
-		padding: 12px;
-		background-color: rgb(45, 202, 24);
-		width: 45px;
-		height: 45px;
-		text-align: center;
-
-	}
-	.wrapit {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
-
-	} */
-
 	ul {
-        /* list-style-type: none; */
-        /* box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); */
         display: flex;
         flex-direction: column;
         border-radius: 2px;
         width: 100%;
         max-width: 100%;
         max-height: 700px;
-            /* background-color: white; */
         overflow-x: scroll;
         list-style: none;
         padding: 0;

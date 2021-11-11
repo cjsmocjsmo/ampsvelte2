@@ -30,15 +30,6 @@
     import AlbumYcomp from '$lib/album/albumYcomp.svelte';
     import AlbumZcomp from '$lib/album/albumZcomp.svelte';
 
-	// function myFunction(id) {
-	// 	var x = document.getElementById(id);
-	// 	if (x.className.indexOf("w3-show") == -1) {
-	// 		x.className += " w3-show";
-	// 	} else { 
-	// 		x.className = x.className.replace(" w3-show", "");
-	// 	}
-	// }
-
 	let isVisible = false
 	var setVisible = () => {
 		if (isVisible) {
@@ -162,7 +153,7 @@
 
 <h1>Albums</h1>
 <SelectButton />
-<button class="alphaBtn" on:click={setVisible} >Select</button>
+<button class="alphaBtn" on:click={setVisible} >Select A Catagory</button>
 {#if isVisible}
 	<div class="maindiv">
 		<div class="wrapit">
