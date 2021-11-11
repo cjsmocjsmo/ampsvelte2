@@ -119,7 +119,7 @@
         border-radius: 2px;
         width: 100%;
         max-width: 100%;
-        max-height: 700px;
+        max-height: 680px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;

@@ -148,11 +148,10 @@
 	<title>Artists</title>
 </svelte:head>
 
-<h1>Songs</h1>
-
 <SelectButton />
 
-<button class="alphaBtn" on:click={setVisible} >Select A Catagory</button>
+<button class="alphaBtn" on:click={setVisible} >Song Select</button>
+
 {#if isVisible}
 	<div class="maindiv">
 		<div class="wrapit">

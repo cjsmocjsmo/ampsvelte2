@@ -26,8 +26,10 @@
 		var x = document.getElementById(id);
 		if (x.className.indexOf("w3-show") == -1) {
 			x.className += " w3-show";
+			isVisible = true;
 		} else { 
 			x.className = x.className.replace(" w3-show", "");
+			isVisible = false;
 		}
 	}
 
@@ -38,6 +40,15 @@
         aud1.play()
 		myFunction(id)
     }
+
+	let isVisible = false
+	var setVisible = () => {
+		if (isVisible) {
+			isVisible = false
+		} else {
+			isVisible = true
+		}
+	}
 
 </script>
 
@@ -62,7 +73,9 @@
 				</div>
 				<hr />
 				{/each}
+				<button class="closebtn" on:click={myFunction(item.AlbumID)}>Close</button>
 			</div>
+			
 			<hr />
 		</li>
 	{/each}
@@ -73,6 +86,13 @@
 </ul>
 
 <style>
+
+	.closebtn {
+		display: block;
+		width: 50%;
+		margin: auto;
+		font-size: 1.1em;
+	}
 
 	ul {
         display: flex;
