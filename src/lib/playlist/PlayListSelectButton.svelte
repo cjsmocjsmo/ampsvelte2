@@ -17,14 +17,6 @@
 		console.log("handlesubmit")
 		currentPlayList.set(selected)
 	}
-
-	// let currentCPName;
-
-	// const unsubscribe = currentPlayList.subscribe(value => {
-	// 	currentCPName = value;
-	// });
-	// console.log("this is currentCPName")
-	// console.log(currentCPName)
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
