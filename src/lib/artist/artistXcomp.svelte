@@ -1,11 +1,11 @@
 <script >
 	import { onMount } from 'svelte';
-	import {albumid} from '../lib/store/stores.js';
+	import {albumid} from '$lib/store/stores.js';
 	import InfiniteScroll from "svelte-infinite-scroll";
 	
     let page = 0;
     let size = 20;
-    let adata = [];
+    let data = [];
     let newBatch = [];
 
     async function fetchAlphaData() {
@@ -29,8 +29,9 @@
 			x.className = x.className.replace(" w3-show", "");
 		}
 	}
-
+	console.log(data.length)
 </script>
+
 
 <ul>
 	{#each data as item}
@@ -57,10 +58,11 @@
 		</li>	
 	{/each}
 	<InfiniteScroll
-        hasMore={newBatch.length}
-        threshold={100}
-        on:loadMore={() => {page++; fetchAlphaData()}} />
+		hasMore={newBatch.length}
+		threshold={100}
+		on:loadMore={() => {page++; fetchAlphaData()}} />
 </ul>
+
 
 <style>
 

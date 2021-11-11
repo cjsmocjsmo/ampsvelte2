@@ -1,11 +1,11 @@
 <script >
 	import { onMount } from 'svelte';
-	import {albumid} from '../lib/store/stores.js';
+	import {albumid} from '$lib/store/stores.js';
 	import InfiniteScroll from "svelte-infinite-scroll";
 	
     let page = 0;
     let size = 20;
-    let adata = [];
+    let data = [];
     let newBatch = [];
 
     async function fetchAlphaData() {
