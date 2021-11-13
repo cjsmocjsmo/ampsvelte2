@@ -125,7 +125,7 @@
 			<div class="playlistBtnGrp">
 				<button class="del" on:click={deleteplaylist(pl.PlayListID)} >Delete</button>
 				<button class="lod">Play</button>
-				<button class="vs" on:click={myFunction(pl.PlayListID)}>View Songs</button>
+				<button class="vs" on:click={myFunction(pl.PlayListID)}>{pl.PlayListCount} {pl.PlayListCount === 1 ? 'song' : 'songs'}</button>
 			</div>
 		</div>
 	</div>

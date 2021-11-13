@@ -37,7 +37,7 @@
                 <button on:click={playsong(song.httpaddr)}>Play</button>
             </a>
             
-            <AddButton />
+            <AddButton song={song}/>
             <a href="/"><button>Back</button></a>
         </div>
     </div>

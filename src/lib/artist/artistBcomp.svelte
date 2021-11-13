@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import {albumid} from '$lib/store/stores.js';
 	import InfiniteScroll from "svelte-infinite-scroll";
-	
+
     let page = 0;
     let size = 20;
     let data = [];
