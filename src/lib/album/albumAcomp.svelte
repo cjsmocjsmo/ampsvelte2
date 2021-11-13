@@ -2,7 +2,7 @@
 	export const prerender = true;
 	import { onMount } from 'svelte';
 	import InfiniteScroll from "svelte-infinite-scroll";
-
+	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
 
     let page = 0;
     let size = 20;
@@ -68,7 +68,7 @@
 					<h5>{Song.title}</h5>
 					<div class="artbtnflex">
 						<button on:click={playsong(Song.httpaddr, item.AlbumID)} >Play</button>
-						<button>Add</button>
+						<AddButton song={item}/>
 					</div>
 				</div>
 				<hr />

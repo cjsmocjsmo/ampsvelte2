@@ -1,21 +1,18 @@
 <script>
-    export let songs;
+    export let songz;
     export let playlistid;
+    import DeleteButton from '$lib/playlist/DelFromPlaylistButton.svelte';
 </script>
 
-{#if songs != null}
     <div id={playlistid} class="playlistList w3-container w3-hide">
-        {#each songs as song}
+        {#each songz as song}
             <div class="playlistListBtn">
                 <p>{song.title}</p>
-                <button>Delete</button>
+                <DeleteButton />
             </div>
             <hr />
         {/each}
     </div>
-{:else}
-    <div id={playlistid} >None Available</div>
-{/if}
 
 <style>
     p {

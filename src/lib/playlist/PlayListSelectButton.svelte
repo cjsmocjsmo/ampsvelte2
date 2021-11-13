@@ -17,10 +17,11 @@
 		console.log("handlesubmit")
 		currentPlayList.set(selected)
 	}
+	
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
-	<select bind:value={selected} on:change="{() => answer = ''}">
+	<select id="selLab" bind:value={selected} on:change="{() => answer = ''}">
 		{#each playListLists as playListList}
 			<option value={playListList}>
 				{playListList.PlayListName}

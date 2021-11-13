@@ -34,6 +34,7 @@
 
 </script>
 
+<div class="boo">
 <ul>
     {#each adata as item}
         <li>
@@ -52,8 +53,13 @@
         threshold={100}
         on:loadMore={() => {page++; fetchAlphaData()}} />
 </ul>
-
+</div>
 <style>
+
+    .boo {
+        width:auto;
+        height: 700px;
+    }
 
 
     ul {
