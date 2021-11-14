@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import Songs from '../lib/playlist/SongComp.svelte';
 
 	let playlists;
 	$: playlists = [];
@@ -64,6 +63,13 @@
 		show2 = false;
 	}
 
+	async function deleteitsong(plid, songid) {
+		const res = await fetch(`http://192.168.0.91:9090/DeleteSongFromPlaylist?playlistid=${plid}&&fileid=${songid}`);
+		playlists = await res.json();
+		console.log(playlists)
+	}
+
+
 	async function deleteit(plid) {
 		const res = await fetch(`http://192.168.0.91:9090/DeletePlayList?playlistid=${plid}`);
 		playlists = await res.json();
@@ -114,7 +120,6 @@
 <hr />
 
 {#each playlists as pl}
-	<!-- <div id={pl.PlayListID} class="playlistListMain"> -->
 	<div class="infodiv">
 		<p style="font-size: 25px" >{pl.PlayListName}</p>
 		<p>{pl.PlayListCount} {pl.PlayListCount === 1 ? 'song' : 'songs'} </p>
@@ -129,18 +134,38 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- {#if pl.PlayListCount != "0"} -->
-		<Songs playlistid={pl.PlayListID} songz={pl.PlayList}/>
-	<!-- {:else}
-		<p>No PlayLists Found</p>
-	{/if} -->
+
+	<div id={pl.PlayListID} class="playlistList w3-container w3-hide">
+        {#each pl.PlayList as song}
+            <div class="playlistListBtn">
+                <p>{song.title}</p>
+				<button on:click={deleteitsong(pl.PlayListID, song.fileID)} >Delete</button>
+            </div>
+            <hr />
+        {/each}
+    </div>
 	
 	<hr />
 	
 {/each}
 
 <style>
+
+	p {
+        font-size: 18px;
+    }
+
+    .playlistListBtn {
+        display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+    }
+
+    .playlistList {
+        background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(255, 0, 0, .25), rgba(148,0,211,1));
+    }
+
 
 	.infodiv {
 		display: flex;
