@@ -174,11 +174,11 @@
         width: 100%;
     }
 
-    .volume-progress {
+    /* .volume-progress {
         width: 10%;
         max-width: 100px;
         min-width: 50px;
-    }
+    } */
 </style>
 
 {#if display}

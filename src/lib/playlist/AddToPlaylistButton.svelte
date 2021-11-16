@@ -6,10 +6,9 @@
         const res = await fetch(`http://192.168.0.91:9090/GetCurrentPlayListName`);
 		const plname = await res.json();
         console.log(plname.curplaylistname)
-        let url1 = 'http://192.168.0.91:9090/'
-        let url2 = 'AddSongToPlaylist?fileid=' + song.fileID
-        let url3 = '&playlistid=' + plname.curplaylistID
-        let URL = url1 + url2 + url3
+        let url1 = 'http://192.168.0.91:9090/AddSongToPlaylist?fileid='
+        let url2 =  song.fileID + '&playlistid=' + plname.curplaylistID
+        let URL = url1 + url2
         console.log(URL)
         const resz = await fetch(URL);
         resData = await resz.json();
