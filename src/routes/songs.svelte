@@ -27,6 +27,8 @@
     import SongYcomp from '$lib/song/songYcomp.svelte';
     import SongZcomp from '$lib/song/songZcomp.svelte';
 
+    import PlayerControls from '$lib/player/playercontrols.svelte';
+
     let isVisible = false
 	var setVisible = () => {
 		if (isVisible) {
@@ -145,12 +147,12 @@
 </script>
 
 <svelte:head>
-	<title>Artists</title>
+	<title>Songs</title>
 </svelte:head>
 
-<SelectButton />
+<!-- <PlayerControls /> -->
 
-<button class="alphaBtn" on:click={setVisible} >Song Select</button>
+<button class="alphaBtn" on:click={setVisible} >Settings</button>
 
 {#if isVisible}
 	<div class="maindiv">
@@ -190,8 +192,9 @@
 			<p class="alpha" on:click={setArseZ}>Z</p>
 		</div>
 	</div>
-{/if}
 
+{/if}
+<SelectButton />
 {#if arse === "B"}
     <SongBcomp />
 {:else if arse === "C"}
@@ -249,7 +252,7 @@
 <style>
 
     .alphaBtn {
-        width: 50%;
+        width: 100%;
         font-size: 1.25em;
         background-color: pink;
         border-radius: 7px;

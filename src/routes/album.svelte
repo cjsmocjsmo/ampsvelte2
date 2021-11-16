@@ -151,9 +151,9 @@
 	<title>Albums</title>
 </svelte:head>
 
-<SelectButton />
 
-<button class="alphaBtn" on:click={setVisible} >Album Select</button>
+
+<button class="alphaBtn" on:click={setVisible} >Settings</button>
 
 {#if isVisible}
 	<div class="maindiv">
@@ -192,8 +192,9 @@
 			<p class="alpha" on:click={setArseZ}>Z</p>
 		</div>
 	</div>
+    
 {/if}
-
+<SelectButton />
 {#if arse === "B"}
     <AlbumBcomp />
 {:else if arse === "C"}
@@ -251,7 +252,7 @@
 <style>
 
     .alphaBtn {
-        width: 50%;
+        width: 100%;
         font-size: 1.25em;
         background-color: pink;
         border-radius: 7px;

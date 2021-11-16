@@ -27,6 +27,10 @@
     import ArtistYcomp from '$lib/artist/artistYcomp.svelte';
     import ArtistZcomp from '$lib/artist/artistZcomp.svelte';
 
+    import Player from '$lib/player/Component.svelte';
+
+    import PLS from '$lib/playlist/PlayListSelectButton.svelte';
+
 	let isVisible = false
 	var setVisible = () => {
 		if (isVisible) {
@@ -141,13 +145,15 @@
         arse = "Z"
         isVisible = false
     }
+    let src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 </script>
 
 <svelte:head>
 	<title>Artists</title>
 </svelte:head>
 
-<SelectButton />
+
+<!-- <Player {src} display={true}/> -->
 
 <button class="alphaBtn" on:click={setVisible} >Artist Select</button>
 
@@ -190,8 +196,9 @@
 			<p class="alpha" on:click={setArseZ}>Z</p>
 		</div>
 	</div>
+    
 {/if}
-
+<!-- <SelectButton /> -->
 {#if arse === "B"}
     <ArtistBcomp />
 {:else if arse === "C"}
@@ -249,7 +256,7 @@
 <style>
 
     .alphaBtn {
-        width: 50%;
+        width: 100%;
         font-size: 1.25em;
         background-color: pink;
         border-radius: 7px;

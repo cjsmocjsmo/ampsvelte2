@@ -19,7 +19,7 @@
 	async function addRandomPlaylist(songcount, name) {
 		const res = await fetch(`http://192.168.0.91:9090/AddRandomPlaylist?songcount=${songcount}&&name=${name}`);
 		playlists = await res.json();
-        console.log(playlists.PlayList)
+        console.log(playlists)
 	};
 
 	async function addPlaylist(name) {

@@ -18,22 +18,47 @@
     async function fetchAlphaData() {
 		const res = await fetch(`http://192.168.0.91:9090/SongAlpha?alpha=A`);
 		newBatch = await res.json();
-        console.log(newBatch)
 	};
+
 
     function playsong(addr) {
         console.log(addr)
         const aud1 = document.getElementsByClassName("Audio1")[0]
         aud1.setAttribute('src', addr);
         aud1.setAttribute("controls", true)
-        aud1.play();
-        console.log(aud1.currentTime)
+        // aud1.play();
+        show = true
     }
 
+    function play() {
+        const aud1 = document.getElementsByClassName("Audio1")[0]
+        // aud1.setAttribute('src', addr);
+        // aud1.setAttribute("controls", true)
+        aud1.play();
+    }
 
+    function pausesong() {
+        const aud1 = document.getElementsByClassName("Audio1")[0]
+        // aud1.setAttribute('src', addr);
+        // aud1.setAttribute("controls", true)
+        aud1.pause();
+    }
+
+    let show = false;
 
 </script>
 
+<!-- {#if !show }
+    <button class="foo" on:click={pausesong} >pause</button>
+{:else}
+    <button class="foo" on:click={pausesong} style={"background-color: red; color: white"}>pause</button>
+{/if} -->
+
+<!-- {#if !show }
+<button on:click={play} >play</button>
+{:else}
+<button on:click={play} style={"background-color: green; color: white;"}>play</button>
+{/if} -->
 <div class="boo">
 <ul>
     {#each adata as item}
@@ -41,7 +66,8 @@
             <div class="songboxflex">
                 <h3>{item.title}</h3>
                 <div class="songbtnflex">
-                    <button on:click={playsong(item.httpaddr)}>Play</button>
+                    <button on:click={playsong(item.httpaddr)}>Load</button>
+                    <!-- <button on:click={addSongToPlayList(item.fileID)} >Add</button> -->
                     <AddButton song={item}/>
                 </div>
             </div>

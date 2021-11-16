@@ -1,19 +1,16 @@
 <script>
 	// import {showit} from '../store/stores.js';
 
-	// let show = true;
-	let show;
+	let show = false;
+	// let show;
 
 	const handleClick = () => {
-		
-		if (show === 0) {
-			
-			const aud1 = document.getElementsByClassName("Audio1")[0]
-			aud1.play();
+		if (show) {
+			const aud1 = document.getElementsByClassName("Audio1")[0].pause();
+			show = false
 		} else {
-			
-			const aud1 = document.getElementsByClassName("Audio1")[0]
-			aud1.pause();
+			const aud1 = document.getElementsByClassName("Audio1")[0].play();
+			show = true
 		}
 	}
 	
@@ -27,7 +24,7 @@
 			</svg>
 			<span class="tooltiptext">Previous Song</span>
 		</div>	
-		{#if show }
+		{#if !show }
 		<div class="tooltip">
 			<svg id="playarrow" on:click={handleClick} xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
 				<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>

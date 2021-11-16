@@ -63,12 +63,12 @@
 				</div>
 			</div>
 			<div id={item.AlbumID} class="w3-container w3-hide foo">
-				{#each item.Songs as Song}
+				{#each item.Songs as song}
 				<div class="artboxflex">
-					<h5>{Song.title}</h5>
+					<h5>{song.title}</h5>
 					<div class="artbtnflex">
-						<button on:click={playsong(Song.httpaddr, item.AlbumID)} >Play</button>
-						<AddButton song={item}/>
+						<button on:click={playsong(song.httpaddr, item.AlbumID)} >Play</button>
+						<AddButton song={song}/>
 					</div>
 				</div>
 				<hr />
