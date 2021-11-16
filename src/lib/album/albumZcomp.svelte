@@ -62,7 +62,9 @@
 				</div>
 				<hr />
 				{/each}
+				
 				<button class="closebtn" on:click={myFunction(item.AlbumID)}>Close</button>
+
 			</div>
 			<hr />
 		</li>
