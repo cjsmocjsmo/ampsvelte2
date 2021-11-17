@@ -5,7 +5,7 @@ services:
     image: ampsvelte:0.1.0
     build: .
     environment: 
-      - HOST=192.168.0.90
+      - HOST=192.168.0.91
       - PORT=4588
     networks:
       - ampsvelte
