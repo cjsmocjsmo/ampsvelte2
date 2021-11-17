@@ -16,7 +16,7 @@ EXPOSE 4588
 
 # CMD ["npm", "run", "dev", "--", "--host"]
 
-# CMD ["node", "./build"]
+CMD ["node", "./build"]
 
 # RUN \
 #     npm install && \
