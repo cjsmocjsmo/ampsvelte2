@@ -10,15 +10,15 @@ const config = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte'
 	},
-	// vite: {
-	// 	server: {
-	// 		hmr: {
-	// 				host: 'localhost',
-	// 				port: 4588,
-	// 				protocol: 'ws'
-	// 		}
-	// 	}
-	// }
+	vite: {
+		server: {
+			hmr: {
+					host: 'localhost',
+					port: 4588,
+					protocol: 'ws'
+			}
+		}
+	}
 };
 
 export default config;
