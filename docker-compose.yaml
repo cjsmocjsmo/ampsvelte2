@@ -1,4 +1,3 @@
-version: "3.3"
 
 services:
   ampsvelte:
@@ -7,7 +6,7 @@ services:
     networks:
       - ampsvelte
     ports:
-      - 4588:4588
+      - 4588:80
 
 networks:
   ampsvelte:

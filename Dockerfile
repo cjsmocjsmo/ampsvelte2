@@ -1,6 +1,6 @@
 # FROM node:14-alpine
 
-FROM node:14-buster
+FROM node:14-buster as builder
 
 RUN mkdir ./ampsvelte
 
@@ -12,11 +12,17 @@ RUN npm ci
 
 RUN  npm run build
 
-EXPOSE 4588
+
+FROM httpd:2-alpine
+
+COPY --from=builder ./ampsvelte/build/ /usr/local/apache2/htdocs/
+
+
+# EXPOSE 4588
 
 # CMD ["npm", "run", "dev", "--", "--host"]
 
-CMD ["node", "./build"]
+# CMD ["node", "./build"]
 
 # RUN \
 #     npm install && \
