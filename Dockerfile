@@ -1,6 +1,6 @@
 # FROM node:14-alpine
 
-FROM node:14-bullseye
+FROM node:14-buster
 
 RUN mkdir ./ampsvelte
 
