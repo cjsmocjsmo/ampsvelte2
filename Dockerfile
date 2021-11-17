@@ -14,7 +14,7 @@ RUN npm install
 
 RUN  npm run build
 
-# EXPOSE 4588
+EXPOSE 4588
 
 CMD ["node", "./build"]
 
