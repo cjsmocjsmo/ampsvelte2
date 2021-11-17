@@ -77,6 +77,20 @@
 		color: white;
 	}
 
+	@media screen and (max-width: 411px) {
+		.p1 {
+			font-size: 1.5em;
+		}
+
+		.p2 {
+			font-size: 1em;
+		}
+
+		.sp1 {
+			font-size: 3.5em;
+		}
+	}
+
 	img {
 		min-width: 25px;
 		max-width: 80px;
@@ -100,7 +114,7 @@
 
 	.artistflexbox {
         display: flex;
-        flex: 1;
+        /* flex: 1; */
         flex-direction: row;
         justify-content: space-between;
         align-items: center;

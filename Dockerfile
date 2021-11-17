@@ -1,4 +1,4 @@
-FROM node:14-buster as builder
+FROM node:14-buster-slim as builder
 
 RUN mkdir ./ampsvelte
 

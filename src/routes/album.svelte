@@ -192,8 +192,10 @@
 			<p class="alpha" on:click={setArseZ}>Z</p>
 		</div>
 	</div>
+    <SelectButton />
 {/if}
-<SelectButton />
+
+
 {#if arse === "B"}
     <AlbumBcomp />
 {:else if arse === "C"}
@@ -251,8 +253,8 @@
 <style>
 
     .alphaBtn {
-        width: 100%;
-        font-size: 1.25em;
+        width: 25%;
+        font-size: .8em;
         background-color: pink;
         border-radius: 7px;
     }
