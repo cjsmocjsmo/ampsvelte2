@@ -10,11 +10,11 @@ COPY . .
 
 RUN npm ci
 
-# RUN  npm run build
+RUN  npm run build
 
 EXPOSE 4588
 
-CMD ["npm", "run", "dev", "--", "--host"]
+# CMD ["npm", "run", "dev", "--", "--host"]
 
 # CMD ["node", "./build"]
 
