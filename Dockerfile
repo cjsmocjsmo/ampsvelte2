@@ -16,7 +16,7 @@ RUN  npm run build
 
 EXPOSE 4588
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "--host", "run", "dev"]
 
 # CMD ["node", "./build"]
 
