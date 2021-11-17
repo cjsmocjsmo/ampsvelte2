@@ -192,7 +192,6 @@
 			<p class="alpha" on:click={setArseZ}>Z</p>
 		</div>
 	</div>
-    
 {/if}
 <SelectButton />
 {#if arse === "B"}

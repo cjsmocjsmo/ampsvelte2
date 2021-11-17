@@ -5,11 +5,20 @@ import node from '@sveltejs/adapter-node';
 
 const config = {
 	kit: {
-		adapter: node(),
+		// adapter: node(),
 		// adapter: adapter(),
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte'
-	}
+	},
+	// vite: {
+	// 	server: {
+	// 		hmr: {
+	// 				host: 'localhost',
+	// 				port: 4588,
+	// 				protocol: 'ws'
+	// 		}
+	// 	}
+	// }
 };
 
 export default config;

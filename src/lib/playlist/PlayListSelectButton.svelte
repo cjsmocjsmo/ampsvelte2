@@ -28,7 +28,7 @@
 <div>
 	
 	<form on:submit|preventDefault={updateCPLN(plname.PlayListName, plname.PlayListID)}>
-	<!-- <p>PlayList => {plname.curplaylistname}</p> -->
+	<p>{plname.curplaylistname} = PlayList</p>
 	{#each playListLists as playListList}
 		{#if playListList.PlayListName != plname.PlayListName}
 			<label>
