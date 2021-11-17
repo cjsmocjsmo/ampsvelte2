@@ -10,13 +10,15 @@ COPY . .
 
 RUN ls
 
-RUN npm install
+RUN npm ci
 
 RUN  npm run build
 
 EXPOSE 4588
 
-CMD ["node", "./build"]
+CMD ["npm", "run", "dev"]
+
+# CMD ["node", "./build"]
 
 # RUN \
 #     npm install && \
@@ -24,7 +26,7 @@ CMD ["node", "./build"]
 #     npm run-script build
     
 
-# CMD ["npm", "run", "dev"]
+
 
 
 
