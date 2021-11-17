@@ -11,7 +11,3 @@ services:
 
 networks:
   ampsvelte:
-    
-    # environment: 
-    #   - HOST=192.168.0.91
-    #   - PORT=4588
