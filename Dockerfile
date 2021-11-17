@@ -8,15 +8,13 @@ WORKDIR /ampsvelte
 
 COPY . .
 
-RUN ls
-
 RUN npm ci
 
 # RUN  npm run build
 
 EXPOSE 4588
 
-CMD ["npm", "--host", "run", "dev"]
+CMD ["npm", "run", "dev", "--host"]
 
 # CMD ["node", "./build"]
 
