@@ -40,24 +40,6 @@
 		showPlayButton.set(true)
     }
 
-	function play() {
-        const aud1 = document.getElementsByClassName("Audio1")[0].play();
-        showPlayButton.set(false)
-    }
-
-    function pausesong() {
-        const aud1 = document.getElementsByClassName("Audio1")[0].pause();
-        showPlayButton.set(true)
-    }
-
-	var setVisible = () => {
-		if ($showPlayButton) {
-			showPlayButton.set(false)
-		} else {
-			showPlayButton.set(true)
-		}
-	}
-
 </script>
 
 <ul>
