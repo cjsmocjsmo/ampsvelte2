@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import InfiniteScroll from "svelte-infinite-scroll";
 	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
+	import { showPlayButton } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -26,27 +27,34 @@
 		var x = document.getElementById(id);
 		if (x.className.indexOf("w3-show") == -1) {
 			x.className += " w3-show";
-			isVisible = true;
 		} else { 
 			x.className = x.className.replace(" w3-show", "");
-			isVisible = false;
 		}
 	}
 
-	function playsong(addr, id) {
+	function loadsong(addr, id) {
         const aud1 = document.getElementsByClassName("Audio1")[0]
         aud1.setAttribute('src', addr);
 		aud1.setAttribute("controls", true)
-        aud1.play()
 		myFunction(id)
+		showPlayButton.set(true)
     }
 
-	let isVisible = false
+	function play() {
+        const aud1 = document.getElementsByClassName("Audio1")[0].play();
+        showPlayButton.set(false)
+    }
+
+    function pausesong() {
+        const aud1 = document.getElementsByClassName("Audio1")[0].pause();
+        showPlayButton.set(true)
+    }
+
 	var setVisible = () => {
-		if (isVisible) {
-			isVisible = false
+		if ($showPlayButton) {
+			showPlayButton.set(false)
 		} else {
-			isVisible = true
+			showPlayButton.set(true)
 		}
 	}
 
@@ -67,7 +75,7 @@
 				<div class="artboxflex">
 					<h5>{song.title}</h5>
 					<div class="artbtnflex">
-						<button on:click={playsong(song.httpaddr, item.AlbumID)} >Play</button>
+						<button on:click={loadsong(song.httpaddr, item.AlbumID)} >Load</button>
 						<AddButton song={song}/>
 					</div>
 				</div>
