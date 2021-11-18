@@ -1,26 +1,28 @@
 <script>
     import { onMount } from 'svelte';
-    import {albumid} from '../lib/store/stores.js';
+    import { albumid } from '../lib/store/stores.js';
+    import { showPlayButton } from '$lib/store/stores';
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 
-    let albumid_value;
-    const unsubscribe = albumid.subscribe(value => {
-		albumid_value = value;
-	});
+    // let albumid_value;
+    // const unsubscribe = albumid.subscribe(value => {
+	// 	albumid_value = value;
+	// });
 
     let songs = [];
 
     onMount(async () => {
-		const ress = await fetch(`http://192.168.0.91:9090/SongsForAlbum?selected=${albumid_value}`)
+		const ress = await fetch(`http://192.168.0.91:9090/SongsForAlbum?selected=${$albumid}`)
 		songs = await ress.json();
 	});
 
-    function playsong(addr) {
+    function loadsong(addr) {
         const aud1 = document.getElementsByClassName("Audio1")[0]
         aud1.setAttribute('src', addr);
-        aud1.setAttribute("controls", true)
-        aud1.play();
+        // aud1.setAttribute("controls", true)
+        // aud1.play();
+        showPlayButton.set(true)
     }
 </script>
 
@@ -34,7 +36,7 @@
         </div>
         <div class="psongs">
             <a href="/" >
-                <button on:click={playsong(song.httpaddr)}>Play</button>
+                <button on:click={loadsong(song.httpaddr)}>Load</button>
             </a>
             
             <AddButton song={song}/>
