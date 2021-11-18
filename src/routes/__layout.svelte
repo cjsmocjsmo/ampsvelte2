@@ -1,15 +1,7 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
-	// import Playercontrols from'../lib/player/playercontrols.svelte'
-	// let show = true;
-	// const handleClick = () => {
-	// 	if (show === true) {
-	// 		show = false;
-	// 	} else {
-	// 		show = true;
-	// 	}
-	// }
+	import Playercontrols from'../lib/player/playercontrols.svelte'
 
 </script>
 
@@ -22,19 +14,14 @@
 	src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 ></audio>
 
-
-<!-- <Playercontrols /> -->
-
 <main>
 	<slot />
 </main>
 
-
-
 <footer>
-	
-	<!-- <p>Possible player controls</p> -->
+	<Playercontrols />
 </footer>
+
 <style>
 	main {
 		flex: 1;

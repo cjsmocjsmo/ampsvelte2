@@ -27,8 +27,6 @@
     import SongYcomp from '$lib/song/songYcomp.svelte';
     import SongZcomp from '$lib/song/songZcomp.svelte';
 
-    import PlayerControls from '$lib/player/playercontrols.svelte';
-
     let isVisible = false
 	var setVisible = () => {
 		if (isVisible) {
@@ -150,8 +148,6 @@
 	<title>Songs</title>
 </svelte:head>
 
-<!-- <PlayerControls /> -->
-
 <button class="alphaBtn" on:click={setVisible} >Settings</button>
 
 {#if isVisible}
@@ -248,6 +244,8 @@
 {:else}
     <SongAcomp />
 {/if}
+
+
 
 <style>
 

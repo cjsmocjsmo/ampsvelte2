@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
+    import { showPlayButton } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -21,72 +22,52 @@
 	};
 
 
-    function playsong(addr) {
+    function loadsong(addr) {
         console.log(addr)
         const aud1 = document.getElementsByClassName("Audio1")[0]
         aud1.setAttribute('src', addr);
         aud1.setAttribute("controls", true)
-        // aud1.play();
-        show = true
+        showPlayButton.set(true)
     }
 
     function play() {
-        const aud1 = document.getElementsByClassName("Audio1")[0]
-        // aud1.setAttribute('src', addr);
-        // aud1.setAttribute("controls", true)
-        aud1.play();
+        const aud1 = document.getElementsByClassName("Audio1")[0].play();
+        showPlayButton.set(false)
     }
 
     function pausesong() {
-        const aud1 = document.getElementsByClassName("Audio1")[0]
-        // aud1.setAttribute('src', addr);
-        // aud1.setAttribute("controls", true)
-        aud1.pause();
+        const aud1 = document.getElementsByClassName("Audio1")[0].pause();
+        showPlayButton.set(true)
     }
-
-    let show = false;
 
 </script>
 
-<!-- {#if !show }
-    <button class="foo" on:click={pausesong} >pause</button>
-{:else}
-    <button class="foo" on:click={pausesong} style={"background-color: red; color: white"}>pause</button>
-{/if} -->
-
-<!-- {#if !show }
-<button on:click={play} >play</button>
-{:else}
-<button on:click={play} style={"background-color: green; color: white;"}>play</button>
-{/if} -->
 <div class="boo">
-<ul>
-    {#each adata as item}
-        <li>
-            <div class="songboxflex">
-                <h3>{item.title}</h3>
-                <div class="songbtnflex">
-                    <button on:click={playsong(item.httpaddr)}>Load</button>
-                    <!-- <button on:click={addSongToPlayList(item.fileID)} >Add</button> -->
-                    <AddButton song={item}/>
+    <ul>
+        {#each adata as item}
+            <li>
+                <div class="songboxflex">
+                    <h3>{item.title}</h3>
+                    <div class="songbtnflex">
+                        <button on:click={loadsong(item.httpaddr)}>Load</button>
+                        <AddButton song={item}/>
+                    </div>
                 </div>
-            </div>
-            <hr />
-        </li>
-    {/each}
-    <InfiniteScroll
-        hasMore={newBatch.length}
-        threshold={100}
-        on:loadMore={() => {page++; fetchAlphaData()}} />
-</ul>
+                <hr />
+            </li>
+        {/each}
+        <InfiniteScroll
+            hasMore={newBatch.length}
+            threshold={100}
+            on:loadMore={() => {page++; fetchAlphaData()}} />
+    </ul>
 </div>
 <style>
 
     .boo {
         width:auto;
-        height: 700px;
+        height: 570px;
     }
-
 
     ul {
         display: flex;
@@ -94,7 +75,7 @@
         border-radius: 2px;
         width: 100%;
         max-width: 100%;
-        max-height: 700px;
+        max-height: 590px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;
