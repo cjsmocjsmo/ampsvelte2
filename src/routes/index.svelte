@@ -277,7 +277,7 @@
     position: absolute;
     z-index: 1;
     top: 125%;
-    left: 10%;
+    left: 30%;
     /* right: 105%; */
     margin-left: -60px;
     opacity: 0;

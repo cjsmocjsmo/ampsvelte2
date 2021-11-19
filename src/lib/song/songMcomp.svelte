@@ -24,7 +24,7 @@
 
     function loadsong(addr) {
         console.log(addr)
-        const aud1 = document.getElementsByClassName("Audio1")[0]
+        const aud1 = document.getElementsByClassName("Audio1")[0].play()
         aud1.setAttribute('src', addr);
         aud1.setAttribute("controls", true)
         showPlayButton.set(true)

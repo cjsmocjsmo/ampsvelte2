@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	// import  {playlistQueueStore} from '$lib/store/playerqueuestore.js';
+	// import  {playlistQueueStore} from '$lib/store/playerqueuestore';
 
 	let playlists;
 	$: playlists = [];

@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-    import { showPlayButton } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -24,20 +23,10 @@
 
     function loadsong(addr) {
         console.log(addr)
-        const aud1 = document.getElementsByClassName("Audio1")[0]
+        const aud1 = document.getElementsByClassName("Audio1")[0];
         aud1.setAttribute('src', addr);
         aud1.setAttribute("controls", true)
-        showPlayButton.set(true)
-    }
-
-    function play() {
-        const aud1 = document.getElementsByClassName("Audio1")[0].play();
-        showPlayButton.set(false)
-    }
-
-    function pausesong() {
-        const aud1 = document.getElementsByClassName("Audio1")[0].pause();
-        showPlayButton.set(true)
+        aud1.play()
     }
 
 </script>
@@ -66,7 +55,7 @@
 
     .boo {
         width:auto;
-        height: 570px;
+        height: 725px;
     }
 
     ul {
@@ -75,11 +64,35 @@
         border-radius: 2px;
         width: 100%;
         max-width: 100%;
-        max-height: 590px;
+        max-height: 750px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;
     }
+
+    @media (max-width: 411px) {
+
+        .boo {
+            max-height: 600px;
+		}
+
+		ul {
+            max-height: 625px;
+			
+		}
+	}
+
+    @media (max-width: 360px) {
+		ul {
+            height: 370px;
+			
+		}
+
+        .boo {
+           
+            height: 370px;
+		}
+	}
     
     h3 {
         color: white;
