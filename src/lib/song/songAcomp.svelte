@@ -53,36 +53,49 @@
 </div>
 <style>
 
-    .boo {
+    /* .boo {
         width:auto;
-        height: 725px;
-    }
+        height: auto;
+    } */
 
     ul {
         display: flex;
         flex-direction: column;
         border-radius: 2px;
         width: 100%;
-        max-width: 100%;
+        height: 100%;
+        /* max-width: 100%; */
         max-height: 750px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;
     }
 
-    @media (max-width: 411px) {
+    @media (max-width: 425px) {
 
         .boo {
             max-height: 600px;
 		}
 
 		ul {
-            max-height: 625px;
+            max-height: 599px;
 			
 		}
 	}
 
-    @media (max-width: 360px) {
+    @media (max-width: 375px) {
+
+        .boo {
+            max-height: 540px;
+        }
+
+        ul {
+            max-height: 540px;
+            
+        }
+    }
+
+    @media (max-width: 320px) {
 		ul {
             height: 370px;
 			
