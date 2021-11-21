@@ -86,11 +86,11 @@
     @media (max-width: 375px) {
 
         .boo {
-            max-height: 540px;
+            max-height: 480px;
         }
 
         ul {
-            max-height: 540px;
+            max-height: 480px;
             
         }
     }
