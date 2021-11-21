@@ -7,19 +7,16 @@
 	// import { get } from 'svelte/store';
 
 
-	// let endsig = () => {
-	// 	const aud1 = document.getElementsByClassName("Audio1")[0]
-	// 	aud1.setAttribute("controls", "controls=")
-	// 	console.log("ended")
-	// 	hasPlayerEnded.set(true)
-	// 	console.log(get(hasPlayerEnded))
-	// }
+
+	let endsig = () => {
+		const aud1 = document.getElementsByClassName("Audio1")[0]
+		aud1.setAttribute("src", "")
+	}
 
 </script>
 
 
 <Header />
-
 <!-- <audio 
 	id="Audio1"
 	class="Audio1" 
@@ -38,7 +35,13 @@
 
 <footer>
 	
-		<audio id="Audio1" class="Audio1" controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" ></audio>
+		<audio 
+			id="Audio1" 
+			class="Audio1" 
+			on:ended={endsig}
+			controls 
+			src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" >
+		</audio>
 	
 	
 	<!-- <Playercontrols /> -->

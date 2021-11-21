@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { albumid } from '../lib/store/stores.js';
-    import { showPlayButton } from '$lib/store/stores';
+    
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 

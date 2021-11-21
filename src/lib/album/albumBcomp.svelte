@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import InfiniteScroll from "svelte-infinite-scroll";
 	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-	import { showPlayButton } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -37,7 +36,6 @@
         aud1.setAttribute('src', addr);
 		aud1.setAttribute("controls", true)
 		myFunction(id)
-		showPlayButton.set(true)
     }
 
 </script>
