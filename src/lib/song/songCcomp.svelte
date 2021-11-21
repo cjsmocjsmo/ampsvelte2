@@ -31,71 +31,36 @@
 
 </script>
 
-<div class="boo">
-    <ul>
-        {#each adata as item}
-            <li>
-                <div class="songboxflex">
-                    <h3>{item.title}</h3>
-                    <div class="songbtnflex">
-                        <button on:click={loadsong(item.httpaddr)}>Load</button>
-                        <AddButton song={item}/>
-                    </div>
+<ul>
+    {#each adata as item}
+        <li>
+            <div class="songboxflex">
+                <h3>{item.title}</h3>
+                <div class="songbtnflex">
+                    <button on:click={loadsong(item.httpaddr)}>Load</button>
+                    <AddButton song={item}/>
                 </div>
-                <hr />
-            </li>
-        {/each}
-        <InfiniteScroll
-            hasMore={newBatch.length}
-            threshold={100}
-            on:loadMore={() => {page++; fetchAlphaData()}} />
-    </ul>
-</div>
-<style>
+            </div>
+            <hr />
+        </li>
+    {/each}
+    <InfiniteScroll
+        hasMore={newBatch.length}
+        threshold={100}
+        on:loadMore={() => {page++; fetchAlphaData()}} />
+</ul>
 
-    .boo {
-        width:auto;
-        height: 725px;
-    }
+<style>
 
     ul {
         display: flex;
         flex-direction: column;
         border-radius: 2px;
         width: 100%;
-        max-width: 100%;
-        max-height: 750px;
+        height: 100%;
         overflow-x: scroll;
         list-style: none;
         padding: 0;
-    }
-
-    @media (max-width: 411px) {
-
-        .boo {
-            max-height: 600px;
-		}
-
-		ul {
-            max-height: 625px;
-			
-		}
-	}
-
-    @media (max-width: 360px) {
-		ul {
-            height: 370px;
-			
-		}
-
-        .boo {
-           
-            height: 370px;
-		}
-	}
-    
-    h3 {
-        color: white;
     }
 
     .songboxflex{
@@ -116,6 +81,10 @@
     button {
         margin: 2px;
         width: 4em;
+    }
+
+    h3 {
+        color: white;
     }
 
     hr {

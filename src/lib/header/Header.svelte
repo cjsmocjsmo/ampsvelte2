@@ -1,6 +1,20 @@
 <script>
 	import { page } from '$app/stores';
+
+	let endsig = () => {
+		const aud1 = document.getElementsByClassName("Audio1")[0]
+		aud1.setAttribute("src", "")
+	}
 </script>
+
+<audio 
+	id="Audio1" 
+	class="Audio1" 
+	on:ended={endsig}
+	controls
+	src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" >
+</audio>
+
 
 <header>
 	<div class="corner">
@@ -19,12 +33,19 @@
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 		</svg>
 	</nav>
+	
 	<div class="corner">
 		<!-- TODO put something else here? github link? -->
 	</div>
+	
 </header>
 
 <style>
+
+	.Audio1 {
+		width: 100%;
+	}
+
 	header {
 		display: flex;
 		justify-content: space-between;

@@ -35,13 +35,13 @@
 
 <footer>
 	
-		<audio 
+		<!-- <audio 
 			id="Audio1" 
 			class="Audio1" 
 			on:ended={endsig}
 			controls
 			src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" >
-		</audio>
+		</audio> -->
 	
 	
 	<!-- <Playercontrols /> -->

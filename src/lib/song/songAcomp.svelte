@@ -31,32 +31,27 @@
 
 </script>
 
-<div class="boo">
-    <ul>
-        {#each adata as item}
-            <li>
-                <div class="songboxflex">
-                    <h3>{item.title}</h3>
-                    <div class="songbtnflex">
-                        <button on:click={loadsong(item.httpaddr)}>Load</button>
-                        <AddButton song={item}/>
-                    </div>
-                </div>
-                <hr />
-            </li>
-        {/each}
-        <InfiniteScroll
-            hasMore={newBatch.length}
-            threshold={100}
-            on:loadMore={() => {page++; fetchAlphaData()}} />
-    </ul>
-</div>
-<style>
 
-    /* .boo {
-        width:auto;
-        height: auto;
-    } */
+<ul>
+    {#each adata as item}
+        <li>
+            <div class="songboxflex">
+                <h3>{item.title}</h3>
+                <div class="songbtnflex">
+                    <button on:click={loadsong(item.httpaddr)}>Load</button>
+                    <AddButton song={item}/>
+                </div>
+            </div>
+            <hr />
+        </li>
+    {/each}
+    <InfiniteScroll
+        hasMore={newBatch.length}
+        threshold={100}
+        on:loadMore={() => {page++; fetchAlphaData()}} />
+</ul>
+
+<style>
 
     ul {
         display: flex;
@@ -64,48 +59,10 @@
         border-radius: 2px;
         width: 100%;
         height: 100%;
-        /* max-width: 100%; */
-        max-height: 750px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;
     }
-
-    @media (max-width: 425px) {
-
-        .boo {
-            max-height: 600px;
-		}
-
-		ul {
-            max-height: 599px;
-			
-		}
-	}
-
-    @media (max-width: 375px) {
-
-        .boo {
-            max-height: 480px;
-        }
-
-        ul {
-            max-height: 480px;
-            
-        }
-    }
-
-    @media (max-width: 320px) {
-		ul {
-            height: 370px;
-			
-		}
-
-        .boo {
-           
-            height: 370px;
-		}
-	}
     
     h3 {
         color: white;
