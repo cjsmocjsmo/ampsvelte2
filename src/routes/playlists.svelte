@@ -218,11 +218,6 @@
 		flex-direction: column;
 	}
 
-
-	p {
-		font-size: 18px;
-	}
-
 	.addRandPL {
 		display: flex;
 		flex-direction: row;
