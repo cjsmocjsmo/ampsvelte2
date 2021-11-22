@@ -31,7 +31,7 @@
 
 </script>
 
-
+<div class="boo">
 <ul>
     {#each adata as item}
         <li>
@@ -50,15 +50,21 @@
         threshold={100}
         on:loadMore={() => {page++; fetchAlphaData()}} />
 </ul>
+</div>
 
 <style>
+	/* .boo {
+        width:auto;
+        height: auto;
+    } */
 
     ul {
         display: flex;
         flex-direction: column;
         border-radius: 2px;
         width: 100%;
-        height: 100%;
+        max-width: 100%;
+        max-height: 800px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;

@@ -32,11 +32,12 @@
 		}
 	}
 
-	function loadsong(addr, id) {
+		function loadsong(addr, id) {
         const aud1 = document.getElementsByClassName("Audio1")[0]
         aud1.setAttribute('src', addr);
 		aud1.setAttribute("controls", true)
 		myFunction(id)
+		aud1.play();
     }
 
 </script>
@@ -96,29 +97,7 @@
         padding: 0;
     }
 
-    @media (max-width: 411px) {
-
-        .boo {
-            max-height: 600px;
-		}
-
-		ul {
-            max-height: 625px;
-			
-		}
-	}
-
-    @media (max-width: 360px) {
-		ul {
-            height: 370px;
-			
-		}
-
-        .boo {
-           
-            height: 370px;
-		}
-	}
+    
 
 
 
