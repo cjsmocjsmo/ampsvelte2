@@ -99,8 +99,10 @@
         display: flex;
         flex-flow: row;
         justify-content: space-around;
-        color: var(--color);
-        background-color: var(--background-color);
+        /* color: var(--color); */
+        color: white;
+        /* background-color: var(--background-color); */
+        background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(129, 36, 36, 0.25), rgba(148,0,211,1)); 
         padding-left: 10px;
         padding-right: 10px;
         -webkit-user-select: none; /* Safari */
@@ -174,11 +176,11 @@
         width: 100%;
     }
 
-    /* .volume-progress {
+    .volume-progress {
         width: 10%;
         max-width: 100px;
         min-width: 50px;
-    } */
+    }
 </style>
 
 {#if display}
@@ -252,6 +254,8 @@
 {/if}
 
 <audio
+    class="Audio1"
+    id="Audio1"
 	bind:this={audio}
 	bind:paused
 	bind:duration

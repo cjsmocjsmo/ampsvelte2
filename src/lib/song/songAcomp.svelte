@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
+    import { songLink } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -20,14 +21,20 @@
 		newBatch = await res.json();
 	};
 
-
     function loadsong(addr) {
         console.log(addr)
+        songLink.set(songLink, addr)
         const aud1 = document.getElementsByClassName("Audio1")[0];
-        aud1.setAttribute('src', addr);
-        aud1.setAttribute("controls", true)
         aud1.play()
     }
+
+    // function loadsong(addr) {
+    //     console.log(addr)
+    //     const aud1 = document.getElementsByClassName("Audio1")[0];
+    //     aud1.setAttribute('src', addr);
+    //     aud1.setAttribute("controls", true)
+    //     aud1.play()
+    // }
 
 </script>
 
