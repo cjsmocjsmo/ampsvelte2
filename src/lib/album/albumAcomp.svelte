@@ -40,48 +40,43 @@
     }
 
 </script>
-<div class="boo">
-	<ul>
-		{#each data as item}
-			<li>
-				<div class="albumflexbox w3-container">
-					<img src={item.PicHttpAddr} on:click={myFunction(item.AlbumID)} alt="Fuck Me" />
-					<div class="albuminfo">
-						<h3>{item.Album}</h3>
-						<h4>{item.NumSongs} {item.NumSongs < 2 ? "song" : "songs"}</h4>
+
+<ul>
+	{#each data as item}
+		<li>
+			<div class="albumflexbox w3-container">
+				<img src={item.PicHttpAddr} on:click={myFunction(item.AlbumID)} alt="Fuck Me" />
+				<div class="albuminfo">
+					<h3>{item.Album}</h3>
+					<h4>{item.NumSongs} {item.NumSongs < 2 ? "song" : "songs"}</h4>
+				</div>
+			</div>
+			<div id={item.AlbumID} class="w3-container w3-hide foo">
+				{#each item.Songs as song}
+				<div class="artboxflex">
+					<h5>{song.title}</h5>
+					<div class="artbtnflex">
+						    <button on:click={loadsong(song.httpaddr, item.AlbumID)} >Play</button>
+						<AddButton song={song}/>
 					</div>
 				</div>
-				<div id={item.AlbumID} class="w3-container w3-hide foo">
-					{#each item.Songs as song}
-					<div class="artboxflex">
-						<h5>{song.title}</h5>
-						<div class="artbtnflex">
-							    <button on:click={loadsong(song.httpaddr, item.AlbumID)} >Play</button>
-							<AddButton song={song}/>
-						</div>
-					</div>
-					<hr />
-					{/each}
-					<button class="closebtn" on:click={myFunction(item.AlbumID)}>Close</button>
-				</div>
-				
 				<hr />
-			</li>
-		{/each}
-		<InfiniteScroll
-			hasMore={newBatch.length}
-			threshold={100}
-			on:loadMore={() => {page++; fetchAlphaData()}} />
-	</ul>
-</div>
+				{/each}
+				<button class="closebtn" on:click={myFunction(item.AlbumID)}>Close</button>
+			</div>
+			
+			<hr />
+		</li>
+	{/each}
+	<InfiniteScroll
+		hasMore={newBatch.length}
+		threshold={100}
+		on:loadMore={() => {page++; fetchAlphaData()}} />
+</ul>
+
 
 
 <style>
-
-	.boo {
-        width:auto;
-        height: 725px;
-    }
 
     ul {
         display: flex;
@@ -89,7 +84,7 @@
         border-radius: 2px;
         width: 100%;
         max-width: 100%;
-        max-height: 750px;
+        max-height: 800px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;
@@ -124,7 +119,7 @@
 	}
 	
 	img {
-		max-width: 200px;
+		max-width: 175px;
 		min-width: 135px;
 		width: 30%;
 		height: 30%;

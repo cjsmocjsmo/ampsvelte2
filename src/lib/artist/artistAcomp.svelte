@@ -74,7 +74,7 @@
 
 	.sp1{
 		font-size: 5em;
-		color: white;
+		color: #ff3e00;
 	}
 
 	@media screen and (max-width: 411px) {
@@ -127,13 +127,13 @@
 		align-items: left;
 	}
 
-	ul {
+    ul {
         display: flex;
         flex-direction: column;
         border-radius: 2px;
         width: 100%;
         max-width: 100%;
-        max-height: 600px;
+        max-height: 800px;
         overflow-x: scroll;
         list-style: none;
         padding: 0;

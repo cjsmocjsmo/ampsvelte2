@@ -74,7 +74,7 @@
 
 	.sp1{
 		font-size: 5em;
-		color: white;
+		color: #ff3e00;
 	}
 
 	img {

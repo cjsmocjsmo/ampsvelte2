@@ -24,10 +24,10 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Artist</a></li>
-			<li class:active={$page.path === '/album'}><a sveltekit:prefetch href="/album">Ablum</a></li>
-			<li class:active={$page.path === '/songs'}><a sveltekit:prefetch href="/songs">Songs</a></li>
-			<li class:active={$page.path === '/playlists'}><a sveltekit:prefetch href="/playlists">PlayLists</a></li>
+			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/" style="color: black;">Artist</a></li>
+			<li class:active={$page.path === '/album'}><a sveltekit:prefetch href="/album" style="color: black;">Ablum</a></li>
+			<li class:active={$page.path === '/songs'}><a sveltekit:prefetch href="/songs" style="color: black;">Songs</a></li>
+			<li class:active={$page.path === '/playlists'}><a sveltekit:prefetch href="/playlists" style="color: black;">PlayLists</a></li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
