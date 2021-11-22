@@ -12,7 +12,9 @@
 	class="Audio1" 
 	on:ended={endsig}
 	controls
+	style="width: 95%; margin-right: auto; margin-left: auto"
 	src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" >
+	
 </audio>
 
 
