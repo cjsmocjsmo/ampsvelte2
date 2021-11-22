@@ -5,11 +5,6 @@
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 
-    // let albumid_value;
-    // const unsubscribe = albumid.subscribe(value => {
-	// 	albumid_value = value;
-	// });
-
     let songs = [];
 
     onMount(async () => {
@@ -21,12 +16,10 @@
         const aud1 = document.getElementsByClassName("Audio1")[0]
         aud1.setAttribute('src', addr);
         // aud1.setAttribute("controls", true)
-        // aud1.play();
-        showPlayButton.set(true)
+        aud1.play();
     }
 </script>
 
-<!-- <h1>Songs For Album</h1> -->
 <PlayListSelectButton />
 {#each songs as song}
     <div class="pmaster">
