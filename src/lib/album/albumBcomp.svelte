@@ -1,8 +1,9 @@
 <script >
 	export const prerender = true;
 	import { onMount } from 'svelte';
-	import InfiniteScroll from "svelte-infinite-scroll";
-	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
+	import InfiniteScroll from "svelte-infinite-scroll";	
+	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte'; 
+	import { src } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -33,8 +34,8 @@
 
 		function loadsong(addr, id) {
         const aud1 = document.getElementsByClassName("Audio1")[0]
-        aud1.setAttribute('src', addr);
-		aud1.setAttribute("controls", true)
+        aud1.pause();
+		src.set(addr)
 		myFunction(id)
 		aud1.play();
     }
