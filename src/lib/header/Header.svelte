@@ -1,20 +1,25 @@
 <script>
 	import { page } from '$app/stores';
 	import AudioControls from '$lib/player/Component.svelte';
-	import { songLink } from '$lib/store/stores';
-	import { readable, get } from 'svelte/store'
+	import { src } from '$lib/store/stores';
 
-	let endsig = () => {
-		const aud1 = document.getElementsByClassName("Audio1")[0]
-		aud1.setAttribute("src", "")
-	}
-	let src = $songLink
+	// let src;
+    // $: src = $src1
+
+	// import { readable, get } from 'svelte/store'
+
+	// let endsig = () => {
+	// 	const aud1 = document.getElementsByClassName("Audio1")[0]
+	// 	aud1.setAttribute("src", "")
+	// }
+	
 </script>
 
-<AudioControls {src} display="true"></AudioControls>
+<AudioControls {$src} display="true"></AudioControls>
 
 <header>
 	<div class="corner">
+		
 	</div>
 	<nav>
 		<svg viewBox="0 0 2 3" aria-hidden="true">

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
+    import { src } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -22,10 +23,9 @@
 
 
     function loadsong(addr) {
-        console.log(addr)
-        const aud1 = document.getElementsByClassName("Audio1")[0]
-        aud1.setAttribute('src', addr);
-        aud1.setAttribute("controls", true)+
+        const aud1 = document.getElementsByClassName("Audio1")[0];
+        aud1.pause()
+        src.set(addr)
         aud1.play()
     }
 

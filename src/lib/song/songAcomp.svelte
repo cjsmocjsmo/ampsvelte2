@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-    import { songLink } from '$lib/store/stores';
+    import { src } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -22,9 +22,9 @@
 	};
 
     function loadsong(addr) {
-        console.log(addr)
-        songLink.set(songLink, addr)
         const aud1 = document.getElementsByClassName("Audio1")[0];
+        aud1.pause()
+        src.set(addr)
         aud1.play()
     }
 
@@ -38,7 +38,6 @@
 
 </script>
 
-<div class="boo">
 <ul>
     {#each adata as item}
         <li>
@@ -57,13 +56,8 @@
         threshold={100}
         on:loadMore={() => {page++; fetchAlphaData()}} />
 </ul>
-</div>
 
 <style>
-	/* .boo {
-        width:auto;
-        height: auto;
-    } */
 
     ul {
         display: flex;

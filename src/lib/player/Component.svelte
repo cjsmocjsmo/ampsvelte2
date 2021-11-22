@@ -4,8 +4,10 @@
     import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
     import { spring } from 'svelte/motion';
-    
-    export let src;
+    import { src } from '$lib/store/stores';
+    // export let src;
+    // let src;
+    // $: src = $src1;
     export let audio = null;
     export let paused = true;
     export let duration = 0;
@@ -20,6 +22,8 @@
     export let display = false;
     export let inlineTooltip = false;
     export let disableTooltip = false;
+
+    
 
     const dispatch = createEventDispatcher();
     let currentTime = 0;
@@ -137,7 +141,7 @@
     }
 
     .material-icons {
-        font-size: 16px;
+        font-size: 20px;
         margin-bottom: 0px;
         color: var(--icon-color);
         background-color: rgba(0,0,0,0);
@@ -158,7 +162,10 @@
     progress {
 		display: block;
         color: var(--primary-color);
+        /* color: red; */
         background: var(--secondary-color);
+        /* background-color: #ff3e00; */
+
         border: none;
         height: 15px;
         margin: auto;
@@ -176,12 +183,13 @@
         width: 100%;
     }
 
-    .volume-progress {
+    /* .volume-progress {
         width: 10%;
         max-width: 100px;
         min-width: 50px;
-    }
+    } */
 </style>
+
 
 {#if display}
     <div class="controls" style="--color:{textColor}; --background-color:{backgroundColor}">
@@ -190,9 +198,15 @@
             style="--icon-color:{iconColor}"
             on:click={() => audio.paused ? audio.play() : audio.pause()}>
             {#if paused}
-                play_arrow
+                <svg id="playarrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-play-fill" viewBox="0 0 20 20">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                </svg>
+                <!-- play_arrow -->
             {:else}
-                pause
+                <svg id="pause" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pause" viewBox="0 0 20 20">
+                    <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                <!-- pause -->
             {/if}
         </button>
         <progress
@@ -203,9 +217,11 @@
             on:mouseenter={() => showTooltip = true}
             on:mouseleave={() => showTooltip = false}
             on:click={seekAudio}
-            style="--primary-color:{barPrimaryColor}; --secondary-color:{barSecondaryColor}"
+            style="--primary-color:red; --secondary-color:blue"
+            
             class="song-progress"
         ></progress>
+        <!-- style="--primary-color:{barPrimaryColor}; --secondary-color:{barSecondaryColor}" -->
         <div class="control-times">{formatSeconds(currentTime)}/{formatSeconds(duration)}</div>
         <!-- <button
             style="--icon-color:{iconColor}"
@@ -264,6 +280,6 @@
     {volume}
 	on:play
 	on:ended
-	{src}
+	src={$src}
 	{preload}
 ></audio>
