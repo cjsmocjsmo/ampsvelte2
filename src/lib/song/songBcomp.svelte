@@ -23,10 +23,8 @@
 
 
     function loadsong(addr) {
-        const aud1 = document.getElementsByClassName("Audio1")[0];
-        aud1.pause()
         src.set(addr)
-        aud1.play()
+        const aud1 = document.getElementsByClassName("Audio1")[0].play();
     }
 
 </script>
