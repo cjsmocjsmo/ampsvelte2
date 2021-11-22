@@ -36,7 +36,7 @@
         </div>
         <div class="psongs">
             <a href="/" >
-                <button on:click={loadsong(song.httpaddr)}>Load</button>
+                <button on:click={loadsong(song.httpaddr)}>Play</button>
             </a>
             
             <AddButton song={song}/>
