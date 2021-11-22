@@ -92,7 +92,7 @@
         if (volumeSeeking) seekVolume(event);
     }
 
-    let songEnded = () => {
+    function songEnded() {
         src.set("")
     }
 
