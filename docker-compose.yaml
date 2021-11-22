@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   ampsvelte:
-    image: ampsvelte:0.1.12
+    image: ampsvelte:0.1.13
     build: .
     networks:
       - ampsvelte
