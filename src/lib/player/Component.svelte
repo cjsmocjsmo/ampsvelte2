@@ -106,7 +106,7 @@
         /* color: var(--color); */
         color: white;
         /* background-color: var(--background-color); */
-        background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(129, 36, 36, 0.25), rgba(148,0,211,1)); 
+        background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(133, 118, 118, 0.25), rgba(148,0,211,1)); 
         padding-left: 10px;
         padding-right: 10px;
         -webkit-user-select: none; /* Safari */
