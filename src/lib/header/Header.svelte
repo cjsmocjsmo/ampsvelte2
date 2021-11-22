@@ -19,7 +19,9 @@
 
 <header>
 	<div class="corner">
-		
+		<svg id="add" xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="red" class="bi bi-plus" viewBox="0 0 16 16">
+			<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+		</svg>
 	</div>
 	<nav>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -37,12 +39,24 @@
 	</nav>
 	
 	<div class="corner">
+		<svg id="previous" xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="red" class="bi bi-dash" viewBox="0 0 16 16">
+			<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+		</svg>
 		<!-- TODO put something else here? github link? -->
 	</div>
 	
 </header>
 
 <style>
+	svg#previous {
+		margin-right: auto;
+		/* margin-left: auto; */
+	}
+
+	svg#add {
+		/* margin-right: auto; */
+		margin-left: auto;
+	}
 
 	header {
 		display: flex;
@@ -50,7 +64,7 @@
 	}
 
 	.corner {
-		width: 3em;
+		width: 5em;
 		height: 3em;
 	}
 

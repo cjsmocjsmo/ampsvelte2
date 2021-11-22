@@ -11,13 +11,13 @@
     export let audio = null;
     export let paused = true;
     export let duration = 0;
-    export let muted = false;
-    export let volume = 1;
+    // export let muted = false;
+    // export let volume = 1;
     export let preload = "metadata";
     export let iconColor = "gray";
     export let textColor = "gray";
-    export let barPrimaryColor = "lightblue";
-    export let barSecondaryColor = "lightgray";
+    export let barPrimaryColor = "red";
+    export let barSecondaryColor = "blue";
     export let backgroundColor = "white";
     export let display = false;
     export let inlineTooltip = false;
@@ -91,6 +91,11 @@
         if (showTooltip && !disableTooltip) seekTooltip(event);
         if (volumeSeeking) seekVolume(event);
     }
+
+    let songEnded = () => {
+        src.set("")
+    }
+
 </script>
 
 <svelte:window
@@ -121,7 +126,7 @@
         margin-right: 5px;
     }
 
-    .tooltip {
+    /* .tooltip {
         background-color: var(--background-color);
         padding: 1px;
         border-radius: 5px;
@@ -132,40 +137,37 @@
         min-width: 50px;
         text-align: center;
         margin-bottom: 5px;
-    }
+    } */
 
-    .hover-tooltip {
+    /* .hover-tooltip {
         position: absolute;
         top: var(--top);
         left: var(--left);
-    }
+    } */
 
     .material-icons {
-        font-size: 20px;
+        font-size: 32px;
         margin-bottom: 0px;
         color: var(--icon-color);
         background-color: rgba(0,0,0,0);
         cursor: pointer;
         transition: 0.3s;
         border: none;
-        border-radius:25px;
+        border-radius:38px;
     }
 
-    .material-icons:hover {
+    /* .material-icons:hover {
         box-shadow: 0px 6px  rgba(0,0,0,0.6);
     }
 
     .material-icons::-moz-focus-inner {
         border: 0;
-    }
+    } */
 
     progress {
 		display: block;
         color: var(--primary-color);
-        /* color: red; */
         background: var(--secondary-color);
-        /* background-color: #ff3e00; */
-
         border: none;
         height: 15px;
         margin: auto;
@@ -198,12 +200,12 @@
             style="--icon-color:{iconColor}"
             on:click={() => audio.paused ? audio.play() : audio.pause()}>
             {#if paused}
-                <svg id="playarrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-play-fill" viewBox="0 0 20 20">
+                <svg id="playarrow" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="red" class="bi bi-play-fill" viewBox="0 0 20 20">
                     <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
                 </svg>
                 <!-- play_arrow -->
             {:else}
-                <svg id="pause" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pause" viewBox="0 0 20 20">
+                <svg id="pause" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="red" class="bi bi-pause" viewBox="0 0 20 20">
                     <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
                 </svg>
                 <!-- pause -->
@@ -217,11 +219,11 @@
             on:mouseenter={() => showTooltip = true}
             on:mouseleave={() => showTooltip = false}
             on:click={seekAudio}
-            style="--primary-color:red; --secondary-color:blue"
+            style="--primary-color:{barPrimaryColor}; --secondary-color:{barSecondaryColor}"
             
             class="song-progress"
         ></progress>
-        <!-- style="--primary-color:{barPrimaryColor}; --secondary-color:{barSecondaryColor}" -->
+        
         <div class="control-times">{formatSeconds(currentTime)}/{formatSeconds(duration)}</div>
         <!-- <button
             style="--icon-color:{iconColor}"
@@ -276,10 +278,11 @@
 	bind:paused
 	bind:duration
     bind:currentTime
-    {muted}
-    {volume}
+
 	on:play
-	on:ended
+	on:ended={songEnded}
 	src={$src}
 	{preload}
 ></audio>
+    <!-- {muted}
+    {volume} -->
