@@ -4,15 +4,16 @@
     import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
     import { spring } from 'svelte/motion';
-    import { src } from '$lib/store/stores';
-    // export let src;
-    // let src;
-    // $: src = $src1;
-    export let audio = null;
+    import { src, pausedValue, durationValue } from '$lib/store/stores';
+    
     export let paused = true;
     export let duration = 0;
+    $pausedValue = paused
+    $durationValue = duration
+    
     // export let muted = false;
     // export let volume = 1;
+    export let audio = null;
     export let preload = "metadata";
     export let iconColor = "gray";
     export let textColor = "gray";
@@ -290,6 +291,7 @@
 	on:ended={songEnded}
 	src={$src}
 	{preload}
+    autoplay="true"
 ></audio>
     <!-- {muted}
     {volume} -->

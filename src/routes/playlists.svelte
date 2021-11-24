@@ -17,6 +17,21 @@
 		console.log(playlists)
 	});
 
+	async function fetchPlaylist(plid) {
+		const addr = `http://192.168.0.91:9090/PlayListByID`
+		await fetch(addr, {mode: "cors", method: "GET"})
+		.then(r => r.json())
+		.then(data => {
+			data.forEach(element => {
+				//put in playlistqueue
+				console.log(element)
+			});
+			
+		}).catch(err => console.log(err));
+	}
+
+	
+
 	async function addRandomPlaylist(songcount, name) {
 		const res = await fetch(`http://192.168.0.91:9090/AddRandomPlaylist?songcount=${songcount}&&name=${name}`);
 		playlists = await res.json();
@@ -88,6 +103,8 @@
 	<title>Playlists</title>
 </svelte:head>
 
+<button on:click={fetchPlaylist()} >click</button>
+
 <div class="playlistBtnGroup">
 	<button on:click={handleClick1}>ADD EMPTY</button>
 	<button on:click={handleClick2}>ADD RANDOM</button>
@@ -130,7 +147,7 @@
 		<div class="playlistDiv">
 			<div class="playlistBtnGrp">
 				<button class="del" on:click={deleteplaylist(pl.PlayListID)} >Delete</button>
-				<button class="lod">Play</button>
+				<button class="lod" on:click={fetchPlaylist(pl.PlayListID)}>Play</button>
 				<button class="vs" on:click={myFunction(pl.PlayListID)}>{pl.PlayListCount} {pl.PlayListCount === 1 ? 'song' : 'songs'}</button>
 			</div>
 		</div>
