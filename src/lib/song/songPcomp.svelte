@@ -21,11 +21,14 @@
 		newBatch = await res.json();
 	};
 
+    function playSong() {
+        const aud1 = document.getElementsByClassName("Audio1")[0].play();
+    }
+
     function loadsong(addr) {
-        const aud1 = document.getElementsByClassName("Audio1")[0];
-        aud1.pause()
         src.set(addr)
-        aud1.play()
+        playSong()
+        
     }
 
 </script>

@@ -1,7 +1,6 @@
 <script>
     import { onMount } from 'svelte';
     import { albumid } from '../lib/store/stores.js';
-    
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 
@@ -11,12 +10,15 @@
 		const ress = await fetch(`http://192.168.0.91:9090/SongsForAlbum?selected=${$albumid}`)
 		songs = await ress.json();
 	});
+    
+    function playSong() {
+        const aud1 = document.getElementsByClassName("Audio1")[0].play();
+    }
 
     function loadsong(addr) {
-        const aud1 = document.getElementsByClassName("Audio1")[0]
-        aud1.setAttribute('src', addr);
-        // aud1.setAttribute("controls", true)
-        aud1.play();
+        src.set(addr)
+        playSong()
+        
     }
 </script>
 

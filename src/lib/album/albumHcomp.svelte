@@ -33,12 +33,14 @@
 		}
 	}
 
-		function loadsong(addr, id) {
-        const aud1 = document.getElementsByClassName("Audio1")[0]
-        aud1.pause();
-		src.set(addr)
+    function playSong() {
+        const aud1 = document.getElementsByClassName("Audio1")[0].play();
+    }
+
+    function loadsong(addr, id) {
 		myFunction(id)
-		aud1.play();
+        src.set(addr)
+        playSong()
     }
 
 </script>
