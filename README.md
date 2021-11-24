@@ -1,38 +1,40 @@
-# create-svelte
+# AmpSvelte2
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+AmpSvelte2 is the frontend for the AmpGo server.
 
-## Creating a project
+## How To Use
 
-If you're seeing this, you've probably already done this step. Congrats!
+You will need to have the [AmpGo](https://github.com/cjsmocjsmo/ampgoserver) server installed and setup before installing AmpSvelte2
+
+There are two way to use this project.  You can use docker or npm.
+If using the docker method you will need to have docker and docker-compose installed.
+This is the prefered method as ampgoserver requires docker and docker-compose.
 
 ```bash
-# create a new project in the current directory
-npm init svelte@next
+# clone the repo
+git clone https://github.com/cjsmocjsmo/ampsvelte2
 
-# create a new project in my-app
-npm init svelte@next my-app
+cd ampsvelte2
+
+docker-compose up -d --build
+
 ```
-
-> Note: the `@next` is temporary
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Or you can use npm
 
 ```bash
+git clone https://github.com/cjsmocjsmo/ampsvelte2
+
+cd ampsvelte2
+
+npm install
+
 npm run dev
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+Now you can point your browser at:
 
-## Building
+```http://MYHOSTADDRESS:4588```
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
 
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
