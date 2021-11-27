@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import InfiniteScroll from "svelte-infinite-scroll";
 	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-	import { src } from '$lib/store/stores';
 
     let page = 0;
     let size = 20;
@@ -38,6 +37,7 @@
 
     function loadsong(addr, id) {
 		myFunction(id)
+		playPlayList.set(false)
         src.set(addr)
         playSong()
     }

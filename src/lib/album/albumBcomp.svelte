@@ -38,6 +38,7 @@
 
     function loadsong(addr, id) {
 		myFunction(id)
+		playPlayList.set(false)
         src.set(addr)
         playSong()
     }

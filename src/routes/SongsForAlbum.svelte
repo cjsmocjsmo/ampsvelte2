@@ -16,6 +16,7 @@
     }
 
     function loadsong(addr) {
+        playPlayList.set(false)
         src.set(addr)
         playSong()
         

@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import PlayPlaylistButton from '$lib/playlist/PlayPlaylistButton.svelte';
 	// import  {playlistQueueStore} from '$lib/store/playerqueuestore';
 
 	let playlists;
@@ -17,19 +18,25 @@
 		console.log(playlists)
 	});
 
-	async function fetchPlaylist(plid) {
-		const addr = `http://192.168.0.91:9090/PlayListByID`
-		await fetch(addr, {mode: "cors", method: "GET"})
-		.then(r => r.json())
-		.then(data => {
-			data.forEach(element => {
-				//put in playlistqueue
-				console.log(element)
-			});
+	// async function fetchPlaylist(plid) {
+	// 	const addr = `http://192.168.0.91:9090/PlayListByID?playlistid=${plid}`
+	// 	await fetch(addr, {mode: "cors", method: "GET"})
+	// 	.then(r => r.json())
+	// 	.then(data => {
+	// 		data.forEach(element => {
+	// 			//put in playlistqueue
+	// 			console.log(element)
+	// 		});
 			
-		}).catch(err => console.log(err));
-	}
+	// 	}).catch(err => console.log(err));
+	// }
 
+	// async function fetchPlaylist(plid) {
+	// 	const resp = await fetch(`http://192.168.0.91:9090/PlayListByID?playlistid=${plid}`)
+	// 	plists = await resp.json();
+	// 	plists.forEach(element => console.log(element))
+		
+	// }
 	
 
 	async function addRandomPlaylist(songcount, name) {
@@ -103,7 +110,7 @@
 	<title>Playlists</title>
 </svelte:head>
 
-<button on:click={fetchPlaylist()} >click</button>
+<!-- <button on:click={fetchPlaylist()} >click</button> -->
 
 <div class="playlistBtnGroup">
 	<button on:click={handleClick1}>ADD EMPTY</button>
@@ -147,7 +154,8 @@
 		<div class="playlistDiv">
 			<div class="playlistBtnGrp">
 				<button class="del" on:click={deleteplaylist(pl.PlayListID)} >Delete</button>
-				<button class="lod" on:click={fetchPlaylist(pl.PlayListID)}>Play</button>
+				<PlayPlaylistButton plid={pl.PlayListID}/>
+				<!-- <button class="lod" on:click={fetchPlaylist(pl.PlayListID)}>Play</button> -->
 				<button class="vs" on:click={myFunction(pl.PlayListID)}>{pl.PlayListCount} {pl.PlayListCount === 1 ? 'song' : 'songs'}</button>
 			</div>
 		</div>
@@ -196,10 +204,10 @@
 		background-color: pink;
 	}
 
-	.lod {
+	/* .lod {
 		background-color: green;
 		color: white;
-	}
+	} */
 
 	.del {
 		background-color: red;

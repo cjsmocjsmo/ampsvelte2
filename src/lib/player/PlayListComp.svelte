@@ -1,18 +1,17 @@
 <svelte:options accessors/>
 
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { onMount } from 'svelte';
+    // import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
-    import { spring } from 'svelte/motion';
-    import { src, pausedValuePlayer1 } from '$lib/store/stores';
+    // import { spring } from 'svelte/motion';
+    import { src, pausedValuePlayer2, playPlayList, playPlayListID } from '$lib/store/stores';
+    // import  { playlistQueueStore } from '$lib/store/playerqueuestore';
     
     export let paused = true;
     export let duration = 0;
-    pausedValuePlayer1.set(true)
-    
-    
-    // export let muted = false;
-    // export let volume = 1;
+    pausedValuePlayer2.set(true)
+
     export let audio = null;
     export let preload = "metadata";
     export let iconColor = "gray";
@@ -24,9 +23,7 @@
     export let inlineTooltip = false;
     export let disableTooltip = false;
 
-    
-
-    const dispatch = createEventDispatcher();
+    // const dispatch = createEventDispatcher();
     let currentTime = 0;
     let tooltip;
     let tooltipX = 0;
@@ -34,9 +31,10 @@
     let showTooltip = false;
     let seekText = "";
     let seeking = false;
-    // let volumeSeeking = false;
     let songBar;
-    let volumeBar;
+
+    console.log($playPlayListID)
+    onMount(() => PlayPlayList($playPlayListID))
 
     export function hide() {
         display = false;
@@ -55,13 +53,6 @@
         if (!songBar) return;
         audio.currentTime = seek(event, songBar.getBoundingClientRect()) * duration;
     }
-
-    // function seekVolume(event) {
-    //     if (!volumeBar) return;
-    //     volume = seek(event, volumeBar.getBoundingClientRect());
-    //     audio.volume = volume;
-    //     muted = false;
-    // }
 
     function formatSeconds(seconds) {
 		if (isNaN(seconds)) return "No Data";
@@ -93,9 +84,69 @@
         // if (volumeSeeking) seekVolume(event);
     }
 
+
+    
+
+
+    let playlistSongs = [];
+
+	async function fetchPlaylist(plidd) {
+		const resp = await fetch(`http://192.168.0.91:9090/PlayListByID?playlistid=${plidd}`)
+		const plist = await resp.json();
+        console.log(plist.PlayList)
+        plist.PlayList.forEach(element => { playlistSongs.push(element.httpaddr)})
+        console.log(playlistSongs)
+        playlistSongs.forEach(song => {
+                console.log(song)
+                if (paused) {
+                    src.set(song)
+                    audio.play()
+                    paused = false
+                } else {
+                    songEnded()
+                }
+            })
+        // console.log(plist)
+		// plist.PlayList.forEach(element => { console.log(element.httpaddr); playlistQueueStore.add(element.httpaddr) })
+		// playPlayList.set(true)
+	}
+
     function songEnded() {
         src.set("")
+        paused = true
     }
+    
+    function playlistEnded() {
+        if (playlistSongs.length < 1) {
+            playlistSongs = []
+            src.set("")
+            paused = true
+            audio = null
+            playPlayList.set(false)
+        }
+    }
+
+    function PlayPlayList(PLID) {
+        if ( PLID != "") {
+            fetchPlaylist(PLID)
+        }
+        console.log(playlistSongs.length)
+        if ( playlistSongs.length != 0 ) {
+            // playlistSongs.forEach(song => {
+            //     console.log(song)
+            //     if (paused) {
+            //         audio.play(song)
+            //         paused = false
+            //     } else {
+            //         songEnded()
+            //     }
+            // })
+        // } else {
+            playlistEnded()
+        }
+    }
+
+    
 
 </script>
 
@@ -108,96 +159,6 @@
     on:mouseup={() => seeking = volumeSeeking = false}
     on:mousemove={trackMouse}
 /> -->
-
-<style>
-    .controls {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-around;
-        /* color: var(--color); */
-        color: white;
-        /* background-color: var(--background-color); */
-        background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(133, 118, 118, 0.25), rgba(148,0,211,1)); 
-        padding-left: 10px;
-        padding-right: 10px;
-        -webkit-user-select: none; /* Safari */
-        -ms-user-select: none; /* IE 10+ and Edge */
-        user-select: none; /* Standard syntax */
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .control-times {
-        margin: auto;
-        margin-right: 5px;
-    }
-
-    /* .tooltip {
-        background-color: var(--background-color);
-        padding: 1px;
-        border-radius: 5px;
-        border-width: 3px;
-        box-shadow: 6px 6px var(--box-color);
-        color: var(--text-color);
-        pointer-events: none;
-        min-width: 50px;
-        text-align: center;
-        margin-bottom: 5px;
-    } */
-
-    /* .hover-tooltip {
-        position: absolute;
-        top: var(--top);
-        left: var(--left);
-    } */
-
-    .material-icons {
-        font-size: 32px;
-        margin-bottom: 0px;
-        color: var(--icon-color);
-        background-color: rgba(0,0,0,0);
-        cursor: pointer;
-        transition: 0.3s;
-        border: none;
-        border-radius:38px;
-    }
-
-    /* .material-icons:hover {
-        box-shadow: 0px 6px  rgba(0,0,0,0.6);
-    }
-
-    .material-icons::-moz-focus-inner {
-        border: 0;
-    } */
-
-    progress {
-		display: block;
-        color: var(--primary-color);
-        background: var(--secondary-color);
-        border: none;
-        height: 15px;
-        margin: auto;
-        margin-left: 5px;
-        margin-right: 5px
-    }
-    
-    progress::-webkit-progress-bar {background-color: var(--secondary-color); width: 100%}
-
-    progress::-moz-progress-bar { background: var(--primary-color); }
-
-    progress::-webkit-progress-value { background: var(--primary-color); }
-
-    .song-progress {
-        width: 100%;
-    }
-
-    /* .volume-progress {
-        width: 10%;
-        max-width: 100px;
-        min-width: 50px;
-    } */
-</style>
-
 
 {#if display}
     <div class="controls" style="--color:{textColor}; --background-color:{backgroundColor}">
@@ -232,27 +193,10 @@
         ></progress>
         
         <div class="control-times">{formatSeconds(currentTime)}/{formatSeconds(duration)}</div>
-        <!-- <button
-            style="--icon-color:{iconColor}"
-            class="material-icons" on:click={() => muted = !muted}>
-            {#if muted}
-                volume_off
-            {:else if volume < .01}
-                volume_mute
-            {:else if volume < .5}
-                volume_down
-            {:else}
-                volume_up
-            {/if}
-        </button> -->
-        <!-- <progress
-            bind:this={volumeBar}
-            value={volume}
-            on:mousedown={() => volumeSeeking = true}
-            on:click={seekVolume}
-            style="--primary-color:{barPrimaryColor}; --secondary-color:{barSecondaryColor}"
-            class="volume-progress"
-        ></progress> -->
+ 
+
+
+
         {#if !disableTooltip && (inlineTooltip || showTooltip)}
             <div
                 class:hover-tooltip={!inlineTooltip}
@@ -287,16 +231,76 @@
 <audio
     class="Audio1"
     id="Audio1"
+    autoplay="true"
 	bind:this={audio}
 	bind:paused
 	bind:duration
     bind:currentTime
-
 	on:play
 	on:ended={songEnded}
 	src={$src}
 	{preload}
-    autoplay="true"
+    
 ></audio>
-    <!-- {muted}
-    {volume} -->
+
+
+
+
+
+
+
+<style>
+    .controls {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        /* color: var(--color); */
+        color: white;
+        /* background-color: var(--background-color); */
+        background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(133, 118, 118, 0.25), rgba(148,0,211,1)); 
+        padding-left: 10px;
+        padding-right: 10px;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10+ and Edge */
+        user-select: none; /* Standard syntax */
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .control-times {
+        margin: auto;
+        margin-right: 5px;
+    }
+
+    .material-icons {
+        font-size: 32px;
+        margin-bottom: 0px;
+        color: var(--icon-color);
+        background-color: rgba(0,0,0,0);
+        cursor: pointer;
+        transition: 0.3s;
+        border: none;
+        border-radius:38px;
+    }
+
+    progress {
+		display: block;
+        color: var(--primary-color);
+        background: var(--secondary-color);
+        border: none;
+        height: 15px;
+        margin: auto;
+        margin-left: 5px;
+        margin-right: 5px
+    }
+    
+    progress::-webkit-progress-bar {background-color: var(--secondary-color); width: 100%}
+
+    progress::-moz-progress-bar { background: var(--primary-color); }
+
+    progress::-webkit-progress-value { background: var(--primary-color); }
+
+    .song-progress {
+        width: 100%;
+    }
+</style>

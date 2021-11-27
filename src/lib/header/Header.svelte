@@ -1,21 +1,36 @@
 <script>
 	import { page } from '$app/stores';
 	import AudioControls from '$lib/player/Component.svelte';
-	import { src } from '$lib/store/stores';
+	import PlayListPlayer from '$lib/player/PlayListComp.svelte';
+	import { src, pausedValuePlayer1, pausedValuePlayer2, playPlayList, playPlayListID } from '$lib/store/stores';
+	// import  { playlistQueueStore } from '$lib/store/playerqueuestore';
+	// import { get } from 'svelte/store';
+	// import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 
-	// let src;
-    // $: src = $src1
 
-	// import { readable, get } from 'svelte/store'
-
-	// let endsig = () => {
-	// 	const aud1 = document.getElementsByClassName("Audio1")[0]
-	// 	aud1.setAttribute("src", "")
-	// }
 	
+
 </script>
 
-<AudioControls {$src} display="true"></AudioControls>
+
+{#if $playPlayList }
+	<p>check1</p>
+	{#if $pausedValuePlayer1 }
+		<p>check 2</p>
+			
+				
+				
+			<p>The playlist player should be playing</p>
+			<PlayListPlayer {$playPlayListID} display="true" ></PlayListPlayer>
+				
+			
+		
+	{/if}
+{:else}
+	<AudioControls {$src} display="true"></AudioControls>
+{/if}
+
+
 
 <header>
 	<div class="corner">

@@ -17,17 +17,7 @@
 
 
 <Header />
-<!-- <audio 
-	id="Audio1"
-	class="Audio1" 
-	controls="" 
-	style="width: 65%; margin-top: 10px; margin-right: auto; margin-left: auto;" 
-	src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-	on:ended={endsig}
-	
-></audio> -->
 
-<!-- <p>hasPlayerEnded: {$hasPlayerEnded}</p> -->
 
 <main>
 	<slot />
@@ -35,16 +25,6 @@
 
 <footer>
 	
-		<!-- <audio 
-			id="Audio1" 
-			class="Audio1" 
-			on:ended={endsig}
-			controls
-			src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" >
-		</audio> -->
-	
-	
-	<!-- <Playercontrols /> -->
 </footer>
 
 <style>
