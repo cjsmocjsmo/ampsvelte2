@@ -18,6 +18,7 @@
         // console.log($playlistSongs)
 		// playPlayList.set(true)
 		sound = new Howl({
+			html5: true,
 			src: foo,
 			autoplay: true,
 			volume: 0.5,
@@ -27,6 +28,7 @@
 		});
 		sound.play()
 	}
+	console.log(foo)
 
 
 
@@ -44,8 +46,7 @@
 	// 	// 	}
 	// 	// });
 	// }
-	
-
+	const playNext = () => Howler.src='http://192.168.0.91:9090/fsData/B/Bad_Company/Holy_Water/08_-_Bad_Company_-_Holy_Water_-_With_You_In_A_Heartbeat.mp3'
 	const stopPlay = () => sound.stop()
 
 	// function stop() {
@@ -58,6 +59,7 @@
 
 <button class="lod" on:click={fetchPlaylist(plid)}>Play</button>
 <button on:click={stopPlay} >pause/stop</button>
+<button on:click={playNext}>playNext</button>
 
 
 <style>

@@ -13,3 +13,5 @@ export const src = writable()
 export const playPlayList = writable();
 
 export const playlistSongs = writable();
+
+export const showPlayButton = writable();

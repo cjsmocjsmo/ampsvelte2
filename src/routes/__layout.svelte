@@ -1,5 +1,7 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
+	import PlayListComp from '$lib/player/PlayListComp.svelte';
+	import PlaylerControls from '$lib/player/playercontrols.svelte';
 	import '../app.css';
 	// import Playercontrols from'../lib/player/playercontrols.svelte';
 
@@ -17,7 +19,7 @@
 
 
 <Header />
-
+<!-- <PlaylerControls /> -->
 
 <main>
 	<slot />

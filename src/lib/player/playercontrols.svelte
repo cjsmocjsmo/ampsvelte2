@@ -1,6 +1,7 @@
 <script>
 	import { get } from 'svelte/store';
 	import { showPlayButton } from '../store/stores.js';
+	import {Howler} from 'howler';
 
 	const handleClick = () => {
 		if ($showPlayButton) {
@@ -8,10 +9,12 @@
 			const aud1 = document.getElementsByClassName("Audio1")[0].play();
 			showPlayButton.set(false)
 			console.log(get(showPlayButton))
+			Howler.play()
 		} else {
 			console.log(get(showPlayButton))
 			const aud1 = document.getElementsByClassName("Audio1")[0].pause();
 			showPlayButton.set(true)
+			Howler.pause()
 		}
 	}
 	
