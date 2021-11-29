@@ -4,11 +4,11 @@
     import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
     import { spring } from 'svelte/motion';
-    import { src, pausedValuePlayer1 } from '$lib/store/stores';
+    import { src } from '$lib/store/stores';
     
     export let paused = true;
     export let duration = 0;
-    pausedValuePlayer1.set(true)
+    // pausedValuePlayer1.set(true)
     
     
     // export let muted = false;

@@ -1,16 +1,15 @@
-<svelte:options accessors/>
+<!-- <svelte:options accessors/> -->
 
 <script>
     import { onMount } from 'svelte';
     // import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
     // import { spring } from 'svelte/motion';
-    import { src, pausedValuePlayer2, playPlayList, playPlayListID } from '$lib/store/stores';
-    // import  { playlistQueueStore } from '$lib/store/playerqueuestore';
+    import { src, playlistSongs } from '$lib/store/stores';
     
     export let paused = true;
     export let duration = 0;
-    pausedValuePlayer2.set(true)
+    // pausedValuePlayer2.set(true)
 
     export let audio = null;
     export let preload = "metadata";
@@ -33,8 +32,7 @@
     let seeking = false;
     let songBar;
 
-    console.log($playPlayListID)
-    onMount(() => PlayPlayList($playPlayListID))
+    let plist;
 
     export function hide() {
         display = false;
@@ -43,6 +41,57 @@
     export function show() {
         display = true;
     }
+
+    function PlayPlayList() {
+        while ($playlistSongs.length != 0) {
+            for (let i = 0; i < $playlistSongs.length; i++) {
+                if (paused && duration === 0) {
+                    console.log($playlistSongs[i])
+                    src.set($playlistSongs[i])
+                
+                } else {
+                    songEnded()
+                }
+            }
+        }
+    }
+
+    function songEnded() {
+        src.set("")
+        paused = true
+    }
+    
+    // function playlistEnded() {
+    //     if (playlistSongs.length < 1) {
+    //         playlistSongs = []
+    //         src.set("")
+    //         paused = true
+    //         audio = null
+    //         playPlayList.set(false)
+    //     }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function seek(event, bounds) {
         let x = event.pageX - bounds.left;
@@ -88,63 +137,8 @@
     
 
 
-    let playlistSongs = [];
 
-	async function fetchPlaylist(plidd) {
-		const resp = await fetch(`http://192.168.0.91:9090/PlayListByID?playlistid=${plidd}`)
-		const plist = await resp.json();
-        console.log(plist.PlayList)
-        plist.PlayList.forEach(element => { playlistSongs.push(element.httpaddr)})
-        console.log(playlistSongs)
-        playlistSongs.forEach(song => {
-                console.log(song)
-                if (paused) {
-                    src.set(song)
-                    audio.play()
-                    paused = false
-                } else {
-                    songEnded()
-                }
-            })
-        // console.log(plist)
-		// plist.PlayList.forEach(element => { console.log(element.httpaddr); playlistQueueStore.add(element.httpaddr) })
-		// playPlayList.set(true)
-	}
 
-    function songEnded() {
-        src.set("")
-        paused = true
-    }
-    
-    function playlistEnded() {
-        if (playlistSongs.length < 1) {
-            playlistSongs = []
-            src.set("")
-            paused = true
-            audio = null
-            playPlayList.set(false)
-        }
-    }
-
-    function PlayPlayList(PLID) {
-        if ( PLID != "") {
-            fetchPlaylist(PLID)
-        }
-        console.log(playlistSongs.length)
-        if ( playlistSongs.length != 0 ) {
-            // playlistSongs.forEach(song => {
-            //     console.log(song)
-            //     if (paused) {
-            //         audio.play(song)
-            //         paused = false
-            //     } else {
-            //         songEnded()
-            //     }
-            // })
-        // } else {
-            playlistEnded()
-        }
-    }
 
     
 
@@ -159,7 +153,8 @@
     on:mouseup={() => seeking = volumeSeeking = false}
     on:mousemove={trackMouse}
 /> -->
-
+<p>{$playlistSongs}</p>
+<p>{PlayPlayList()}</p>
 {#if display}
     <div class="controls" style="--color:{textColor}; --background-color:{backgroundColor}">
         
@@ -237,7 +232,7 @@
 	bind:duration
     bind:currentTime
 	on:play
-	on:ended={songEnded}
+	on:ended={songEnded()}
 	src={$src}
 	{preload}
     

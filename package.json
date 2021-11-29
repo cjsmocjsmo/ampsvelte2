@@ -14,8 +14,6 @@
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
     "svelte": "^3.34.0"
-   
-
   },
   "type": "module",
   "dependencies": {
@@ -23,6 +21,7 @@
     "@lukeed/uuid": "^2.0.0",
     "@sveltejs/adapter-node": "^1.0.0-next.55",
     "cookie": "^0.4.1",
+    "howler": "^2.2.3",
     "svelte-infinite-scroll": "^2.0.0"
   }
 }

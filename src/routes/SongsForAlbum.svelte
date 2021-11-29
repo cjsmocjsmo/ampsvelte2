@@ -3,6 +3,7 @@
     import { albumid } from '../lib/store/stores.js';
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
+    import { src, playPlayList } from '$lib/store/stores';
 
     let songs = [];
 

@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import AudioControls from '$lib/player/Component.svelte';
 	import PlayListPlayer from '$lib/player/PlayListComp.svelte';
-	import { src, pausedValuePlayer1, pausedValuePlayer2, playPlayList, playPlayListID } from '$lib/store/stores';
+	import { src, playPlayList } from '$lib/store/stores';
 	// import  { playlistQueueStore } from '$lib/store/playerqueuestore';
 	// import { get } from 'svelte/store';
 	// import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
@@ -15,17 +15,18 @@
 
 {#if $playPlayList }
 	<p>check1</p>
-	{#if $pausedValuePlayer1 }
+	
 		<p>check 2</p>
 			
 				
 				
 			<p>The playlist player should be playing</p>
-			<PlayListPlayer {$playPlayListID} display="true" ></PlayListPlayer>
+			<p>{$src}</p>
+			<!-- <PlayListPlayer {$src} display="true" ></PlayListPlayer> -->
 				
 			
 		
-	{/if}
+	
 {:else}
 	<AudioControls {$src} display="true"></AudioControls>
 {/if}
