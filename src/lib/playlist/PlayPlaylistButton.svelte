@@ -18,7 +18,7 @@
         // console.log($playlistSongs)
 		// playPlayList.set(true)
 		sound = new Howl({
-			src: plist.PlayList,
+			src: foo,
 			autoplay: true,
 			loop: true,
 			volume: 0.5,
