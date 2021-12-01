@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import AudioControls from '$lib/player/Component.svelte';
 	import PlayListPlayer from '$lib/player/PlayListComp.svelte';
-	import { src, playPlayList } from '$lib/store/stores';
+	import { src, playPlayList, showPlayButton } from '$lib/store/stores';
 	// import  { playlistQueueStore } from '$lib/store/playerqueuestore';
 	// import { get } from 'svelte/store';
 
