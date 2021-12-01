@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-    import { src, playPlayList } from '$lib/store/stores';
+    import { src, playPlayList, showPlayButton } from '$lib/store/stores';
     import {Howl, Howler} from 'howler';
 
     let page = 0;
