@@ -25,12 +25,14 @@
 
     function loadsong(addr) {
         console.log(addr)
+        Howler.unload()
         sound = new Howl({
 			html5: true,
 			src: addr,
 			autoplay: true,
 			volume: 0.5,
 			onend: function() {
+                Howler.unload()
 				console.log('Finished!');
 			}
 		});
