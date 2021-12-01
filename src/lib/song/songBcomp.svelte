@@ -22,6 +22,7 @@
 		newBatch = await res.json();
 	};
 
+    let sound;
     function loadsong(addr) {
         showPlayButton.set(true)
         playPlayList.set(false)

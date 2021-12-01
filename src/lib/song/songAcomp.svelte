@@ -24,7 +24,7 @@
 	};
 
     function loadsong(addr) {
-        showPlayButton.set(true)
+        showPlayButton.set(false)
         playPlayList.set(false)
         console.log(addr)
         Howler.unload()
@@ -34,7 +34,7 @@
 			autoplay: true,
 			volume: 0.5,
 			onend: function() {
-                showPlayButton.set(false)
+                showPlayButton.set(true)
                 Howler.unload()
 				console.log('Finished!');
 			}

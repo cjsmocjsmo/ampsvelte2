@@ -29,13 +29,13 @@
 		background-image: linear-gradient(to left, rgba(148,0,211,0), rgba(129, 36, 36, 0.25), rgba(148,0,211,1));
 	}
 
-	/* footer {
+	 /* footer {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-	}
-
+	} */
+/*
 	footer{
 		font-weight: bold;
 		width: 100%;
