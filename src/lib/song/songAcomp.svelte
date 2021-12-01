@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-    import { src, playPlayList } from '$lib/store/stores';
+    import { src, playPlayList, showPlayButton } from '$lib/store/stores';
     import {Howl, Howler} from 'howler';
 
     let page = 0;
@@ -24,6 +24,8 @@
 	};
 
     function loadsong(addr) {
+        showPlayButton.set(true)
+        playPlayList.set(false)
         console.log(addr)
         Howler.unload()
         sound = new Howl({
@@ -32,6 +34,7 @@
 			autoplay: true,
 			volume: 0.5,
 			onend: function() {
+                showPlayButton.set(false)
                 Howler.unload()
 				console.log('Finished!');
 			}

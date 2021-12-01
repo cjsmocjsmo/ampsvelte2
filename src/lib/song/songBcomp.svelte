@@ -3,6 +3,7 @@
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import { src, playPlayList } from '$lib/store/stores';
+    import {Howl, Howler} from 'howler';
 
     let page = 0;
     let size = 20;
@@ -21,16 +22,35 @@
 		newBatch = await res.json();
 	};
 
-    function playSong() {
-        const aud1 = document.getElementsByClassName("Audio1")[0].play();
+    function loadsong(addr) {
+        showPlayButton.set(true)
+        playPlayList.set(false)
+        console.log(addr)
+        Howler.unload()
+        sound = new Howl({
+			html5: true,
+			src: addr,
+			autoplay: true,
+			volume: 0.5,
+			onend: function() {
+                showPlayButton.set(false)
+                Howler.unload()
+				console.log('Finished!');
+			}
+		});
+		sound.play()
     }
 
-    function loadsong(addr) {
-        playPlayList.set(false)
-        src.set(addr)
-        playSong()
+    // function playSong() {
+    //     const aud1 = document.getElementsByClassName("Audio1")[0].play();
+    // }
+
+    // function loadsong(addr) {
+    //     playPlayList.set(false)
+    //     src.set(addr)
+    //     playSong()
         
-    }
+    // }
 
 </script>
 
