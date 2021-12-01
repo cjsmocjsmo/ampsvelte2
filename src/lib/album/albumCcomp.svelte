@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import InfiniteScroll from "svelte-infinite-scroll";
 	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-	import { duration, playPlayList, showPlayButton } from '$lib/store/stores';
+	import { picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
 	import {Howl, Howler} from 'howler';
 	
 
@@ -41,7 +41,8 @@
     }
 
     let sound;
-    function loadsong(addr) {
+    function loadsong(addr, pA) {
+        picaddr.set(pA)
         showPlayButton.set(false)
         playPlayList.set(false)
         console.log(addr)

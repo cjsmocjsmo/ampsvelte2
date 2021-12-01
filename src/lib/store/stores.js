@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import foo from '$lib/Thumb.jpg';
 
 export const albumid = writable("None");
 
@@ -13,3 +14,5 @@ export const playlistSongs = writable();
 export const showPlayButton = writable(true);
 
 export const duration = writable("00.00");
+
+export const picaddr = writable(foo);

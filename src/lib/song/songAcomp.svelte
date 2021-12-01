@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-    import { duration, playPlayList, showPlayButton } from '$lib/store/stores';
+    import { picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
     import {Howl, Howler} from 'howler';
 
     let page = 0;
@@ -10,6 +10,7 @@
     let adata = [];
     let newBatch = [];
     let sound;
+    // let picaddr;
 
     onMount(() => fetchAlphaData())
 
@@ -21,6 +22,7 @@
     async function fetchAlphaData() {
 		const res = await fetch(`http://192.168.0.91:9090/SongAlpha?alpha=A`);
 		newBatch = await res.json();
+        console.log(newBatch)
 	};
 
     function formatTime(secs) {
@@ -29,7 +31,8 @@
         return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     }
 
-    function loadsong(addr) {
+    function loadsong(addr, pA) {
+        picaddr.set(pA)
         showPlayButton.set(false)
         playPlayList.set(false)
         console.log(addr)
@@ -59,7 +62,7 @@
             <div class="songboxflex">
                 <h3>{item.title}</h3>
                 <div class="songbtnflex">
-                       <button on:click={loadsong(item.httpaddr)}>Play</button>
+                       <button on:click={loadsong(item.httpaddr, item.picHttpAddr)}>Play</button>
                     <AddButton song={item}/>
                 </div>
             </div>

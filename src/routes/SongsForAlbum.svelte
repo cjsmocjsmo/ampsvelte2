@@ -19,7 +19,8 @@
     }
 
     let sound;
-    function loadsong(addr) {
+    function loadsong(addr, pA) {
+        picaddr.set(pA)
         showPlayButton.set(false)
         playPlayList.set(false)
         console.log(addr)
