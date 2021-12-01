@@ -55,14 +55,16 @@
     //     const aud1 = document.getElementsByClassName("Audio1")[0].play();
     // }
 
-    // function loadsong(addr) {
+    //         let sound;
+    function loadsong(addr) {
     //     playPlayList.set(false)
     //     src.set(addr)
     //     playSong()
         
     // }
 
-    // function loadsong(addr) {
+    //         let sound;
+    function loadsong(addr) {
     //     console.log(addr)
     //     const aud1 = document.getElementsByClassName("Audio1")[0];
     //     aud1.setAttribute('src', addr);

@@ -18,6 +18,7 @@
         return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     }
 
+    let sound;
     function loadsong(addr) {
         showPlayButton.set(false)
         playPlayList.set(false)

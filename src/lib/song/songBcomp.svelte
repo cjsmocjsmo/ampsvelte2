@@ -28,6 +28,7 @@
         return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     }
 
+        let sound;
     function loadsong(addr) {
         showPlayButton.set(false)
         playPlayList.set(false)
@@ -54,7 +55,8 @@
     //     const aud1 = document.getElementsByClassName("Audio1")[0].play();
     // }
 
-    // function loadsong(addr) {
+    //         let sound;
+    function loadsong(addr) {
     //     playPlayList.set(false)
     //     src.set(addr)
     //     playSong()
