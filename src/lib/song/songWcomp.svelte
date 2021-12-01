@@ -65,7 +65,7 @@
             <div class="songboxflex">
                 <h3>{item.title}</h3>
                 <div class="songbtnflex">
-                       <button on:click={loadsong(item.httpaddr)}>Play</button>
+                       <button on:click={loadsong(item.httpaddr, item.picHttpAddr)}>Play</button>
                     <AddButton song={item}/>
                 </div>
             </div>
