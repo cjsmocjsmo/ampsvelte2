@@ -81,7 +81,7 @@
 				<div class="artboxflex">
 					<h5>{song.title}</h5>
 					<div class="artbtnflex">
-						    <button on:click={loadsong(song.httpaddr, song.AlbumID)} >Play</button>
+						    <button on:click={loadsong(song.httpaddr, song.picHttpAddr)} >Play</button>
 						<AddButton song={song}/>
 					</div>
 				</div>
