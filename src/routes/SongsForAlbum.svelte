@@ -3,7 +3,7 @@
     import { albumid } from '../lib/store/stores.js';
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
-    import { src, playPlayList, showPlayButton } from '$lib/store/stores';
+    import { duration, playPlayList, showPlayButton } from '$lib/store/stores';
     import {Howl, Howler} from 'howler';
 
     let songs = [];
@@ -31,6 +31,7 @@
 			}
 		});
 		sound.play()
+        duration.set(sound.duration)
     }
 </script>
 

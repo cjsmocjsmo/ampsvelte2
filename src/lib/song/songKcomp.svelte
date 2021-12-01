@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
     import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
-    import { src, playPlayList, showPlayButton } from '$lib/store/stores';
+    import { duration, playPlayList, showPlayButton } from '$lib/store/stores';
     import {Howl, Howler} from 'howler';
 
 
@@ -41,6 +41,7 @@
 			}
 		});
 		sound.play()
+        duration.set(sound.duration)
     }
 
 </script>

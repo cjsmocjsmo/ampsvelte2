@@ -1,42 +1,16 @@
 <script>
-	import { get } from 'svelte/store';
-	import { src, playPlayList, showPlayButton } from '$lib/store/stores';
-	import {Howl, Howler} from 'howler';
 
+	import { duration, showPlayButton } from '$lib/store/stores';
+	import { Howler } from 'howler';
 
 	const handleClick = () => {
 		if ($showPlayButton) {
-			console.log(showPlayButton)
-			// const aud1 = document.getElementsByClassName("Audio1")[0].play();
 			showPlayButton.set(false)
-			console.log(get(showPlayButton))
 		} else {
-			console.log(get(showPlayButton))
-			// const aud1 = document.getElementsByClassName("Audio1")[0].pause();
 			showPlayButton.set(true)
 			Howler.stop()
-			
 		}
 	}
-
-
-
-
-
-
-	// const handleClick = () => {
-	// 	if ($showPlayButton) {
-	// 		console.log(showPlayButton)
-	// 		const aud1 = document.getElementsByClassName("Audio1")[0].play();
-	// 		showPlayButton.set(false)
-	// 		console.log(get(showPlayButton))
-	// 	} else {
-	// 		console.log(get(showPlayButton))
-	// 		const aud1 = document.getElementsByClassName("Audio1")[0].pause();
-	// 		showPlayButton.set(true)
-
-	// 	}
-	// }
 	
 </script>
 
@@ -70,7 +44,7 @@
 			<span class="tooltiptext">Next Song</span>
 		</div>
 		<div>
-			<p style="color: black">00.00</p>
+			<p style="color: black">{$duration}</p>
 		</div>
 	</div>
 </div>

@@ -4,7 +4,7 @@
     import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
     import { spring } from 'svelte/motion';
-    import { src } from '$lib/store/stores';
+    // import { src } from '$lib/store/stores';
     
     export let paused = true;
     export let duration = 0;
@@ -294,7 +294,7 @@
 
 	on:play
 	on:ended={songEnded}
-	src={$src}
+	src=""
 	{preload}
     autoplay="true"
 ></audio>

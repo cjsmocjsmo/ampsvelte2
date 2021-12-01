@@ -1,24 +1,12 @@
 <script>
 	import { page } from '$app/stores';
-	import AudioControls from '$lib/player/Component.svelte';
-	import PlayListPlayer from '$lib/player/PlayListComp.svelte';
-	import { src, playPlayList, showPlayButton } from '$lib/store/stores';
+	// import AudioControls from '$lib/player/Component.svelte';
+	// import PlayListPlayer from '$lib/player/PlayListComp.svelte';
+	// import { duration, playPlayList, showPlayButton } from '$lib/store/stores';
 	// import  { playlistQueueStore } from '$lib/store/playerqueuestore';
 	// import { get } from 'svelte/store';
 
 </script>
-
-
-<!-- {#if $playPlayList }
-	<p>check1</p>
-		<p>check 2</p>
-			<p>The playlist player should be playing</p>
-			<p>{$src}</p>
-{:else}
-	<AudioControls {$src} display="false"></AudioControls>
-{/if} -->
-
-
 
 <header>
 	<div class="corner">
