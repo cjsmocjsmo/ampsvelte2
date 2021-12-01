@@ -12,4 +12,4 @@ export const showPlayButton = writable(true);
 
 export const duration = writable("00.00");
 
-export const picaddr = writable(foo);
+export const picaddr = writable('https://www.debian.org/logos/openlogo-nd-75.jpg');
