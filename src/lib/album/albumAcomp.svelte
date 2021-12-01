@@ -4,6 +4,7 @@
 	import InfiniteScroll from "svelte-infinite-scroll";
 	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
 	import { src, playPlayList } from '$lib/store/stores';
+	import {Howl, Howler} from 'howler';
 
     let page = 0;
     let size = 20;
