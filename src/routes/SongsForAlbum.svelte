@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
-    import { albumid, duration, playPlayList, showPlayButton } from '$lib/store/stores';
+    import { albumid, picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
     import { Howl, Howler } from 'howler';
 
     let songs = [];
