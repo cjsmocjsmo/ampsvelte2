@@ -1,5 +1,4 @@
 import { writable } from 'svelte/store';
-import { src } from '$lib/store/stores';
 
 // constructor function
 const createStore = () => {
@@ -13,8 +12,6 @@ const createStore = () => {
 
   // add new link to the top of the list
   const add = (link) => update(linklist => [link, ...linklist]);
-
-  // const setsrc = () => update(linklist => src.set(linklist[0]))
 
   return {
     subscribe,

@@ -40,7 +40,7 @@
 			}
 		});
 		sound.play()
-        duration.set(sound.duration)
+        duration.set(sound.duration())
     }
 
     // function playSong() {
