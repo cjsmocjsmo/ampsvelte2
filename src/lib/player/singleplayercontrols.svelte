@@ -2,7 +2,6 @@
 
 	import { picaddr, duration, showPlayButton } from '$lib/store/stores';
 	import { Howler } from 'howler';
-	import foo from '$lib/Thumb.jpg';
 
 	const handleClick = () => {
 		if ($showPlayButton) {
