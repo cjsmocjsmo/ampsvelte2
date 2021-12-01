@@ -1,9 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	// import { currentPlayList } from '$lib/store/playliststore.js';
 
 	let playListLists = '';
-	// let answer = '';
 
 	let plname;
 	$: plname = "";
@@ -47,7 +45,6 @@
 	
 </div>
 
-
 <style>
 
 	#submit {
@@ -64,10 +61,5 @@
         text-align: right;
 		margin: 8px;
     }
-
-    /* select {
-        width: 225px;
-        
-    } */
 	
 </style>

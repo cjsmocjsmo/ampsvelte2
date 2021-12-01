@@ -6,10 +6,6 @@ export const albumid = writable("None");
 
 export const src = writable()
 
-// export const pausedValuePlayer1 = writable()
-
-// export const pausedValuePlayer2 = writable()
-
 export const playPlayList = writable();
 
 export const playlistSongs = writable();

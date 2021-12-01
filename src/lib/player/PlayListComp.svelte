@@ -9,8 +9,6 @@
     
     export let paused = true;
     export let duration = 0;
-    // pausedValuePlayer2.set(true)
-
     export let audio = null;
     export let preload = "metadata";
     export let iconColor = "gray";
@@ -60,16 +58,6 @@
         src.set("")
         paused = true
     }
-    
-    // function playlistEnded() {
-    //     if (playlistSongs.length < 1) {
-    //         playlistSongs = []
-    //         src.set("")
-    //         paused = true
-    //         audio = null
-    //         playPlayList.set(false)
-    //     }
-    // }
 
 
 
@@ -130,7 +118,6 @@
     function trackMouse(event) {
         if (seeking) seekAudio(event);
         if (showTooltip && !disableTooltip) seekTooltip(event);
-        // if (volumeSeeking) seekVolume(event);
     }
 
 
@@ -149,10 +136,6 @@
     on:mousemove={trackMouse}
 />
 
-<!-- <svelte:window
-    on:mouseup={() => seeking = volumeSeeking = false}
-    on:mousemove={trackMouse}
-/> -->
 <p>{$playlistSongs}</p>
 <p>{PlayPlayList()}</p>
 {#if display}

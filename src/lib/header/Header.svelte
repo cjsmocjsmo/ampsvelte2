@@ -5,31 +5,18 @@
 	import { src, playPlayList } from '$lib/store/stores';
 	// import  { playlistQueueStore } from '$lib/store/playerqueuestore';
 	// import { get } from 'svelte/store';
-	// import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
-
-
-	
 
 </script>
 
 
-{#if $playPlayList }
+<!-- {#if $playPlayList }
 	<p>check1</p>
-	
 		<p>check 2</p>
-			
-				
-				
 			<p>The playlist player should be playing</p>
 			<p>{$src}</p>
-			<!-- <PlayListPlayer {$src} display="true" ></PlayListPlayer> -->
-				
-			
-		
-	
 {:else}
-	<AudioControls {$src} display="true"></AudioControls>
-{/if}
+	<AudioControls {$src} display="false"></AudioControls>
+{/if} -->
 
 
 
@@ -52,6 +39,7 @@
 	</nav>
 	
 	<div class="corner">
+		
 		<!-- TODO put something else here? github link? -->
 	</div>
 	

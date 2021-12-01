@@ -1,22 +1,42 @@
 <script>
 	import { get } from 'svelte/store';
-	import { showPlayButton } from '../store/stores.js';
-	import {Howler} from 'howler';
+	import { src, playPlayList, showPlayButton } from '$lib/store/stores';
+	import {Howl, Howler} from 'howler';
+
 
 	const handleClick = () => {
 		if ($showPlayButton) {
 			console.log(showPlayButton)
-			const aud1 = document.getElementsByClassName("Audio1")[0].play();
+			// const aud1 = document.getElementsByClassName("Audio1")[0].play();
 			showPlayButton.set(false)
 			console.log(get(showPlayButton))
-			Howler.play()
 		} else {
 			console.log(get(showPlayButton))
-			const aud1 = document.getElementsByClassName("Audio1")[0].pause();
+			// const aud1 = document.getElementsByClassName("Audio1")[0].pause();
 			showPlayButton.set(true)
-			Howler.pause()
+			Howler.stop()
+			
 		}
 	}
+
+
+
+
+
+
+	// const handleClick = () => {
+	// 	if ($showPlayButton) {
+	// 		console.log(showPlayButton)
+	// 		const aud1 = document.getElementsByClassName("Audio1")[0].play();
+	// 		showPlayButton.set(false)
+	// 		console.log(get(showPlayButton))
+	// 	} else {
+	// 		console.log(get(showPlayButton))
+	// 		const aud1 = document.getElementsByClassName("Audio1")[0].pause();
+	// 		showPlayButton.set(true)
+
+	// 	}
+	// }
 	
 </script>
 
@@ -48,7 +68,10 @@
 				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
 			</svg>
 			<span class="tooltiptext">Next Song</span>
-		</div>	
+		</div>
+		<div>
+			<p style="color: black">00.00</p>
+		</div>
 	</div>
 </div>
 
@@ -85,7 +108,7 @@
 		/* margin: 1em 2em 0 2.5em; */
 		position: fixed;
 		bottom: 0;
-		width: 90%;
+		width: 100%;
 		background-color: pink;
 	}
 	
