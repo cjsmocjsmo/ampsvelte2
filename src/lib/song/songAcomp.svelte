@@ -51,27 +51,6 @@
 		sound.play()
     }
 
-    // function playSong() {
-    //     const aud1 = document.getElementsByClassName("Audio1")[0].play();
-    // }
-
-    //         let sound;
-    function loadsong(addr) {
-    //     playPlayList.set(false)
-    //     src.set(addr)
-    //     playSong()
-        
-    // }
-
-    //         let sound;
-    function loadsong(addr) {
-    //     console.log(addr)
-    //     const aud1 = document.getElementsByClassName("Audio1")[0];
-    //     aud1.setAttribute('src', addr);
-    //     aud1.setAttribute("controls", true)
-    //     aud1.play()
-    // }
-
 </script>
 
 <ul>

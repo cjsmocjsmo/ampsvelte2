@@ -51,18 +51,6 @@
 		sound.play()
     }
 
-    // function playSong() {
-    //     const aud1 = document.getElementsByClassName("Audio1")[0].play();
-    // }
-
-    //         let sound;
-    function loadsong(addr) {
-    //     playPlayList.set(false)
-    //     src.set(addr)
-    //     playSong()
-        
-    // }
-
 </script>
 
 <ul>
