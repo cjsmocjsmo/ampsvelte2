@@ -4,6 +4,7 @@
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
     import { src, playPlayList } from '$lib/store/stores';
+    import {Howl, Howler} from 'howler';
 
     let songs = [];
 
@@ -12,15 +13,24 @@
 		songs = await ress.json();
 	});
     
-    function playSong() {
-        const aud1 = document.getElementsByClassName("Audio1")[0].play();
-    }
-
+    let sound;
     function loadsong(addr) {
+        showPlayButton.set(false)
         playPlayList.set(false)
-        src.set(addr)
-        playSong()
-        
+        console.log(addr)
+        Howler.unload()
+        sound = new Howl({
+			html5: true,
+			src: addr,
+			autoplay: true,
+			volume: 0.5,
+			onend: function() {
+                showPlayButton.set(true)
+                Howler.unload()
+				console.log('Finished!');
+			}
+		});
+		sound.play()
     }
 </script>
 
