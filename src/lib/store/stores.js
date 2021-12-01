@@ -12,4 +12,4 @@ export const playlistSongs = writable();
 
 export const showPlayButton = writable(true);
 
-export const duration = writable();
+export const duration = writable("00.00");

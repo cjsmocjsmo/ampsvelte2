@@ -23,7 +23,12 @@
 		newBatch = await res.json();
 	};
 
-    let sound;
+    function formatTime(secs) {
+        var minutes = Math.floor(secs / 60) || 0;
+        var seconds = (secs - minutes * 60) || 0;
+        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    }
+
     function loadsong(addr) {
         showPlayButton.set(false)
         playPlayList.set(false)
@@ -34,6 +39,9 @@
 			src: addr,
 			autoplay: true,
 			volume: 0.5,
+            onload: function() {
+                duration.set(formatTime(Math.round(sound.duration())));
+            },
 			onend: function() {
                 showPlayButton.set(true)
                 Howler.unload()
@@ -41,7 +49,6 @@
 			}
 		});
 		sound.play()
-        duration.set(sound.duration)
     }
 
 </script>
