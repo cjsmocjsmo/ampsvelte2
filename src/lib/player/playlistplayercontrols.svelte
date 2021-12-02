@@ -53,7 +53,7 @@
 			onend: function() {
                 showPlayButton.set(true)
                 sound.stop()
-				song.unload()
+				sound.unload()
 				console.log('Finished!');
 			}
 		});
