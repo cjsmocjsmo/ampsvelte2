@@ -20,8 +20,13 @@
 		for(let i = 0; i < $playlistQueueStore.length; i++) {
 			console.log($playlistQueueStore[i].httpaddr)
 			console.log($playlistQueueStore[i].picHttpAddr)
-			createHowl($playlistQueueStore[i].httpaddr, $playlistQueueStore[i].picHttpAddr)
-
+			// createHowl($playlistQueueStore[i].httpaddr, $playlistQueueStore[i].picHttpAddr)
+			if (sound === undefined) {
+				console.log("ooooh fuck")
+				createHowl($playlistQueueStore[i].httpaddr, $playlistQueueStore[i].picHttpAddr)
+			} else if (sound.state() === "unloaded") {
+				createHowl($playlistQueueStore[i].httpaddr, $playlistQueueStore[i].picHttpAddr)
+			
 			// createHowl($playlistQueueStore[i])
 			// if ( typeof sound === undefined) {
 			// 	song = $playlistQueueStore[i]
@@ -31,7 +36,7 @@
 			// 	createHowl(song)
 			// 	playlistQueueStore.remove(song)
 			// 	console.log($playlistQueueStore[i])
-			// }
+			}
 		}
 	}
 
@@ -57,7 +62,7 @@
 				console.log('Finished!');
 			}
 		});
-		sound.play()
+		// sound.play()
     }
 
 	function formatTime(secs) {
