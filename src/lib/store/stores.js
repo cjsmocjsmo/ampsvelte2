@@ -4,7 +4,7 @@ export const albumid = writable("None");
 
 // export const src = writable("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
 
-export const playPlayList = writable();
+export const playPlayList = writable(false);
 
 export const playlistSongs = writable();
 

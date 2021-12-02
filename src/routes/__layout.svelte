@@ -2,6 +2,8 @@
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
 	import PlayerControls from '$lib/player/singleplayercontrols.svelte';
+	import PlayListPlayerControls from '$lib/player/playlistplayercontrols.svelte';
+	import { playPlayList } from '$lib/store/stores';
 
 </script>
 
@@ -13,7 +15,11 @@
 </main>
 
 <footer>
-	<PlayerControls />
+	{#if $playPlayList}
+		<PlayListPlayerControls />
+	{:else}
+		<PlayerControls />
+	{/if}
 </footer>
 
 <style>

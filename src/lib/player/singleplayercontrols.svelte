@@ -16,7 +16,7 @@
 
 <div class="playermain">
 	<div id="playerDiv">
-		<img style="width: 80px; height: 80px" src={$picaddr} alt="fuckit" />
+		<img style="width: 70px; height: 70px" src={$picaddr} alt="fuckit" />
 		
 		{#if $showPlayButton }
 			<div class="tooltip">

@@ -1,65 +1,46 @@
 <script>
 	import  { playlistQueueStore } from '$lib/store/playerqueuestore';
-	import { playPlayList, playlistSongs } from '$lib/store/stores';
-	import {Howl, Howler} from 'howler';
+	import { playPlayList } from '$lib/store/stores';
+	// import {Howl, Howler} from 'howler';
 	export let plid;
 
 	// onMount(() => fetchPlaylist(plid))
 
-	let sound;
-	let foo = [];
+	// let sound;
+	// let foo = [];
 
 	async function fetchPlaylist(plidd) {
+		playPlayList.set(true)
 		const resp = await fetch(`http://192.168.0.91:9090/PlayListByID?playlistid=${plidd}`)
 		const plist = await resp.json();
-        console.log(plist.PlayList)
-        plist.PlayList.forEach(element => { foo.push(element.httpaddr)})
-		console.log(foo)
+        // plist.PlayList.forEach(element => { playlistQueueStore.add(element.httpaddr)})
+		plist.PlayList.forEach(element => { playlistQueueStore.add(element)})
+		console.log($playlistQueueStore)
         // console.log($playlistSongs)
 		// playPlayList.set(true)
-		sound = new Howl({
-			html5: true,
-			src: foo,
-			autoplay: true,
-			volume: 0.5,
-			onend: function() {
-				console.log('Finished!');
-			}
-		});
-		sound.play()
+	// 	sound = new Howl({
+	// 		html5: true,
+	// 		src: foo,
+	// 		autoplay: true,
+	// 		volume: 0.5,
+	// 		onend: function() {
+	// 			console.log('Finished!');
+	// 		}
+	// 	});
+	// 	sound.play()
 	}
-	console.log(foo)
+	// console.log(foo)
 
 
 
-	// async function fetchPlaylist(plidd) {
-	// 	const resp = await fetch(`http://192.168.0.91:9090/PlayListByID?playlistid=${plidd}`)
-	// 	const plist = await resp.json();
-    //     console.log(plist.PlayList)
-	// 	// sound = new Howl({
-	// 	// 	src: plist.PlayList,
-	// 	// 	autoplay: true,
-	// 	// 	loop: true,
-	// 	// 	volume: 0.5,
-	// 	// 	onend: function() {
-	// 	// 		console.log('Finished!');
-	// 	// 	}
-	// 	// });
-	// }
-	const playNext = () => Howler.src='http://192.168.0.91:9090/fsData/B/Bad_Company/Holy_Water/08_-_Bad_Company_-_Holy_Water_-_With_You_In_A_Heartbeat.mp3'
-	const stopPlay = () => sound.stop()
-
-	// function stop() {
-	// 	sound.pause()
-	// }
 
 </script>
 
 <!-- <p>{$playlistSongs}</p> -->
 
-<button class="lod" on:click={fetchPlaylist(plid)}>Play</button>
-<button on:click={stopPlay} >pause/stop</button>
-<button on:click={playNext}>playNext</button>
+<button class="lod" on:click={fetchPlaylist(plid)}>Load PlayList</button>
+<!-- <button on:click={stopPlay} >pause/stop</button> -->
+
 
 
 <style>
