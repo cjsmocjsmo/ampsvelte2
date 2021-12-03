@@ -3,6 +3,17 @@
 	import { picaddr, duration, showPlayButton, playPlayList } from '$lib/store/stores';
 	import { Howler } from 'howler';
 
+
+
+
+
+
+
+
+
+
+
+
 	const handleClick = () => {
 		if ($showPlayButton) {
 			showPlayButton.set(false);
@@ -31,83 +42,56 @@
 			
 		}
 		console.log(plist)
-		var playlistplayer = new PlayListPlayer(plist)
 	}
 
-	// let sound;
-	// let fin = 'notfinished';
-	// function createHowl(addr, pA) {
-	// 	fin = 'notfinished';
-	// 	picaddr.set(pA);
-	// 	showPlayButton.set(false);
-	// 	playPlayList.set(true);
-	// 	console.log(addr);
-	// 	Howler.stop();
-	// 	sound = new Howl({
-	// 		html5: true,
-	// 		src: addr,
-	// 		autoplay: true,
-	// 		volume: 0.5,
-	// 		onload: function () {
-	// 			duration.set(formatTime(Math.round(sound.duration())));
-	// 		},
-	// 		onend: function () {
-	// 			showPlayButton.set(true);
-	// 			sound.stop();
-	// 			sound.unload();
-	// 			fin = 'Finished';
-	// 			console.log('Finished!');
-	// 		}
-	// 	});
-	// 	// sound.play()
-	// }
-
-	// function formatTime(secs) {
-	// 	var minutes = Math.floor(secs / 60) || 0;
-	// 	var seconds = secs - minutes * 60 || 0;
-	// 	return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-	// }
-
-
-
-
-
-
 	let PlayListPlayer = function (playlists) {
-		var self = this;
+		let self = this;
 
 		self.playlists = playlists;
 		self.index = 0;
 
 		// Setup the display for each station.
 		for (let i = 0; i < self.playlists.length; i++) {
-			// window['title' + i].innerHTML =
-			// 	'<b>' + self.playlists[i].freq + '</b> ' + self.playlists[i].title;
 			console.log(i)
-			// document.svg['playarrow' + i].addEventListener(
-				// document.svg["playarrow"].addEventListener(
-				document.getElementById("playarrow").addEventListener(
-				'click',
-				function (index) {
-					var isNotPlaying = self.playlists[index].howl && !self.playlists[index].howl.playing();
+			
+
+					let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl.playing();
 
 					playlistplayer.stop();
+					
 
-					if (isNotPlaying || !self.playlists[index].howl) {
-						playlistplayer.play(index);
+					if (isNotPlaying || !self.playlists[i].howl) {
+						playlistplayer.play(i);
 					}
-				}.bind(self, i)
-			);
+
+			// document.svg['playarrow' + i].addEventListener(
+				// document.svg["playarrow"].addEventListener(
+			// document.getElementById("playarrow").addEventListener(
+			// 	'click',
+			// 	function (index) {
+			// 		console.log(index)
+			// 		let isNotPlaying = self.playlists[index].howl && !self.playlists[index].howl.playing();
+
+			// 		playlistplayer.stop();
+					
+
+			// 		if (isNotPlaying || !self.playlists[index].howl) {
+			// 			playlistplayer.play(index);
+			// 		}
+			// 	}.bind(self, i)
+			// );
 		}
 	};
 
 	PlayListPlayer.prototype = {
 		play: function (index) {
-			var self = this;
-			var sound;
+			let self = this;
+			let sound;
 
 			index = typeof index === 'number' ? index : self.index;
-			var data = self.playlists[index];
+			let data = self.playlists[index];
+
+			console.log(data)
 
 			if (data.howl) {
 				sound = data.howl;
@@ -127,9 +111,9 @@
 		},
 
 		stop: function () {
-			var self = this;
+			let self = this;
 
-			var sound = self.playlists[self.index].howl;
+			let sound = self.playlists[self.index].howl;
 
 			// self.toggleStationDisplay(self.index, false);
 
@@ -139,7 +123,7 @@
 		},
 
 		// toggleStationDisplay: function (index, state) {
-		// 	var self = this;
+		// 	let self = this;
 
 		// 	window['station' + index].style.backgroundColor = state ? 'rgba(255, 255, 255, 0.33)' : '';
 
@@ -149,7 +133,8 @@
 		// }
 	};
 
-	// var playlistplayer = new PlayListPlayer([
+	let playlistplayer = new PlayListPlayer(plist)
+	// let playlistplayer = new PlayListPlayer([
 	// 	{
 	// 		freq: '91.1',
 	// 		title: 'Radio City',
