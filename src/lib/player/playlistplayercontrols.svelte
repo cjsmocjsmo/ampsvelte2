@@ -13,22 +13,26 @@
 
 
 
-
+	// let playlistplayer
 	const handleClick = () => {
 		if ($showPlayButton) {
 			showPlayButton.set(false);
-			PlayDaPlayList();
+			const pllist = DaPlayList();
+			playlistplayer = new PlayListPlayer(pllist)
 		} else {
 			showPlayButton.set(true);
 			Howler.stop();
 		}
 	};
 
+	
+	// let playlistplayer;
 	let plist = [];
-	function PlayDaPlayList() {
+	function DaPlayList() {
+		
 		for (let i = 0; i < $playlistQueueStore.length; i++) {
 			let zoo = {
-				"howl": $playlistQueueStore[i].howl,
+				"howl": null,
 				"src": $playlistQueueStore[i].httpaddr,
 				"pic": $playlistQueueStore[i].picHttpAddr,
 			}
@@ -37,27 +41,37 @@
 			} else {
 				plist.push(zoo)
 			}
-			
-			
-			
 		}
 		console.log(plist)
+		return plist
+		// playlistplayer = new PlayListPlayer(plist)
+
 	}
 
-	let PlayListPlayer = function (playlists) {
+	var PlayListPlayer = function (playlists) {
 		let self = this;
 
 		self.playlists = playlists;
+		console.log(self.playlists)
 		self.index = 0;
 
 		// Setup the display for each station.
 		for (let i = 0; i < self.playlists.length; i++) {
 			console.log(i)
+			console.log(self.playlists[i].howl )
+			// console.log(!self.playlists[i].howl.playing())
+			// if (!self.playlists[i].howl === null) {
+			// 	console.log("fuck it worked")
+			// } else {
+			// 	console.log("eatme")
+			// }
+
 			
 
-					let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl.playing();
+					// let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl.playing();
+					let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl === null;
 
-					playlistplayer.stop();
+					// playlistplayer.stop();
 					
 
 					if (isNotPlaying || !self.playlists[i].howl) {
