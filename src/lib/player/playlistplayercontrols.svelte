@@ -68,16 +68,18 @@
 
 			
 
-					// let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl.playing();
-					let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl === null;
+					let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl.playing();
+					console.log(isNotPlaying)
+					// // let isNotPlaying = self.playlists[i].howl && !self.playlists[i].howl === null;
 
-					// playlistplayer.stop();
+					playlistplayer.stop();
+					console.log(!self.playlists[i].howl)
 					
 
 					if (isNotPlaying || !self.playlists[i].howl) {
 						playlistplayer.play(i);
 					}
-
+					
 			// document.svg['playarrow' + i].addEventListener(
 				// document.svg["playarrow"].addEventListener(
 			// document.getElementById("playarrow").addEventListener(
@@ -207,7 +209,6 @@
 		{:else}
 			<div class="tooltip">
 				<svg
-					id="pause"
 					on:click={handleClick}
 					xmlns="http://www.w3.org/2000/svg"
 					width="52"
