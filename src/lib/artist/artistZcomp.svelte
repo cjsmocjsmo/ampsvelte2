@@ -9,7 +9,7 @@
     let newBatch = [];
 
     async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/ArtistAlpha?alpha=Z`);
+		const res = await fetch(`http://192.168.0.90:9090/ArtistAlpha?alpha=Z`);
 		newBatch = await res.json();
         console.log(newBatch)
 	};

@@ -20,7 +20,7 @@
     ];
 
     async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/AlbumAlpha?alpha=C`);
+		const res = await fetch(`http://192.168.0.90:9090/AlbumAlpha?alpha=C`);
 		newBatch = await res.json();
         console.log(newBatch)
 	};
@@ -93,10 +93,10 @@
 			<hr />
 		</li>
 	{/each}
-	<InfiniteScroll
+	<!-- <InfiniteScroll
 		hasMore={newBatch.length}
 		threshold={100}
-		on:loadMore={() => {page++; fetchAlphaData()}} />
+		on:loadMore={() => {page++; fetchAlphaData()}} /> -->
 </ul>
 
 

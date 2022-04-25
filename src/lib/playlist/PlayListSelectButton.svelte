@@ -7,17 +7,17 @@
 	$: plname = "";
 
 	onMount(async () => {
-		const res = await fetch(`http://192.168.0.91:9090/AllPlaylists`);
+		const res = await fetch(`http://192.168.0.90:9090/AllPlaylists`);
 		playListLists = await res.json();
 	});
 
 	onMount(async () => {
-		const res = await fetch(`http://192.168.0.91:9090/GetCurrentPlayListName`);
+		const res = await fetch(`http://192.168.0.90:9090/GetCurrentPlayListName`);
 		plname = await res.json();
 	});
 
 	async function updateCPLN(pln, plid) {
-		const res = await fetch(`http://192.168.0.91:9090/UpdateCurrentPlayListName?curplaylistname=${pln}&&curplaylistid=${plid}`);
+		const res = await fetch(`http://192.168.0.90:9090/UpdateCurrentPlayListName?curplaylistname=${pln}&&curplaylistid=${plid}`);
 		plname = await res.json();
 	};
 

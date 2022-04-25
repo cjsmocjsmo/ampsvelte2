@@ -4,41 +4,27 @@
 	import InfiniteScroll from "svelte-infinite-scroll";
 	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
 	import { picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
-	import {Howl, Howler} from 'howler';
+	import { Howl, Howler } from 'howler';
+	import { myFunction, formatTime } from '$lib/js/common';
 
     let page = 0;
     let size = 20;
     let data = [];
-    let newBatch = [];
+    let newAlbumBatch = [];
 
-    onMount(() => fetchAlphaData())
+	async function fetchAlbumAlphaData() {
+		const res = await fetch(`http://192.168.0.90:9090/AlbumAlpha?alpha=B`);
+		newAlbumBatch = await res.json();
+        console.log(newAlbumBatch)
+	};
+
+    onMount(() => fetchAlbumAlphaData("B"))
 
     $: data = [
 		...data,
-        ...newBatch.splice(size * page, size * (page + 1) - 1)
+        ...newAlbumBatch.splice(size * page, size * (page + 1) - 1)
     ];
-
-    async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/AlbumAlpha?alpha=B`);
-		newBatch = await res.json();
-        console.log(newBatch)
-	};
-
-	function myFunction(id) {
-		var x = document.getElementById(id);
-		if (x.className.indexOf("w3-show") == -1) {
-			x.className += " w3-show";
-		} else { 
-			x.className = x.className.replace(" w3-show", "");
-		}
-	}
-
-    function formatTime(secs) {
-        var minutes = Math.floor(secs / 60) || 0;
-        var seconds = (secs - minutes * 60) || 0;
-        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-    }
-
+    
     let sound;
     function loadsong(addr, pA) {
         picaddr.set(pA)
@@ -92,10 +78,10 @@
 			<hr />
 		</li>
 	{/each}
-	<InfiniteScroll
+	<!-- <InfiniteScroll
 		hasMore={newBatch.length}
 		threshold={100}
-		on:loadMore={() => {page++; fetchAlphaData()}} />
+		on:loadMore={() => {page++; fetchAlphaData()}} /> -->
 </ul>
 
 

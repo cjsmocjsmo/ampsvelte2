@@ -4,19 +4,14 @@
     import PlayListSelectButton from '$lib/playlist/PlayListSelectButton.svelte';
     import { albumid, picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
     import { Howl, Howler } from 'howler';
+    import { formatTime } from '$lib/js/common';
 
     let songs = [];
 
     onMount(async () => {
-		const ress = await fetch(`http://192.168.0.91:9090/SongsForAlbum?selected=${$albumid}`)
+		const ress = await fetch(`http://192.168.0.90:9090/SongsForAlbum?selected=${$albumid}`)
 		songs = await ress.json();
 	});
-    
-    function formatTime(secs) {
-        var minutes = Math.floor(secs / 60) || 0;
-        var seconds = (secs - minutes * 60) || 0;
-        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-    }
 
     let sound;
     function loadsong(addr, pA) {

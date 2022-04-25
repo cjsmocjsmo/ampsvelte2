@@ -1,7 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import PlayPlaylistButton from '$lib/playlist/PlayPlaylistButton.svelte';
-	// import  {playlistQueueStore} from '$lib/store/playerqueuestore';
+	import {  addPlaylist, addRandomPlaylist, deleteitsong} from '$lib/js/playlists.js';
+	import { deleteit } from '$lib/js/playlists';
+	import { myFunction } from '$lib/js/common'; 
 
 	let playlists;
 	$: playlists = [];
@@ -13,13 +15,13 @@
 	let show2 = false;
 
 	onMount(async () => {
-		const ress = await fetch(`http://192.168.0.91:9090/AllPlaylists`);
+		const ress = await fetch(`http://192.168.0.90:9090/AllPlaylists`);
 		playlists = await ress.json();
 		console.log(playlists)
 	});
 
 	// async function fetchPlaylist(plid) {
-	// 	const addr = `http://192.168.0.91:9090/PlayListByID?playlistid=${plid}`
+	// 	const addr = `http://192.168.0.90:9090/PlayListByID?playlistid=${plid}`
 	// 	await fetch(addr, {mode: "cors", method: "GET"})
 	// 	.then(r => r.json())
 	// 	.then(data => {
@@ -32,33 +34,14 @@
 	// }
 
 	// async function fetchPlaylist(plid) {
-	// 	const resp = await fetch(`http://192.168.0.91:9090/PlayListByID?playlistid=${plid}`)
+	// 	const resp = await fetch(`http://192.168.0.90:9090/PlayListByID?playlistid=${plid}`)
 	// 	plists = await resp.json();
 	// 	plists.forEach(element => console.log(element))
 		
 	// }
 	
 
-	async function addRandomPlaylist(songcount, name) {
-		const res = await fetch(`http://192.168.0.91:9090/AddRandomPlaylist?songcount=${songcount}&&name=${name}`);
-		playlists = await res.json();
-        console.log(playlists)
-	};
-
-	async function addPlaylist(name) {
-		const res = await fetch(`http://192.168.0.91:9090/AddPlaylist?name=${name}`);
-		playlists = await res.json();
-        console.log(playlists)
-	};
-
-	function myFunction(id) {
-		var x = document.getElementById(id);
-		if (x.className.indexOf("w3-show") == -1) {
-			x.className += " w3-show";
-		} else { 
-			x.className = x.className.replace(" w3-show", "");
-		}
-	}
+	
 
 	const handleClick1 = () => {
 		if (show1 === true) {
@@ -84,19 +67,6 @@
 	const handleSubmit2 = () => {
 		addRandomPlaylist(numsongs, plname2)
 		show2 = false;
-	}
-
-	async function deleteitsong(plid, songid) {
-		const res = await fetch(`http://192.168.0.91:9090/DeleteSongFromPlaylist?playlistid=${plid}&&fileid=${songid}`);
-		playlists = await res.json();
-		console.log(playlists)
-	}
-
-
-	async function deleteit(plid) {
-		const res = await fetch(`http://192.168.0.91:9090/DeletePlayList?playlistid=${plid}`);
-		playlists = await res.json();
-		console.log(playlists)
 	}
 
 	function deleteplaylist(plid) {

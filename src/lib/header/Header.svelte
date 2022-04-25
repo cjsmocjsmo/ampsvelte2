@@ -1,11 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	// import AudioControls from '$lib/player/Component.svelte';
-	// import PlayListPlayer from '$lib/player/PlayListComp.svelte';
-	// import { picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
-	// import  { playlistQueueStore } from '$lib/store/playerqueuestore';
-	// import { get } from 'svelte/store';
-
 </script>
 
 <header>
@@ -17,7 +11,7 @@
 		</svg>
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/" style="color: black;">Artist</a></li>
-			<li class:active={$page.path === '/album'}><a sveltekit:prefetch href="/album" style="color: black;">Ablum</a></li>
+			<li class:active={$page.path === '/album'}><a sveltekit:prefetch href="/album" style="color: black;">Album</a></li>
 			<li class:active={$page.path === '/songs'}><a sveltekit:prefetch href="/songs" style="color: black;">Songs</a></li>
 			<li class:active={$page.path === '/playlists'}><a sveltekit:prefetch href="/playlists" style="color: black;">PlayLists</a></li>
 		</ul>
@@ -26,10 +20,7 @@
 		</svg>
 	</nav>
 	
-	<div class="corner">
-		
-		<!-- TODO put something else here? github link? -->
-	</div>
+	<div class="corner"></div>
 	
 </header>
 
@@ -48,9 +39,7 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		/* --background: rgba(255, 255, 255, 0.7); */
 		--background: pink;
-		
 	}
 
 	svg {

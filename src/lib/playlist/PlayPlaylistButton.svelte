@@ -11,7 +11,7 @@
 
 	async function fetchPlaylist(plidd) {
 		playPlayList.set(true)
-		const resp = await fetch(`http://192.168.0.91:9090/PlayListByID?playlistid=${plidd}`)
+		const resp = await fetch(`http://192.168.0.90:9090/PlayListByID?playlistid=${plidd}`)
 		const plist = await resp.json();
         // plist.PlayList.forEach(element => { playlistQueueStore.add(element.httpaddr)})
 		plist.PlayList.forEach(element => { playlistQueueStore.add(element)})

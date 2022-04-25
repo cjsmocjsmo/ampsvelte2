@@ -1,43 +1,32 @@
 <script >
 	export const prerender = true;
 	import { onMount } from 'svelte';
-	import InfiniteScroll from "svelte-infinite-scroll";
+	// import InfiniteScroll from "svelte-infinite-scroll";
 	import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
 	import { picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
-	import {Howl, Howler} from 'howler';
+	import { Howl, Howler } from 'howler';
+	import { myFunction, formatTime } from '$lib/js/common';
 
     let page = 0;
     let size = 20;
     let data = [];
-    let newBatch = [];
+    let newAlbumBatch = [];
 
-    onMount(() => fetchAlphaData())
+	async function fetchAlbumAlphaData() {
+		const res = await fetch(`http://192.168.0.90:9090/AlbumAlpha?alpha=A`);
+		newAlbumBatch = await res.json();
+        console.log(newAlbumBatch)
+	};
+
+	onMount(() => fetchAlbumAlphaData())
 
     $: data = [
 		...data,
-        ...newBatch.splice(size * page, size * (page + 1) - 1)
+        ...newAlbumBatch.splice(size * page, size * (page + 1) - 1)
+		
     ];
 
-    async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/AlbumAlpha?alpha=A`);
-		newBatch = await res.json();
-        console.log(newBatch)
-	};
-
-	function myFunction(id) {
-		var x = document.getElementById(id);
-		if (x.className.indexOf("w3-show") == -1) {
-			x.className += " w3-show";
-		} else { 
-			x.className = x.className.replace(" w3-show", "");
-		}
-	}
-
-    function formatTime(secs) {
-        var minutes = Math.floor(secs / 60) || 0;
-        var seconds = (secs - minutes * 60) || 0;
-        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-    }
+	console.log(data)
 
     let sound;
     function loadsong(addr, pA) {
@@ -65,8 +54,8 @@
     }
 
 </script>
-
 <ul>
+	
 	{#each data as item}
 		<li>
 			<div class="albumflexbox w3-container">
@@ -81,7 +70,7 @@
 				<div class="artboxflex">
 					<h5>{song.title}</h5>
 					<div class="artbtnflex">
-						    <!-- <button on:click={loadsong(song.httpaddr, song.picHttpAddr)} >Play</button> -->
+						    
 						<button on:click={loadsong(song.httpaddr, song.picHttpAddr)} >Play</button>
 						<AddButton song={song}/>
 					</div>
@@ -91,13 +80,13 @@
 				<button class="closebtn" on:click={myFunction(item.AlbumID)}>Close</button>
 			</div>
 			
-			<hr />
+			<hr /> 
 		</li>
 	{/each}
-	<InfiniteScroll
-		hasMore={newBatch.length}
+	<!-- <InfiniteScroll
+		hasMore={newAlbumBatch.length}
 		threshold={100}
-		on:loadMore={() => {page++; fetchAlphaData()}} />
+		on:loadMore={() => {page++; fetchAlphaalbumData()}} /> -->
 </ul>
 
 

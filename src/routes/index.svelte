@@ -1,5 +1,4 @@
 <script >
-	import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
 	import ArtistAcomp from '$lib/artist/artistAcomp.svelte';
     import ArtistBcomp from '$lib/artist/artistBcomp.svelte';
     import ArtistCcomp from '$lib/artist/artistCcomp.svelte';
@@ -26,125 +25,9 @@
     import ArtistXcomp from '$lib/artist/artistXcomp.svelte';
     import ArtistYcomp from '$lib/artist/artistYcomp.svelte';
     import ArtistZcomp from '$lib/artist/artistZcomp.svelte';
+    import Settings from '$lib/artist/ArtistSettingsComp.svelte';
+    import {artistarse} from '$lib/store/stores';
 
-    import Player from '$lib/player/Component.svelte';
-
-    import PLS from '$lib/playlist/PlayListSelectButton.svelte';
-
-	let isVisible = false
-	var setVisible = () => {
-		if (isVisible) {
-			isVisible = false
-		} else {
-			isVisible = true
-		}
-	}
-
-	let arse = "";
-    let setArseA = () => {
-        arse = "A"
-        isVisible = false
-    }
-    let setArseB = () => {
-        arse = "B"
-        isVisible = false
-    }
-    let setArseC = () => {
-        arse = "C"
-        isVisible = false
-    }
-    let setArseD = () => {
-        arse = "D"
-        isVisible = false
-    }
-    let setArseE = () => {
-        arse = "E"
-        isVisible = false
-    }
-    let setArseF = () => {
-        arse = "F"
-        isVisible = false
-    }
-    let setArseG = () => {
-        arse = "G"
-        isVisible = false
-    }
-    let setArseH = () => {
-        arse = "H"
-        isVisible = false
-    } 
-    let setArseI = () => {
-        arse = "I"
-        isVisible = false
-    }     
-    let setArseJ = () => {
-        arse = "J"
-        isVisible = false
-    }     
-    let setArseK = () => {
-        arse = "K"
-        isVisible = false
-    } 
-    let setArseL = () => {
-        arse = "L"
-        isVisible = false
-    } 
-    let setArseM = () => {
-        arse = "M"
-        isVisible = false
-    } 
-    let setArseN = () => {
-        arse = "N"
-        isVisible = false
-    } 
-    let setArseO = () => {
-        arse = "O"
-        isVisible = false
-    } 
-    let setArseP = () => {
-        arse = "P"
-        isVisible = false
-    } 
-    let setArseQ = () => {
-        arse = "Q"
-        isVisible = false
-    } 
-    let setArseR = () => {
-        arse = "R"
-        isVisible = false
-    } 
-    let setArseS = () => {
-        arse = "S"
-        isVisible = false
-    } 
-    let setArseT = () => {
-        arse = "T"
-        isVisible = false
-    } 
-    let setArseU = () => {
-        arse = "U"
-        isVisible = false
-    } 
-    let setArseV = () => {
-        arse = "V"
-        isVisible = false
-    } 
-    let setArseW = () => {
-        arse = "W"
-        isVisible = false
-    } 
-    let setArseX = () => {
-        arse = "X"
-        isVisible = false
-    } 
-    let setArseY = () => {
-        arse = "Y"
-        isVisible = false
-    } 
-    let setArseZ = () => {
-        arse = "Z"
-        isVisible = false
-    }
     let src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 </script>
 
@@ -152,179 +35,64 @@
 	<title>Artists</title>
 </svelte:head>
 
+<Settings />
 
-<!-- <Player {src} display={true}/> -->
-<div class="tooltip">
-    <button class="alphaBtn" on:click={setVisible} >Settings</button>
-    <span class="tooltiptext">Artist Alphabeticaly</span>
-</div>
+<!-- <Player {src} /> -->
 
-{#if isVisible}
-	<div class="maindiv">
-		<div class="wrapit">
-			<p class="alpha" on:click={setArseA}>A</p>
-			<p class="alpha" on:click={setArseB}>B</p>
-			<p class="alpha" on:click={setArseC}>C</p>
-			<p class="alpha" on:click={setArseD}>D</p>
-			<p class="alpha" on:click={setArseE}>E</p>
-			<p class="alpha" on:click={setArseF}>F</p>
-			<p class="alpha" on:click={setArseG}>G</p>
-		</div>
-		<div class="wrapit">
-			<p class="alpha" on:click={setArseH}>H</p>
-			<p class="alpha" on:click={setArseI}>I</p>
-			<p class="alpha" on:click={setArseJ}>J</p>
-			<p class="alpha" on:click={setArseK}>K</p>
-			<p class="alpha" on:click={setArseL}>L</p>
-			<p class="alpha" on:click={setArseM}>M</p>
-			<p class="alpha" on:click={setArseN}>N</p>
-		</div>
-		<div class="wrapit">
-			
-			<p class="alpha" on:click={setArseO}>O</p>
-			<p class="alpha" on:click={setArseP}>P</p>
-			<p class="alpha" on:click={setArseQ}>Q</p>
-			<p class="alpha" on:click={setArseR}>R</p>
-			<p class="alpha" on:click={setArseS}>S</p>
-			<p class="alpha" on:click={setArseT}>T</p>
-			<p class="alpha" on:click={setArseU}>U</p>
-		</div>
-		<div class="wrapit">
-			
-			<p class="alpha" on:click={setArseV}>V</p>
-			<p class="alpha" on:click={setArseW}>W</p>
-			<p class="alpha" on:click={setArseX}>X</p>
-			<p class="alpha" on:click={setArseY}>Y</p>
-			<p class="alpha" on:click={setArseZ}>Z</p>
-		</div>
-        
-	</div>
-    
 
-    
-{/if}
-<!-- <SelectButton /> -->
-{#if arse === "B"}
+
+
+{#if $artistarse === "B"}
     <ArtistBcomp />
-{:else if arse === "C"}
+{:else if $artistarse === "C"}
     <ArtistCcomp />
-{:else if arse === "D"}
+{:else if $artistarse === "D"}
     <ArtistDcomp />
-{:else if arse === "E"}
+{:else if $artistarse === "E"}
     <ArtistEcomp />
-{:else if arse === "F"}
+{:else if $artistarse === "F"}
     <ArtistFcomp />
-{:else if arse === "G"}
+{:else if $artistarse === "G"}
     <ArtistGcomp />
-{:else if arse === "H"}
+{:else if $artistarse === "H"}
     <ArtistHcomp />
-{:else if arse === "I"}
+{:else if $artistarse === "I"}
     <ArtistIcomp />
-{:else if arse === "J"}
+{:else if $artistarse === "J"}
     <ArtistJcomp />
-{:else if arse === "K"}
+{:else if $artistarse === "K"}
     <ArtistKcomp />
-{:else if arse === "L"}
+{:else if $artistarse === "L"}
     <ArtistLcomp />
-{:else if arse === "M"}
+{:else if $artistarse === "M"}
     <ArtistMcomp />
-{:else if arse === "N"}
+{:else if $artistarse === "N"}
     <ArtistNcomp />
-{:else if arse === "O"}
+{:else if $artistarse === "O"}
     <ArtistOcomp />
-{:else if arse === "P"}
+{:else if $artistarse === "P"}
     <ArtistPcomp />
-{:else if arse === "Q"}
+{:else if $artistarse === "Q"}
     <ArtistQcomp />
-{:else if arse === "R"}
+{:else if $artistarse === "R"}
     <ArtistRcomp />
-{:else if arse === "S"}
+{:else if $artistarse === "S"}
     <ArtistScomp />
-{:else if arse === "T"}
+{:else if $artistarse === "T"}
     <ArtistTcomp />
-{:else if arse === "U"}
+{:else if $artistarse === "U"}
     <ArtistUcomp />
-{:else if arse === "V"}
+{:else if $artistarse === "V"}
     <ArtistVcomp />
-{:else if arse === "W"}
+{:else if $artistarse === "W"}
     <ArtistWcomp />
-{:else if arse === "X"}
+{:else if $artistarse === "X"}
     <ArtistXcomp />
-{:else if arse === "Y"}
+{:else if $artistarse === "Y"}
     <ArtistYcomp />
-{:else if arse === "Z"}
+{:else if $artistarse === "Z"}
     <ArtistZcomp />
 {:else}
     <ArtistAcomp />
 {/if}
 
-<style>
-
-    .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-    }
-
-    .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 125%;
-    left: 30%;
-    /* right: 105%; */
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    }
-
-    .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-    }
-
-    .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-    }
-
-
-
-
-
-    .alphaBtn {
-        width: 25%;
-        font-size: .8em;
-        background-color: pink;
-        border-radius: 7px;
-    }
-
-	.alpha {
-		display: block;
-		border-radius: 50%;
-		padding: 12px;
-		background-color: rgb(45, 202, 24);
-		width: 45px;
-		height: 45px;
-		text-align: center;
-
-	}
-	.wrapit {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
-	}
-
-</style>

@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
     import SelectButton from '$lib/playlist/PlayListSelectButton.svelte';
     import SongAcomp from '$lib/song/songAcomp.svelte';
     import SongBcomp from '$lib/song/songBcomp.svelte';
@@ -26,121 +27,33 @@
     import SongXcomp from '$lib/song/songXcomp.svelte';
     import SongYcomp from '$lib/song/songYcomp.svelte';
     import SongZcomp from '$lib/song/songZcomp.svelte';
+    import Settings from '$lib/song/SongSettingsComp.svelte';
+    import { songarse } from '$lib/store/stores';
 
-    let isVisible = false
-	var setVisible = () => {
-		if (isVisible) {
-			isVisible = false
-		} else {
-			isVisible = true
-		}
-	}
+    // let isSongVisible = false
+	// var setSongVisible = () => {
+	// 	if (isSongVisible) {
+	// 		isSongVisible = false
+	// 	} else {
+	// 		isSongVisible = true
+	// 	}
+	// }
 
-    let arse = "";
-    let setArseA = () => {
-        arse = "A"
-        isVisible = false
-    }
-    let setArseB = () => {
-        arse = "B"
-        isVisible = false
-    }
-    let setArseC = () => {
-        arse = "C"
-        isVisible = false
-    }
-    let setArseD = () => {
-        arse = "D"
-        isVisible = false
-    }
-    let setArseE = () => {
-        arse = "E"
-        isVisible = false
-    }
-    let setArseF = () => {
-        arse = "F"
-        isVisible = false
-    }
-    let setArseG = () => {
-        arse = "G"
-        isVisible = false
-    }
-    let setArseH = () => {
-        arse = "H"
-        isVisible = false
-    } 
-    let setArseI = () => {
-        arse = "I"
-        isVisible = false
-    }     
-    let setArseJ = () => {
-        arse = "J"
-        isVisible = false
-    }     
-    let setArseK = () => {
-        arse = "K"
-        isVisible = false
-    } 
-    let setArseL = () => {
-        arse = "L"
-        isVisible = false
-    } 
-    let setArseM = () => {
-        arse = "M"
-        isVisible = false
-    } 
-    let setArseN = () => {
-        arse = "N"
-        isVisible = false
-    } 
-    let setArseO = () => {
-        arse = "O"
-        isVisible = false
-    } 
-    let setArseP = () => {
-        arse = "P"
-        isVisible = false
-    } 
-    let setArseQ = () => {
-        arse = "Q"
-        isVisible = false
-    } 
-    let setArseR = () => {
-        arse = "R"
-        isVisible = false
-    } 
-    let setArseS = () => {
-        arse = "S"
-        isVisible = false
-    } 
-    let setArseT = () => {
-        arse = "T"
-        isVisible = false
-    } 
-    let setArseU = () => {
-        arse = "U"
-        isVisible = false
-    } 
-    let setArseV = () => {
-        arse = "V"
-        isVisible = false
-    } 
-    let setArseW = () => {
-        arse = "W"
-        isVisible = false
-    } 
-    let setArseX = () => {
-        arse = "X"
-        isVisible = false
-    } 
-    let setArseY = () => {
-        arse = "Y"
-        isVisible = false
-    } 
-    let setArseZ = () => {
-        arse = "Z"
-        isVisible = false
-    }
+    // let $songarse = "";
+    // function set$songArse(ar) {
+    //     $songarse = ar
+    //     isSongVisible = false
+    // }
+
+    // let newBatch = []
+    // async function fetchSongFirstLetter() {
+	// 	const res = await fetch(`http://192.168.0.90:9090/SongFirstLetter`);
+	// 	newBatch = await res.json();
+    //     console.log(newBatch)
+	// };
+    // onMount(() => fetchSongFirstLetter())
+
+
 
 </script>
 
@@ -148,98 +61,101 @@
 	<title>Songs</title>
 </svelte:head>
 
-<button class="alphaBtn" on:click={setVisible} >Settings</button>
+<Settings />
 
-{#if isVisible}
+<!-- <button class="alphaBtn" on:click={setSongVisible} >Settings</button> -->
+
+<!-- {#if isSongVisible}
 	<div class="maindiv">
 		<div class="wrapit">
-			<p class="alpha" on:click={setArseA}>A</p>
-			<p class="alpha" on:click={setArseB}>B</p>
-			<p class="alpha" on:click={setArseC}>C</p>
-			<p class="alpha" on:click={setArseD}>D</p>
-			<p class="alpha" on:click={setArseE}>E</p>
-			<p class="alpha" on:click={setArseF}>F</p>
-			<p class="alpha" on:click={setArseG}>G</p>
+           
+            <p class="alpha" on:click={set$songArseB}>B</p>
+			<p class="alpha" on:click={set$songArseB}>B</p>
+			<p class="alpha" on:click={set$songArseC}>C</p>
+			<p class="alpha" on:click={set$songArseD}>D</p>
+			<p class="alpha" on:click={set$songArseE}>E</p>
+			<p class="alpha" on:click={set$songArseF}>F</p>
+			<p class="alpha" on:click={set$songArseG}>G</p>
 		</div>
 		<div class="wrapit">
-			<p class="alpha" on:click={setArseH}>H</p>
-			<p class="alpha" on:click={setArseI}>I</p>
-			<p class="alpha" on:click={setArseJ}>J</p>
-			<p class="alpha" on:click={setArseK}>K</p>
-			<p class="alpha" on:click={setArseL}>L</p>
-			<p class="alpha" on:click={setArseM}>M</p>
-            <p class="alpha" on:click={setArseN}>N</p>
+			<p class="alpha" on:click={set$songArseH}>H</p>
+			<p class="alpha" on:click={set$songArseI}>I</p>
+			<p class="alpha" on:click={set$songArseJ}>J</p>
+			<p class="alpha" on:click={set$songArseK}>K</p>
+			<p class="alpha" on:click={set$songArseL}>L</p>
+			<p class="alpha" on:click={set$songArseM}>M</p>
+            <p class="alpha" on:click={set$songArseN}>N</p>
         </div>
 		<div class="wrapit">
-			<p class="alpha" on:click={setArseO}>O</p>
-			<p class="alpha" on:click={setArseP}>P</p>
-			<p class="alpha" on:click={setArseQ}>Q</p>
-            <p class="alpha" on:click={setArseR}>R</p>
-            <p class="alpha" on:click={setArseS}>S</p>
-            <p class="alpha" on:click={setArseT}>T</p>
-			<p class="alpha" on:click={setArseU}>U</p>
+			<p class="alpha" on:click={set$songArseO}>O</p>
+			<p class="alpha" on:click={set$songArseP}>P</p>
+			<p class="alpha" on:click={set$songArseQ}>Q</p>
+            <p class="alpha" on:click={set$songArseR}>R</p>
+            <p class="alpha" on:click={set$songArseS}>S</p>
+            <p class="alpha" on:click={set$songArseT}>T</p>
+			<p class="alpha" on:click={set$songArseU}>U</p>
 		</div>
 
 		<div class="wrapit">
-			<p class="alpha" on:click={setArseV}>V</p>
-            <p class="alpha" on:click={setArseW}>W</p>
-			<p class="alpha" on:click={setArseX}>X</p>
-            <p class="alpha" on:click={setArseY}>Y</p>
-			<p class="alpha" on:click={setArseZ}>Z</p>
+			<p class="alpha" on:click={set$songArseV}>V</p>
+            <p class="alpha" on:click={set$songArseW}>W</p>
+			<p class="alpha" on:click={set$songArseX}>X</p>
+            <p class="alpha" on:click={set$songArseY}>Y</p>
+			<p class="alpha" on:click={set$songArseZ}>Z</p>
 		</div>
 	</div>
     <SelectButton />
-{/if}
+{/if} -->
 
-{#if arse === "B"}
+{#if $songarse === "B"}
     <SongBcomp />
-{:else if arse === "C"}
+{:else if $songarse === "C"}
     <SongCcomp />
-{:else if arse === "D"}
+{:else if $songarse === "D"}
     <SongDcomp />
-{:else if arse === "E"}
+{:else if $songarse === "E"}
     <SongEcomp />
-{:else if arse === "F"}
+{:else if $songarse === "F"}
     <SongFcomp />
-{:else if arse === "G"}
+{:else if $songarse === "G"}
     <SongGcomp />
-{:else if arse === "H"}
+{:else if $songarse === "H"}
     <SongHcomp />
-{:else if arse === "I"}
+{:else if $songarse === "I"}
     <SongIcomp />
-{:else if arse === "J"}
+{:else if $songarse === "J"}
     <SongJcomp />
-{:else if arse === "K"}
+{:else if $songarse === "K"}
     <SongKcomp />
-{:else if arse === "L"}
+{:else if $songarse === "L"}
     <SongLcomp />
-{:else if arse === "M"}
+{:else if $songarse === "M"}
     <SongMcomp />
-{:else if arse === "N"}
+{:else if $songarse === "N"}
     <SongNcomp />
-{:else if arse === "O"}
+{:else if $songarse === "O"}
     <SongOcomp />
-{:else if arse === "P"}
+{:else if $songarse === "P"}
     <SongPcomp />
-{:else if arse === "Q"}
+{:else if $songarse === "Q"}
     <SongQcomp />
-{:else if arse === "R"}
+{:else if $songarse === "R"}
     <SongRcomp />
-{:else if arse === "S"}
+{:else if $songarse === "S"}
     <SongScomp />
-{:else if arse === "T"}
+{:else if $songarse === "T"}
     <SongTcomp />
-{:else if arse === "U"}
+{:else if $songarse === "U"}
     <SongUcomp />
-{:else if arse === "V"}
+{:else if $songarse === "V"}
     <SongVcomp />
-{:else if arse === "W"}
+{:else if $songarse === "W"}
     <SongWcomp />
-{:else if arse === "X"}
+{:else if $songarse === "X"}
     <SongXcomp />
-{:else if arse === "Y"}
+{:else if $songarse === "Y"}
     <SongYcomp />
-{:else if arse === "Z"}
+{:else if $songarse === "Z"}
     <SongZcomp />
 {:else}
     <SongAcomp />
@@ -247,34 +163,3 @@
 
 
 
-<style>
-
-    .alphaBtn {
-        width: 25%;
-        font-size: .8em;
-        background-color: pink;
-        border-radius: 7px;
-    }
-
-	.alpha {
-		display: block;
-		border-radius: 50%;
-		padding: 12px;
-		background-color: rgb(45, 202, 24);
-		width: 45px;
-		height: 45px;
-		text-align: center;
-
-	}
-	.wrapit {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
-	}
-
-    button {
-        margin: 2px;
-        width: 4em;
-    }
-    
-</style>

@@ -19,7 +19,7 @@
     ];
 
     async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/SongAlpha?alpha=Z`);
+		const res = await fetch(`http://192.168.0.90:9090/SongAlpha?alpha=Z`);
 		newBatch = await res.json();
 	};
 

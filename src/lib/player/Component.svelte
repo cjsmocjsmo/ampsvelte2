@@ -291,7 +291,7 @@
 	bind:paused
 	bind:duration
     bind:currentTime
-
+    controls=true
 	on:play
 	on:ended={songEnded}
 	src=""

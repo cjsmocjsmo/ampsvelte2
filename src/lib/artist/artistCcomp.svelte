@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import {albumid} from '$lib/store/stores.js';
 	import InfiniteScroll from "svelte-infinite-scroll";
+	import { myFunction } from '$lib/js/common'; 
 	
     let page = 0;
     let size = 20;
@@ -9,7 +10,7 @@
     let newBatch = [];
 
     async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/ArtistAlpha?alpha=C`);
+		const res = await fetch(`http://192.168.0.90:9090/ArtistAlpha?alpha=C`);
 		newBatch = await res.json();
         console.log(newBatch)
 	};
@@ -21,14 +22,14 @@
         ...newBatch.splice(size * page, size * (page + 1) - 1)
     ];
 
-	function myFunction(id) {
-		var x = document.getElementById(id);
-		if (x.className.indexOf("w3-show") == -1) {
-			x.className += " w3-show";
-		} else { 
-			x.className = x.className.replace(" w3-show", "");
-		}
-	}
+	// function myFunction(id) {
+	// 	var x = document.getElementById(id);
+	// 	if (x.className.indexOf("w3-show") == -1) {
+	// 		x.className += " w3-show";
+	// 	} else { 
+	// 		x.className = x.className.replace(" w3-show", "");
+	// 	}
+	// }
 
 </script>
 

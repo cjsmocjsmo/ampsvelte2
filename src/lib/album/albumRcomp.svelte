@@ -19,7 +19,7 @@
     ];
 
     async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/AlbumAlpha?alpha=R`);
+		const res = await fetch(`http://192.168.0.90:9090/AlbumAlpha?alpha=R`);
 		newBatch = await res.json();
         console.log(newBatch)
 	};

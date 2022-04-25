@@ -4,30 +4,27 @@
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import { picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
     import {Howl, Howler} from 'howler';
-
+    import { formatTime } from '$lib/js/common.js';
 
     let page = 0;
     let size = 20;
     let adata = [];
     let newBatch = [];
 
-    onMount(() => fetchAlphaData())
-
     $: adata = [
 		...adata,
         ...newBatch.splice(size * page, size * (page + 1) - 1)
     ];
 
-    async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/SongAlpha?alpha=C`);
-		newBatch = await res.json();
-	};
+    async function fetchSongAlphaData() {
+        const res = await fetch(`http://192.168.0.90:9090/SongAlpha?alpha=C`);
+        let newBatch = await res.json();
+        console.log(newBatch)
+    };
 
-    function formatTime(secs) {
-        var minutes = Math.floor(secs / 60) || 0;
-        var seconds = (secs - minutes * 60) || 0;
-        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-    }
+    onMount(() => fetchSongAlphaData())
+
+    
 
     let sound;
     function loadsong(addr, pA) {
@@ -71,7 +68,7 @@
     <InfiniteScroll
         hasMore={newBatch.length}
         threshold={100}
-        on:loadMore={() => {page++; fetchAlphaData()}} />
+        on:loadMore={() => {page++; fetchSongAlphaData()}} />
 </ul>
 
 <style>

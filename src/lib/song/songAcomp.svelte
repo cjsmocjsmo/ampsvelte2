@@ -1,35 +1,31 @@
 <script>
 	import { onMount } from 'svelte';
-    import InfiniteScroll from "svelte-infinite-scroll";
+    // import InfiniteScroll from "svelte-infinite-scroll";
     import AddButton from '$lib/playlist/AddToPlaylistButton.svelte';
     import { picaddr, duration, playPlayList, showPlayButton } from '$lib/store/stores';
     import {Howl, Howler} from 'howler';
+    import { formatTime } from '$lib/js/common.js';
 
     let page = 0;
     let size = 20;
-    let adata = [];
-    let newBatch = [];
+    let ddata = [];
+    let newwBatch = [];
     let sound;
-    // let picaddr;
 
-    onMount(() => fetchAlphaData())
-
-    $: adata = [
-		...adata,
-        ...newBatch.splice(size * page, size * (page + 1) - 1)
+    $: ddata = [
+		...ddata,
+        ...newwBatch.splice(size * page, size * (page + 1) - 1)
     ];
 
-    async function fetchAlphaData() {
-		const res = await fetch(`http://192.168.0.91:9090/SongAlpha?alpha=A`);
-		newBatch = await res.json();
+    async function fetchSongAlphaData() {
+        const res = await fetch(`http://192.168.0.90:9090/SongAlpha?alpha=A`);
+        let newBatch = await res.json();
         console.log(newBatch)
-	};
+    };
 
-    function formatTime(secs) {
-        var minutes = Math.floor(secs / 60) || 0;
-        var seconds = (secs - minutes * 60) || 0;
-        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-    }
+    onMount(() => fetchSongAlphaData())
+
+    
 
     function loadsong(addr, pA) {
         picaddr.set(pA)
@@ -56,23 +52,24 @@
 
 </script>
 
+{ddata}
 <ul>
-    {#each adata as item}
+    {#each ddata as sitem}
         <li>
             <div class="songboxflex">
-                <h3>{item.title}</h3>
+                <h3>{sitem.title}</h3>
                 <div class="songbtnflex">
-                       <button on:click={loadsong(item.httpaddr, item.picHttpAddr)}>Play</button>
-                    <AddButton song={item}/>
+                       <button on:click={loadsong(sitem.httpaddr, sitem.picHttpAddr)}>Play</button>
+                    <AddButton song={sitem}/>
                 </div>
             </div>
             <hr />
         </li>
     {/each}
-    <InfiniteScroll
-        hasMore={newBatch.length}
+    <!-- <InfiniteScroll
+        hasMore={newSongBatch.length}
         threshold={100}
-        on:loadMore={() => {page++; fetchAlphaData()}} />
+        on:loadMore={() => {page++; fetchAlphaData()}} /> -->
 </ul>
 
 <style>
